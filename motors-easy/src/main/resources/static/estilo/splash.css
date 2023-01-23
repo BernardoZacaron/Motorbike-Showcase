@@ -1,0 +1,8 @@
+#cabecalho{
+    background-color: red;
+    border-bottom: darkgray 3px solid;
+}
+
+#cabecalho a{
+    color: black;
+}
