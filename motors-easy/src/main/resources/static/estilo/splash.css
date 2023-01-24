@@ -1,8 +1,16 @@
 #cabecalho{
     background-color: red;
     border-bottom: darkgray 3px solid;
+
+    display: flex-inline;
+    align-items: start;
 }
 
 #cabecalho a{
     color: black;
+}
+
+#logo{
+    width: 10%;
+    float: left;
 }
