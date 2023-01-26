@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo modelo</title>
+</head>
+<body>
+    <h1>Registrar moto</h1>
+    <form th:action="@{/saveMoto}" method="post" th:object="${novoMoto}">
+        <div class="mb-3">
+            <label for="txtModelo" class="form-label">Modelo</label>
+            <input type="text" class="form-control" id="txtModelo" th:field="*{modelo}">
+        </div>
+        <div class="mb-3">
+            <label for="txtCilindradas" class="form-label">Cilindradas</label>
+            <input type="number" class="form-control" id="txtCilindradas" th:field="*{cilindradas}">
+        </div>
+        <div class="mb-3">
+            <label for="txtPreco" class="form-label">Valor</label>
+            <input type="number" class="form-control" id="txtPreco" th:field="*{preco}">
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="boolAutomatica" th:field="*{automatica}">
+            <label class="form-check-label" for="boolAutomatica">É automática</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>

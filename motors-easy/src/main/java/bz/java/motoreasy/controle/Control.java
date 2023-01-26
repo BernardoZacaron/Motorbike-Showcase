@@ -1,14 +1,41 @@
 package bz.java.motoreasy.controle;
 
+import bz.java.motoreasy.model.Moto;
+import bz.java.motoreasy.repository.MotoRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
 public class Control {
+    @Autowired
+    MotoRepo motoRepo;
+
     @GetMapping({"/", "/home"})
     public String callHomePage() {
         return "index";
+    }
+
+    @GetMapping({"/registrarMoto"})
+    public String callRegistroMotoPage(Model model){
+        model.addAttribute("novoMoto", new Moto());
+        return "registrarMoto";
+    }
+
+    @Transactional
+    @PostMapping("/saveMoto")
+    public String saveMoto(@ModelAttribute Moto novoMoto){
+        Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
+
+        motoRepo.save(moto);
+
+        return "redirect:/home";
     }
 }
