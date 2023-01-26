@@ -23,6 +23,13 @@ public class Control {
         return "index";
     }
 
+    @GetMapping("/catalogo")
+    public String callCatalogoPage(Model model) {
+        model.addAttribute("motos", motoRepo.findAll());
+
+        return "catalogo";
+    }
+
     @GetMapping({"/registrarMoto"})
     public String callRegistroMotoPage(Model model){
         model.addAttribute("novoMoto", new Moto());

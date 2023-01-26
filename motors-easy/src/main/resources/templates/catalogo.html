@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo</title>
+</head>
+<body>
+    <h1>Catálogo com os modelos disponíveis</h1>
+    <div>
+        <div th:each="m: ${motos}">
+            <h3 th:text='${m.modelo}'></h3>
+            <p th:text='${m.cilindradas}'></p>
+            <p th:text='${m.preco}'></p>
+            <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
+        </div>
+    </div>
+</body>
+</html>
