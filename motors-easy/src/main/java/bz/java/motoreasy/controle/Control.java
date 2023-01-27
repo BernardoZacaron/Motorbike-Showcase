@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/")
 public class Control {
@@ -44,5 +46,18 @@ public class Control {
         motoRepo.save(moto);
 
         return "redirect:/home";
+    }
+
+    @Transactional
+    @PostMapping("/addDesejo")
+    public String saveMoto(@ModelAttribute("idMoto") long id){
+        Optional<Moto> motoResposta = motoRepo.findById(id);
+
+        if(motoResposta.isPresent()){
+            motoResposta.get().setFavorita(true);
+            motoRepo.saveAndFlush(motoResposta.get());
+        }
+
+        return "redirect:/catalogo";
     }
 }

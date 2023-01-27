@@ -14,6 +14,7 @@ public class Moto {
     private int cilindradas;
     private double preco;
     private boolean automatica;
+    private boolean favorita; //provisorio
 
     public Moto() {
     }
@@ -31,6 +32,15 @@ public class Moto {
         this.cilindradas = cilindradas;
         this.preco = preco;
         this.automatica = automatica;
+    }
+
+    public Moto(long id, String modelo, int cilindradas, double preco, boolean automatica, boolean favorita) {
+        this.id = id;
+        this.modelo = modelo;
+        this.cilindradas = cilindradas;
+        this.preco = preco;
+        this.automatica = automatica;
+        this.favorita = favorita;
     }
 
     public long getId() {
@@ -71,5 +81,13 @@ public class Moto {
 
     public void setAutomatica(boolean automatica) {
         this.automatica = automatica;
+    }
+
+    public boolean isFavorita() {
+        return favorita;
+    }
+
+    public void setFavorita(boolean favorita) {
+        this.favorita = favorita;
     }
 }

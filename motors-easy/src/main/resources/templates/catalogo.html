@@ -7,11 +7,15 @@
 <body>
     <h1>Catálogo com os modelos disponíveis</h1>
     <div>
-        <div th:each="m: ${motos}">
+        <div th:each="m: ${motos}" th:style="${m.favorita ? 'color:orange' : 'color:blue'}">
             <h3 th:text='${m.modelo}'></h3>
             <p th:text='${m.cilindradas}'></p>
             <p th:text='${m.preco}'></p>
             <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
+            <form th:action="@{/addDesejo}" method="post">
+                <input type="hidden" th:value='${m.id}' name="idMoto">
+                <input type="submit" value="Favoritar">
+            </form>
         </div>
     </div>
 </body>
