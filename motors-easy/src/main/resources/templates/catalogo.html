@@ -6,8 +6,8 @@
 </head>
 <body>
     <h1>Catálogo com os modelos disponíveis</h1>
-    <div>
-        <div th:each="m: ${motos}" th:style="${m.favorita ? 'color:orange' : 'color:blue'}">
+    <div id="con-motos">
+        <div th:each="m: ${motos}" th:style="${m.favorita ? 'color:orange' : 'color:blue'}" class="card-moto">
             <h3 th:text='${m.modelo}'></h3>
             <p th:text='${m.cilindradas}'></p>
             <p th:text='${m.preco}'></p>
@@ -15,7 +15,7 @@
             <form th:action="@{/addDesejo}" method="post">
                 <input type="hidden" th:value='${m.id}' name="idMoto">
                 <button type="submit">
-                    <img th:src="${m.favorita ? '/img/adicionado.png' : '/img/adicionar.png'}">
+                    <img th:src="${m.favorita ? '/img/adicionado.png' : '/img/adicionar.png'}" id="img-botao">
                 </button>
             </form>
         </div>

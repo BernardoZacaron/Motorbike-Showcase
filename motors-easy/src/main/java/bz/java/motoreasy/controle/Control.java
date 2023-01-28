@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -64,5 +66,19 @@ public class Control {
         }
 
         return "redirect:/catalogo";
+    }
+
+    @GetMapping("/lista-desejo")
+    public String callListaDesejoPage(Model model) {
+        List<Moto> todasMotos = motoRepo.findAll();
+        List<Moto> favoritas = new ArrayList<>();
+        for (Moto m : todasMotos) {
+            if(m.isFavorita())
+                favoritas.add(m);
+        }
+
+        model.addAttribute("motos", favoritas);
+
+        return "listaDesejo";
     }
 }
