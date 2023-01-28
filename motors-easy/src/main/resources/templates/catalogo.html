@@ -14,7 +14,9 @@
             <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
             <form th:action="@{/addDesejo}" method="post">
                 <input type="hidden" th:value='${m.id}' name="idMoto">
-                <input type="submit" value="Favoritar">
+                <button type="submit">
+                    <img th:src="${m.favorita ? '/img/adicionado.png' : '/img/adicionar.png'}">
+                </button>
             </form>
         </div>
     </div>

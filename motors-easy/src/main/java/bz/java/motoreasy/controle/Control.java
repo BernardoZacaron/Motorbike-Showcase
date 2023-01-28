@@ -52,9 +52,14 @@ public class Control {
     @PostMapping("/addDesejo")
     public String saveMoto(@ModelAttribute("idMoto") long id){
         Optional<Moto> motoResposta = motoRepo.findById(id);
+        Moto moto = motoResposta.get();
 
-        if(motoResposta.isPresent()){
-            motoResposta.get().setFavorita(true);
+        if(moto!=null){
+            if(!moto.isFavorita())
+                moto.setFavorita(true);
+            else if(moto.isFavorita())
+                moto.setFavorita(false);
+
             motoRepo.saveAndFlush(motoResposta.get());
         }
 
