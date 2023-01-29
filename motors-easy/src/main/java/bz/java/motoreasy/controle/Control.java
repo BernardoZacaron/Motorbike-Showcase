@@ -52,7 +52,7 @@ public class Control {
 
     @Transactional
     @PostMapping("/addDesejo")
-    public String saveMoto(@ModelAttribute("idMoto") long id){
+    public String saveMotoFav(@ModelAttribute("idMoto") long id){
         Optional<Moto> motoResposta = motoRepo.findById(id);
         Moto moto = motoResposta.get();
 
@@ -66,6 +66,20 @@ public class Control {
         }
 
         return "redirect:/catalogo";
+    }
+
+    @Transactional
+    @PostMapping("/removerDesejo")
+    public String removeMotoFav(@ModelAttribute("idMoto") long id){
+        Optional<Moto> motoResposta = motoRepo.findById(id);
+        Moto moto = motoResposta.get();
+
+        if(moto!=null)
+            moto.setFavorita(false);
+
+        motoRepo.saveAndFlush(motoResposta.get());
+
+        return "redirect:/lista-desejo";
     }
 
     @GetMapping("/lista-desejo")
