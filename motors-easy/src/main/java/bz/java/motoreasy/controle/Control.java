@@ -77,7 +77,7 @@ public class Control {
                 favoritas.add(m);
         }
 
-        model.addAttribute("motos", favoritas);
+        model.addAttribute("motosFavoritas", favoritas);
 
         return "listaDesejo";
     }

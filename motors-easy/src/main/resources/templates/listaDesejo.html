@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de desejos</title>
+</head>
+<body>
+  <h1>Itens favoritados</h1>
+  <div id="con-motosFav">
+    <div th:each="m: ${motosFavoritas}" class="card-motoFav">
+      <h3 th:text='${m.modelo}'></h3>
+      <p th:text='${m.cilindradas}'></p>
+      <p th:text='${m.preco}'></p>
+      <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
+      <form th:action="@{/addDesejo}" method="post">
+        <input type="hidden" th:value='${m.id}' name="idMoto">
+        <button type="submit">
+          <img th:src="${m.favorita ? '/img/adicionado.png' : '/img/adicionar.png'}" id="img-botao">
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
