@@ -4,6 +4,16 @@ body{
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+main{
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    background-image: url("https://live.staticflickr.com/3217/3499224708_9b089d2b83_b.jpg");
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    position: relative;
+}
+
 #cabecalho h1{
     font-family: 'Raleway', sans-serif;
 }
@@ -41,6 +51,32 @@ body{
     align-items: flex-start;
 }
 
+.titulo-pagina{
+    text-rendering: optimizeLegibility;
+}
+
+#box-apresentacao{
+    border: 3px darkgray solid;
+    border-radius: 8%;
+    padding: 2%;
+    margin: 1% 5% 1%;
+    background-color: rgb(66, 135, 245, 0.9);
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: darkgray 3px solid;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+
+footer p{
+    font-size: small;
+    align-self: flex-end;
+}
 
 .card-moto{
     border: 1px black solid;
