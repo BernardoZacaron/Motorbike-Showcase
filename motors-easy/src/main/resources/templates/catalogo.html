@@ -46,17 +46,22 @@
     <h1 class="titulo-pagina">Catálogo com os modelos disponíveis</h1>  
     <div id="con-motos">
         <div th:each="m: ${motos}" th:style="${m.favorita ? 'color:orange' : 'color:blue'}" class="card-moto">
-            <img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp" class="img-moto-catalogo">
-            <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
-            <p th:text='${m.cilindradas}'>500</p>
-            <p>R$<span th:text='${m.preco}'>20000,00</span></p>
-            <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'">É automática</p>
-            <form th:action="@{/addDesejo}" method="post">
-                <input type="hidden" th:value='${m.id}' name="idMoto">
-                <button type="submit">
-                    <img th:src="${m.favorita ? '/img/adicionado.png' : '/img/adicionar.png'}" class="img-botao">
-                </button>
-            </form>
+            <div class="img-moto"><img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp"></div>
+            <div class="titulo-moto">
+              <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
+            </div>
+            <div class="conteudo-moto">
+              <h3 class="titulo-moto-interno">Placeholder</h3>  
+              <p><span th:text='${m.cilindradas}'>500</span> cilindradas</p>
+              <p>R$<span th:text='${m.preco}'>20000,00</span></p>
+              <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'">É automática</p>
+              <form th:action="@{/addDesejo}" method="post">
+                  <input type="hidden" th:value='${m.id}' name="idMoto">
+                  <button type="submit">
+                      <img th:src="${m.favorita ? '/img/adicionado.png' : '/img/adicionar.png'}" class="img-botao">
+                  </button>
+              </form>
+            </div>
         </div>
     </div>
     </main>

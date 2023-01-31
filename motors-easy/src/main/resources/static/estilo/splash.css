@@ -90,15 +90,54 @@ footer p{
     align-self: flex-end;
 }
 
-.img-moto-catalogo{
-    width: 360px;
-    height: 250px;
+/*Card motos*/
+
+.img-moto img{
+    width: 500px;
+    height: 350px;
+}
+.img-moto{
+    grid-area: imagem;
+    text-align: end;
+    margin-right: 5%;
+}
+.titulo-moto{
+    grid-area: titulo;    
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.titulo-moto h3{
+    font-size: 3em;
+    -webkit-transform: rotate(90deg);
+    vertical-align: middle;
+}
+
+.titulo-moto-interno{
+    font-size: 2em;
+}
+
+.conteudo-moto{
+    grid-area: conteudo;
+    font-size: x-large;
+    text-align: start;
 }
 
 .card-moto{
     border: 1px black solid;
     border-radius: 1%;
     background-color: cadetblue;
-    text-align: end;
-    padding: 2%;
+    
+    padding: 2% 0 2%;
+    width: 90%;
+
+    
+    display: grid;
+    grid-template-columns: 60% 35% 1fr;
+    grid-template-areas: 
+    'imagem conteudo titulo';
 }
