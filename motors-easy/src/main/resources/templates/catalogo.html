@@ -47,7 +47,7 @@
       <h1 class="titulo-pagina">Catálogo com os modelos disponíveis</h1>  
     </div>
     <div id="con-motos">
-        <div th:each="m: ${motos}" th:style="${m.favorita ? 'color:orange' : 'color:blue'}" class="card-moto">
+        <div th:each="m: ${motos}" th:style="${m.favorita ? 'color:orange' : 'color:blue'}" class="card-moto fechado">
             <div class="img-moto"><img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp"></div>
             <div class="titulo-moto">
               <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
@@ -68,5 +68,6 @@
     </div>
     </main>
     <footer><p id="copyright">© 2023 Bernardo Zacaron - Motor Showcase. Todos os direitos reservados.</p></footer>
+    <script src="script/script1.js"></script>
 </body>
 </html>

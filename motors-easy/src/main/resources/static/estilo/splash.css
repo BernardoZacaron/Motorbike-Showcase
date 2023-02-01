@@ -149,5 +149,13 @@ footer p{
     'imagem conteudo titulo';
 
     position: absolute;
+}
+
+.aberto{
+    transition: left 0.5s ease-in-out;
+    left: -5%;
+}
+.fechado{
+    transition: left 0.5s ease-in-out;
     left: -85%;
 }
