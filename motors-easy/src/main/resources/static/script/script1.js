@@ -1,14 +1,17 @@
 
-var cards = document.querySelector(".card-moto");
+var cards = document.getElementsByClassName("card-moto");
 
-cards.addEventListener("mouseover", function(){
-    this.classList.remove('fechado');
-    this.classList.add('aberto');
-});
-cards.addEventListener("mouseout", function(){
-    this.classList.remove('aberto');
-    this.classList.add('fechado');
-});
+for (var i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("mouseover", function(){
+        this.classList.remove('fechado');
+        this.classList.add('aberto');
+    });
+    cards[i].addEventListener("mouseout", function(){
+        this.classList.remove('aberto');
+        this.classList.add('fechado');
+    });
+}
+
 
 /*
 function abrir(card){

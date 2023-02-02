@@ -8,7 +8,7 @@ h1{
 }
 
 main{
-    
+    width: 100%;
     background-image: url("https://live.staticflickr.com/3217/3499224708_9b089d2b83_b.jpg");
     background-repeat: repeat-y;
     background-size: 100% auto;
@@ -24,7 +24,8 @@ main{
 }
 
 #main-catalogo{
-    min-height: 600px;
+    min-height: 90%;
+    position: absolute;
 }
 
 #cabecalho h1{
@@ -81,9 +82,11 @@ main{
     background-color: rgb(66, 135, 245, 0.9);
 }
 
+#con-footer{
+    align-self: end;
+}
+
 footer{
-    position: relative;
-    bottom: 0;
     width: 100%;
     border-top: darkgray 3px solid;
     background-color: red;
@@ -140,6 +143,7 @@ footer p{
     background-color: cadetblue;
     
     padding: 2% 0 2%;
+    margin-bottom: 2%;
     width: 90%;
 
     
@@ -148,7 +152,7 @@ footer p{
     grid-template-areas: 
     'imagem conteudo titulo';
 
-    position: absolute;
+    position: relative;
 }
 
 .aberto{
