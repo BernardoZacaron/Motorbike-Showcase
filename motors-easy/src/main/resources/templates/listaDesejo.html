@@ -42,20 +42,28 @@
           </div>
         </div>
       </header>
-  <h1>Itens favoritados</h1>
-  <div id="con-motosFav">
-      <div th:each="m: ${motosFavoritas}" class="card-motoFav">
-          <h3 th:text='${m.modelo}'></h3>
-          <p th:text='${m.cilindradas}'></p>
-          <p th:text='${m.preco}'></p>
-          <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
-          <form th:action="@{/removerDesejo}" method="post">
-              <input type="hidden" th:value='${m.id}' name="idMoto">
-              <button type="submit">
-                  <img src="/img/remover.png" class="img-botao">
-              </button>
-          </form>
-      </div>
-  </div>
+    <main id="main-lista">
+      <h1 class="titulo-pagina">Itens favoritados</h1>
+        <div class="con-listagem">
+              <div th:each="m: ${motosFavoritas}" class="card-motoFav">
+                  <div class="img-moto-lista">
+                    <img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp">
+                  </div>
+                  <div class="conteudo-moto-lista">
+                    <h3 th:text='${m.modelo}'>Kawasaki Ninja</h3>
+                    <p><span th:text='${m.cilindradas}'>xxx</span> cilindradas</p>
+                    <p>R$<span th:text='${m.preco}'>20000.0</span></p>
+                    <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
+                    <form th:action="@{/removerDesejo}" method="post">
+                        <input type="hidden" th:value='${m.id}' name="idMoto">
+                        <button type="submit" class="botao-favorito">
+                            <img src="img/remover.png" class="remover-fav">
+                        </button>
+                    </form>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

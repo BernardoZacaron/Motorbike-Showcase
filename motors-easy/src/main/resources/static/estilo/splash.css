@@ -23,6 +23,11 @@ main{
     height: 75%;
 }
 
+#main-lista{
+    min-height: 80%;
+    position: absolute;
+}
+
 #main-catalogo{
     min-height: 90%;
     position: absolute;
@@ -102,11 +107,11 @@ footer p{
 
 /*Card motos*/
 
-.img-moto img{
+.img-moto-catalogo img{
     width: 500px;
     height: 350px;
 }
-.img-moto{
+.img-moto-catalogo{
     grid-area: imagem;
     text-align: end;
     margin-right: 5%;
@@ -165,7 +170,7 @@ footer p{
     left: -85%;
 }
 
-#botao-favorito{
+.botao-favorito{
     background: none;
 	color: inherit;
 	border: none;
@@ -177,4 +182,36 @@ footer p{
 
 .img-botao{
     width: 50%;
+}
+
+#con-motos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card-motoFav{
+    border: 3px red solid;
+    background-color: aquamarine;
+    width: 40%;
+    padding: 1%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.img-moto-lista{
+    width: 60%;
+}
+.img-moto-lista img{
+    width: 100%;
+}
+
+.conteudo-moto-lista{
+    width: 30%;
+}
+
+.remover-fav{
+    width: 30%;
 }
