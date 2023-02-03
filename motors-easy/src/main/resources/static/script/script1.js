@@ -2,6 +2,7 @@
 var cards = document.getElementsByClassName("card-moto");
 
 for (var i = 0; i < cards.length; i++) {
+
     cards[i].addEventListener("mouseover", function(){
         this.classList.remove('fechado');
         this.classList.add('aberto');
