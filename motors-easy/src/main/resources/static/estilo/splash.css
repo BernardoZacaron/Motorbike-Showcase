@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Raleway:wght@600&family=Roboto+Condensed&display=swap');
 
+/*Básico*/
 p,h3{
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -7,6 +8,7 @@ h1{
     font-family: 'Poppins', sans-serif;
 }
 
+/*Estrutura*/
 main{
     width: 100%;
     background-image: url("https://live.staticflickr.com/3217/3499224708_9b089d2b83_b.jpg");
@@ -33,6 +35,7 @@ main{
     position: absolute;
 }
 
+/*Cabeçalho*/
 #cabecalho h1{
     font-family: 'Raleway', sans-serif;
 }
@@ -70,6 +73,7 @@ main{
     align-items: stretch;
 }
 
+/*Conteudo*/
 .titulo-pagina{
     text-rendering: optimizeLegibility;
 }
@@ -87,6 +91,7 @@ main{
     background-color: rgb(66, 135, 245, 0.9);
 }
 
+/*Rodapé*/
 #con-footer{
     align-self: end;
 }
@@ -105,8 +110,7 @@ footer p{
     align-self: flex-end;
 }
 
-/*Card motos*/
-
+/*Pagina catalogo*/
 .img-moto-catalogo img{
     width: 500px;
     height: 350px;
@@ -116,7 +120,7 @@ footer p{
     text-align: end;
     margin-right: 5%;
 }
-.titulo-moto{
+.titulo-moto-vertical{
     grid-area: titulo;    
     text-align: center;
     overflow: hidden;
@@ -126,7 +130,7 @@ footer p{
     justify-content: center;
     align-content: center;
 }
-.titulo-moto h3{
+.titulo-moto-vertical h3{
     font-size: 3em;
     -webkit-transform: rotate(90deg);
     vertical-align: middle;
@@ -136,13 +140,13 @@ footer p{
     font-size: 2em;
 }
 
-.conteudo-moto{
+.conteudo-moto-catalogo{
     grid-area: conteudo;
     font-size: x-large;
     text-align: start;
 }
 
-.card-moto{
+.card-moto-catalogo{
     color: black;
     border: 1px black solid;
     border-radius: 1%;
@@ -170,7 +174,7 @@ footer p{
     left: -85%;
 }
 
-.botao-favorito{
+.botao-removerEstilo{
     background: none;
 	color: inherit;
 	border: none;
@@ -180,17 +184,18 @@ footer p{
 	outline: inherit;
 }
 
-.img-botao{
+.btn-favorito-catalogo img{
     width: 50%;
 }
 
-#con-motos{
+/*Pagina lista*/
+#con-motos-lista{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-.card-motoFav{
+.card-moto-lista{
     border: 3px red solid;
     background-color: aquamarine;
     width: 40%;
@@ -212,6 +217,6 @@ footer p{
     width: 30%;
 }
 
-.remover-fav{
+.btn-favorito-lista{
     width: 30%;
 }

@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 @RequestMapping("/")
@@ -53,17 +54,12 @@ public class Control {
     @Transactional
     @PostMapping("/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id){
-        Optional<Moto> motoResposta = motoRepo.findById(id);
-        Moto moto = motoResposta.get();
+        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        if(moto!=null){
-            if(!moto.isFavorita())
-                moto.setFavorita(true);
-            else if(moto.isFavorita())
-                moto.setFavorita(false);
+        moto.toggleFavorito();
 
-            motoRepo.saveAndFlush(motoResposta.get());
-        }
+        motoRepo.saveAndFlush(moto);
+
 
         return "redirect:/catalogo";
     }
@@ -71,13 +67,12 @@ public class Control {
     @Transactional
     @PostMapping("/removerDesejo")
     public String removeMotoFav(@ModelAttribute("idMoto") long id){
-        Optional<Moto> motoResposta = motoRepo.findById(id);
-        Moto moto = motoResposta.get();
+        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
         if(moto!=null)
             moto.setFavorita(false);
 
-        motoRepo.saveAndFlush(motoResposta.get());
+        motoRepo.saveAndFlush(moto);
 
         return "redirect:/lista-desejo";
     }
@@ -91,7 +86,9 @@ public class Control {
                 favoritas.add(m);
         }
 
-        model.addAttribute("motosFavoritas", favoritas);
+        todasMotos.stream().filter(moto -> moto.isFavorita());
+
+        model.addAttribute("motosFavoritas", todasMotos);
 
         return "listaDesejo";
     }

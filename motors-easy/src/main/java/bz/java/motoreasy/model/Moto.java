@@ -43,6 +43,10 @@ public class Moto {
         this.favorita = favorita;
     }
 
+    public void toggleFavorito(){
+        setFavorita(!isFavorita());
+    }
+
     public long getId() {
         return id;
     }

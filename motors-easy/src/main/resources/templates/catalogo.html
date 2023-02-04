@@ -47,21 +47,21 @@
     <div class="con-titulo-pagina">
       <h1 class="titulo-pagina">Catálogo com os modelos disponíveis</h1>  
     </div>
-    <div id="con-motos">
-        <div th:each="m: ${motos}" class="card-moto fechado">
+    <div id="con-motos-catalogo">
+        <div th:each="m: ${motos}" class="card-moto-catalogo fechado">
             <div class="img-moto-catalogo"><img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp"></div>
-            <div class="titulo-moto">
-                <h3 th:text='${m.modelo}' class="titulo-moto-vertical">Kawasaki ninja</h3>
+            <div class="titulo-moto-vertical">
+                <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
             </div>
-            <div class="conteudo-moto">
+            <div class="conteudo-moto-catalogo">
               <h3 class="titulo-moto-interno" th:text='${m.modelo}'>Placeholder</h3>
               <p><span th:text='${m.cilindradas}'>500</span> cilindradas</p>
               <p>R$<span th:text='${m.preco}'>20000,00</span></p>
               <p>Automática: <span th:text="${m.automatica} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
               <form th:action="@{/addDesejo}" method="post">
                   <input type="hidden" th:value='${m.id}' name="idMoto">
-                  <button type="submit" class="botao-favorito">
-                      <img th:src="${m.favorita ? '/img/favorito.png' : '/img/favoritar.png'}" class="img-botao">
+                  <button type="submit" class="botao-removerEstilo btn-favorito-catalogo">
+                      <img th:src="${m.favorita ? '/img/favorito.png' : '/img/favoritar.png'}">
                   </button>
               </form>
             </div>
