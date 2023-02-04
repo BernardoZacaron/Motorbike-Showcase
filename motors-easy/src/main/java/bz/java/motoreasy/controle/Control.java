@@ -1,6 +1,7 @@
 package bz.java.motoreasy.controle;
 
 import bz.java.motoreasy.model.Moto;
+import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.repository.MotoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -43,7 +44,7 @@ public class Control {
 
     @Transactional
     @PostMapping("/saveMoto")
-    public String saveMoto(@ModelAttribute Moto novoMoto){
+    public String saveMoto(@ModelAttribute MotoDTO novoMoto){
         Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
 
         motoRepo.save(moto);
