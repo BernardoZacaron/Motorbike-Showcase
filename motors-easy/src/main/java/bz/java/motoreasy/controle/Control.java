@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @Controller
@@ -79,9 +80,7 @@ public class Control {
 
     @GetMapping("/lista-desejo")
     public String callListaDesejoPage(Model model) {
-        List<Moto> motos = motoRepo.findAll();
-
-        motos.stream().filter(moto -> moto.isFavorita());
+        List<Moto> motos = motoRepo.findAll().stream().filter(Moto::isFavorita).toList();
 
         model.addAttribute("motosFavoritas", motos);
 
