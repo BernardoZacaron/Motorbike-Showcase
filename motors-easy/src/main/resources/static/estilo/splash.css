@@ -35,6 +35,11 @@ main{
     position: absolute;
 }
 
+#main-registro{
+    min-height: 80%;
+    position: absolute;
+}
+
 /*Cabeçalho*/
 #cabecalho h1{
     font-family: 'Raleway', sans-serif;
@@ -108,6 +113,11 @@ footer{
 footer p{
     font-size: small;
     align-self: flex-end;
+}
+
+#footer-registrar{
+    position: fixed;
+    bottom: 0;
 }
 
 /*Pagina catalogo*/
@@ -190,16 +200,23 @@ footer p{
 
 /*Pagina lista*/
 #con-motos-lista{
-    display: flex;
+    /*display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-around;*/
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: stretch;
+    align-items: stretch;
+    width: 100%;
 }
 
 .card-moto-lista{
     border: 3px red solid;
-    background-color: aquamarine;
-    width: 40%;
+    background-color: var(--azulClaro);
+    width: 90%;
     padding: 1%;
+    margin: 0 5% 2%;
     
     display: flex;
     flex-direction: row;
@@ -217,6 +234,26 @@ footer p{
     width: 30%;
 }
 
-.btn-favorito-lista{
-    width: 30%;
+.conteudo-moto-lista h3{
+    font-size: large;
+}
+
+.btn-favorito-lista img{
+    width: 100%;
+}
+
+/*Pagina registro moto*/
+#con-registrar{
+    width: 60%;
+    margin: 1% 20% 0;
+    border: 2px gray solid;
+    border-radius: 3%;
+    padding: 2%;
+
+    background-color: aliceblue;
+}
+
+
+:root{
+    --azulClaro: #8bb6fc;
 }

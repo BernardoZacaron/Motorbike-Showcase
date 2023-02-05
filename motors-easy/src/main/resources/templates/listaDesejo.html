@@ -43,8 +43,8 @@
         </div>
       </header>
     <main id="main-lista">
-      <h1 class="titulo-pagina">Itens favoritados</h1>
-        <div id="con-motos-lista">
+        <h1 class="titulo-pagina">Itens favoritados</h1>
+        <div id="con-motos-lista" class="container">
               <div th:each="m: ${motosFavoritas}" class="card-moto-lista">
                   <div class="img-moto-lista">
                     <img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp">
@@ -62,8 +62,8 @@
                     </form>
                   </div>
               </div>
-            </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

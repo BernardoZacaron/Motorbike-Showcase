@@ -42,25 +42,38 @@
           </div>
         </div>
       </header>
-    <h1>Registrar moto</h1>
-    <form th:action="@{/saveMoto}" method="post" th:object="${novoMoto}">
-        <div class="mb-3">
-            <label for="txtModelo" class="form-label">Modelo</label>
-            <input type="text" class="form-control" id="txtModelo" th:field="*{modelo}">
-        </div>
-        <div class="mb-3">
-            <label for="txtCilindradas" class="form-label">Cilindradas</label>
-            <input type="number" class="form-control" id="txtCilindradas" th:field="*{cilindradas}">
-        </div>
-        <div class="mb-3">
-            <label for="txtPreco" class="form-label">Valor</label>
-            <input type="number" class="form-control" id="txtPreco" th:field="*{preco}">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="boolAutomatica" th:field="*{automatica}">
-            <label class="form-check-label" for="boolAutomatica">É automática</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <main id="main-registro">
+      <div class="con-titulo-pagina">
+        <h1 class="titulo-pagina">Registrar moto</h1>
+      </div>
+      <div id="con-registrar">
+        <form th:action="@{/saveMoto}" method="post" th:object="${novoMoto}">
+            <div class="mb-3">
+                <label for="txtModelo" class="form-label">Modelo</label>
+                <input type="text" class="form-control" id="txtModelo" th:field="*{modelo}">
+            </div>
+            <div class="row mb-3">
+              <div class="col-lg-6 col-sm-12">
+                  <label for="txtCilindradas" class="form-label">Cilindradas</label>
+                  <input type="number" class="form-control" id="txtCilindradas" th:field="*{cilindradas}">
+              </div>
+              <div class="col-lg-6 col-sm-12">
+                  <label for="txtPreco" class="form-label">Valor</label>
+                  <input type="number" class="form-control" id="txtPreco" th:field="*{preco}">
+              </div>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="boolAutomatica" th:field="*{automatica}">
+                <label class="form-check-label" for="boolAutomatica">É automática</label>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+        </form>
+      </div>
+      </main>
+    <footer id="footer-registrar"><p class="copyright">© 2023 Bernardo Zacaron - Motor Showcase. Todos os direitos reservados.</p></footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

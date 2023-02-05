@@ -70,8 +70,7 @@ public class Control {
     public String removeMotoFav(@ModelAttribute("idMoto") long id){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        if(moto!=null)
-            moto.setFavorita(false);
+        moto.setFavorita(false);
 
         motoRepo.saveAndFlush(moto);
 
@@ -80,16 +79,11 @@ public class Control {
 
     @GetMapping("/lista-desejo")
     public String callListaDesejoPage(Model model) {
-        List<Moto> todasMotos = motoRepo.findAll();
-        List<Moto> favoritas = new ArrayList<>();
-        for (Moto m : todasMotos) {
-            if(m.isFavorita())
-                favoritas.add(m);
-        }
+        List<Moto> motos = motoRepo.findAll();
 
-        todasMotos.stream().filter(moto -> moto.isFavorita());
+        motos.stream().filter(moto -> moto.isFavorita());
 
-        model.addAttribute("motosFavoritas", todasMotos);
+        model.addAttribute("motosFavoritas", motos);
 
         return "listaDesejo";
     }
