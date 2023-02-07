@@ -131,6 +131,11 @@ footer p{
     bottom: 0;
 }
 
+#footer-login{
+    position: absolute;
+    bottom: 0;
+}
+
 /*Pagina catalogo*/
 .img-moto-catalogo img{
     width: 500px;
@@ -280,6 +285,20 @@ footer p{
     background-color: aliceblue;
 }
 
+
+/*Página login*/
+#body-login{
+    background-color: burlywood;
+    padding-top: 2%;
+}
+
+#box-login{
+    width: 50%;
+    margin: 2% 25% 0;
+    padding: 2%;
+    border: 2px gray solid;
+    border-radius: 2%;
+}
 
 :root{
     --azulClaro: #8bb6fc;
