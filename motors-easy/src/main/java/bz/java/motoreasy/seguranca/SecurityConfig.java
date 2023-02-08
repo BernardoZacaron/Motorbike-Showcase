@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -37,19 +38,20 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(user1, user2);
     }
 
-    /*@Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        //.requestMatchers("/**").permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
-                )
-                .formLogin((form) -> form
+                ).
+                formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET")).permitAll());
 
         return http.build();
-    }*/
+    }
 }

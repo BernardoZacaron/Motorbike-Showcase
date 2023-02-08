@@ -25,6 +25,7 @@ public class Control {
     @Autowired
     MotoRepo motoRepo;
 
+    //Aberto
     @GetMapping({"/", "/home"})
     public String callHomePage() {
         return "index";
@@ -37,22 +38,30 @@ public class Control {
         return "catalogo";
     }
 
-    @GetMapping({"/registrarMoto"})
-    public String callRegistroMotoPage(Model model){
-        model.addAttribute("novoMoto", new Moto());
-        return "registrarMoto";
+    @GetMapping("/login")
+    public String callLoginPage(){
+        return "login";
     }
 
+    /*@GetMapping({"/registrarUsuario"})
+    public String callRegistrarUsuarioPage(Model model){
+        model.addAttribute("novoUsuario", new Usuario());
+
+        return "registrarUsuario";
+    }
     @Transactional
-    @PostMapping("/saveMoto")
-    public String saveMoto(@ModelAttribute MotoDTO novoMoto){
-        Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
+    @PostMapping("/saveUsuario")
+    public String saveUsuario(@ModelAttribute Usuario novoUsuario){
+        Usuario u = new Usuario(0, novoUsuario.getLogin(), pe.encode(novoUsuario.getSenha()), novoUsuario.getNome(),
+                novoUsuario.getEmail(), 0, null, false);
 
-        motoRepo.save(moto);
+        uDao.save(u);
 
-        return "redirect:/home";
-    }
+        return "redirect:/login";
+    }*/
 
+
+    //Clientes logados
     @Transactional
     @PostMapping("/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id){
@@ -85,5 +94,23 @@ public class Control {
         model.addAttribute("motosFavoritas", motos);
 
         return "listaDesejo";
+    }
+
+
+    //Admin apenas
+    @GetMapping({"/registrarMoto"})
+    public String callRegistroMotoPage(Model model){
+        model.addAttribute("novoMoto", new Moto());
+        return "registrarMoto";
+    }
+
+    @Transactional
+    @PostMapping("/saveMoto")
+    public String saveMoto(@ModelAttribute MotoDTO novoMoto){
+        Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
+
+        motoRepo.save(moto);
+
+        return "redirect:/home";
     }
 }

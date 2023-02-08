@@ -12,21 +12,23 @@
             <h1>Bem-vindo!</h1>
             <h4>Faça login para usufruir da aplicação ao máximo</h4>
         </div>
-        <div id="box-login">
-            <div class="form-outline mb-4">
-                <input type="text" id="inp-login" class="form-control" placeholder="Usuário"/>
+        <form th:action="@{/login}" method="post" name="form-login">
+            <div id="box-login">
+                <div class="form-outline mb-4">
+                    <input type="text" id="inp-login" class="form-control" placeholder="Usuário" name="username"/>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" id="inp-senha" class="form-control" placeholder="Senha" name="password"/>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn-lg btn-primary btn-block mb-4">Login</button>
+                </div>
+                <div class="text-center">
+                    <p>Não tem uma conta? <a href="#!">Cadastrar-se</a></p>
+                </div>
             </div>
-            <div class="form-outline mb-4">
-                <input type="password" id="inp-senha" class="form-control" placeholder="Senha"/>
-            </div>
-            <div class="text-center">
-                <button type="button" class="btn-lg btn-primary btn-block mb-4">Login</button>
-            </div>
-            <div class="text-center">
-                <p>Não tem uma conta? <a href="#!">Cadastrar-se</a></p>
-            </div>
-        </div>
-    </div>    
+        </form>
+    </div>
     <footer id="footer-login"><p class="copyright">© 2023 <a href="https://www.linkedin.com/in/bernardo-zacaron/" class="decoration-none">Bernardo Zacaron</a> - Motor Showcase. Todos os direitos reservados.</p></footer>
 </body>
 </html>
