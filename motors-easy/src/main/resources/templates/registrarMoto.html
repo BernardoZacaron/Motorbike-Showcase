@@ -25,8 +25,8 @@
                       </a>
                       <ul class="dropdown-menu">
                         <li><a class="dropdown-item" th:href="@{/catalogo}">Catálogo</a></li>
-                        <li><a class="dropdown-item" th:href="@{/lista-desejo}">Lista de desejo</a></li>
-                        <li><a class="dropdown-item" th:href="@{/registrarMoto}">Cadastrar modelo (ADM)</a></li>
+                        <li><a class="dropdown-item" th:href="@{/cliente/lista-desejo}">Lista de desejo</a></li>
+                        <li><a class="dropdown-item" th:href="@{/admin/registrarMoto}">Cadastrar modelo (ADM)</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" th:href="@{/logout}">Sair</a></li>
                       </ul>
@@ -47,7 +47,7 @@
         <h1 class="titulo-pagina">Registrar moto</h1>
       </div>
       <div id="con-registrar">
-        <form th:action="@{/saveMoto}" method="post" th:object="${novoMoto}">
+        <form th:action="@{/admin/saveMoto}" method="post" th:object="${novoMoto}">
             <div class="mb-3">
                 <label for="txtModelo" class="form-label">Modelo</label>
                 <input type="text" class="form-control" id="txtModelo" th:field="*{modelo}">

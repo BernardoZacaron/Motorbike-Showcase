@@ -63,7 +63,7 @@ public class Control {
 
     //Clientes logados
     @Transactional
-    @PostMapping("/addDesejo")
+    @PostMapping("/cliente/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
@@ -76,7 +76,7 @@ public class Control {
     }
 
     @Transactional
-    @PostMapping("/removerDesejo")
+    @PostMapping("/cliente/removerDesejo")
     public String removeMotoFav(@ModelAttribute("idMoto") long id){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
@@ -87,7 +87,7 @@ public class Control {
         return "redirect:/lista-desejo";
     }
 
-    @GetMapping("/lista-desejo")
+    @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model) {
         List<Moto> motos = motoRepo.findAll().stream().filter(Moto::isFavorita).toList();
 
@@ -98,14 +98,14 @@ public class Control {
 
 
     //Admin apenas
-    @GetMapping({"/registrarMoto"})
+    @GetMapping({"/admin/registrarMoto"})
     public String callRegistroMotoPage(Model model){
         model.addAttribute("novoMoto", new Moto());
         return "registrarMoto";
     }
 
     @Transactional
-    @PostMapping("/saveMoto")
+    @PostMapping("/admin/saveMoto")
     public String saveMoto(@ModelAttribute MotoDTO novoMoto){
         Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
 
