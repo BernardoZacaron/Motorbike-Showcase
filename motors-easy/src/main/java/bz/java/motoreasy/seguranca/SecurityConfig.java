@@ -45,7 +45,8 @@ public class SecurityConfig {
                         .requestMatchers("/estilo/**","/script/**","/img/**","/h2","/h2/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/cliente/**").hasRole("CLIENTE")
-                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/resources/**").permitAll()
+                        .requestMatchers("/", "/home", "/catalogo").permitAll()
                         .anyRequest().authenticated()
                 ).
                 formLogin((form) -> form
@@ -56,4 +57,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }
