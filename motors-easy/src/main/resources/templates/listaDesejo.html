@@ -8,40 +8,7 @@
 	<link rel="stylesheet" href="/estilo/splash.css">
 </head>
 <body>
-    <header id="cabecalho">
-        <div id="con-cabecalho">
-          <div id="con-nav">
-            <nav class="navbar navbar-expand-lg">
-              <div class="container-fluid">
-                  <a class="navbar-brand" th:href="@{/home}">Início</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Navegação
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/catalogo}">Catálogo</a></li>
-                        <li><a class="dropdown-item" th:href="@{/cliente/lista-desejo}">Lista de desejo</a></li>
-                        <li><a class="dropdown-item" th:href="@{/admin/registrarMoto}">Cadastrar modelo (ADM)</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" th:href="@{/logout}">Sair</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </nav>
-          </div>
-          <div id="logo">
-            <img src="/img/logo.png" />
-            <h1>Motor Showcase</h1>
-          </div>
-        </div>
-      </header>
+    <header th:insert="includes/cabecalho">...</header>
     <main id="main-lista">
         <h1 class="titulo-pagina">Itens favoritados</h1>
         <div id="con-motos-lista" class="container">
@@ -57,7 +24,7 @@
                     <form th:action="@{/removerDesejo}" method="post">
                         <input type="hidden" th:value='${m.id}' name="idMoto">
                         <button type="submit" class="btn-favorito-lista botao-removerEstilo">
-                            <img src="img/remover.png">
+                            <img src="/img/remover.png">
                         </button>
                     </form>
                   </div>
