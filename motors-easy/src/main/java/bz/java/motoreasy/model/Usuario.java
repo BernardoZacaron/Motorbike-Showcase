@@ -25,12 +25,11 @@ public class Usuario {
         this.listaDesejo = listaDesejo;
     }
 
-    public Usuario(String nome, String email, String login, String senha, List<Moto> listaDesejo) {
+    public Usuario(String nome, String email, String login, String senha) {
         this.nome = nome;
         this.email = email;
         this.login = login;
         this.senha = senha;
-        this.listaDesejo = listaDesejo;
     }
 
     public Long getId() {

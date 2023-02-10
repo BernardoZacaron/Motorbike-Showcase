@@ -1,8 +1,10 @@
 package bz.java.motoreasy.controle;
 
 import bz.java.motoreasy.model.Moto;
+import bz.java.motoreasy.model.Usuario;
 import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.repository.MotoRepo;
+import bz.java.motoreasy.repository.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,9 @@ public class Control {
     @Autowired
     MotoRepo motoRepo;
 
+    @Autowired
+    UsuarioRepo userRepo;
+
     //Aberto
     @GetMapping({"/", "/home"})
     public String callHomePage() {
@@ -41,7 +46,7 @@ public class Control {
         return "login";
     }
 
-    /*@GetMapping({"/registrarUsuario"})
+    @GetMapping({"/registrarUsuario"})
     public String callRegistrarUsuarioPage(Model model){
         model.addAttribute("novoUsuario", new Usuario());
 
@@ -50,13 +55,12 @@ public class Control {
     @Transactional
     @PostMapping("/saveUsuario")
     public String saveUsuario(@ModelAttribute Usuario novoUsuario){
-        Usuario u = new Usuario(0, novoUsuario.getLogin(), pe.encode(novoUsuario.getSenha()), novoUsuario.getNome(),
-                novoUsuario.getEmail(), 0, null, false);
+        Usuario u = new Usuario(novoUsuario.getNome(), novoUsuario.getEmail(), novoUsuario.getLogin(), novoUsuario.getSenha());
 
-        uDao.save(u);
+        userRepo.save(u);
 
         return "redirect:/login";
-    }*/
+    }
 
 
     //Clientes logados
