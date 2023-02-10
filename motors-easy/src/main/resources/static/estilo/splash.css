@@ -125,7 +125,7 @@ footer p{
     font-size: small;
     align-self: flex-end;
 }
-
+/*
 #footer-registrar{
     position: absolute;
     bottom: 0;
@@ -135,7 +135,7 @@ footer p{
     position: absolute;
     bottom: 0;
 }
-
+*/
 /*Pagina catalogo*/
 .img-moto-catalogo img{
     width: 500px;

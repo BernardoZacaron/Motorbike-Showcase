@@ -84,7 +84,7 @@ public class Control {
 
         motoRepo.saveAndFlush(moto);
 
-        return "redirect:/lista-desejo";
+        return "redirect:/cliente/lista-desejo";
     }
 
     @GetMapping("/cliente/lista-desejo")

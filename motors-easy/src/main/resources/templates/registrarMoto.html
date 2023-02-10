@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="/estilo/splash.css">
 </head>
 <body>
-    <header th:insert="includes/cabecalho">...</header>
+    <header th:insert="~{includes/cabecalho}">...</header>
     <main id="main-registro">
       <div class="con-titulo-pagina">
         <h1 class="titulo-pagina">Registrar moto</h1>
@@ -39,8 +39,6 @@
         </form>
       </div>
       </main>
-    <footer id="footer-registrar"><p class="copyright">© 2023 <a href="https://www.linkedin.com/in/bernardo-zacaron/" class="decoration-none">Bernardo Zacaron</a> - Motor Showcase. Todos os direitos reservados.</p></footer>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <section th:insert="~{includes/rodape}">...</section>
 </body>
 </html>
