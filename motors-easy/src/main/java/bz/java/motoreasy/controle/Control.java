@@ -3,10 +3,12 @@ package bz.java.motoreasy.controle;
 import bz.java.motoreasy.model.Moto;
 import bz.java.motoreasy.model.Usuario;
 import bz.java.motoreasy.model.dto.MotoDTO;
+import bz.java.motoreasy.model.dto.UsuarioDTO;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -28,6 +30,9 @@ public class Control {
     @Autowired
     UsuarioRepo userRepo;
 
+    @Autowired
+    PasswordEncoder pe;
+
     //Aberto
     @GetMapping({"/", "/home"})
     public String callHomePage() {
@@ -46,18 +51,18 @@ public class Control {
         return "login";
     }
 
-    @GetMapping({"/registrarUsuario"})
+    @GetMapping("/registrarUsuario")
     public String callRegistrarUsuarioPage(Model model){
-        model.addAttribute("novoUsuario", new Usuario());
+        model.addAttribute("novoUsuario", new UsuarioDTO());
 
         return "registrarUsuario";
     }
     @Transactional
     @PostMapping("/saveUsuario")
     public String saveUsuario(@ModelAttribute Usuario novoUsuario){
-        Usuario u = new Usuario(novoUsuario.getNome(), novoUsuario.getEmail(), novoUsuario.getLogin(), novoUsuario.getSenha());
+        Usuario usuario = new Usuario(novoUsuario.getNome(), novoUsuario.getEmail(), novoUsuario.getUsername(), novoUsuario.getSenha());
 
-        userRepo.save(u);
+        userRepo.save(usuario);
 
         return "redirect:/login";
     }

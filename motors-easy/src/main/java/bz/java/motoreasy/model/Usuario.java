@@ -9,26 +9,28 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome, email, login, senha;
+    @Column(unique = true)
+    private String username;
+    private String nome, email, senha;
     @OneToMany
     private List<Moto> listaDesejo;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, String email, String login, String senha, List<Moto> listaDesejo) {
+    public Usuario(Long id, String nome, String email, String username, String senha, List<Moto> listaDesejo) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.login = login;
+        this.username = username;
         this.senha = senha;
         this.listaDesejo = listaDesejo;
     }
 
-    public Usuario(String nome, String email, String login, String senha) {
+    public Usuario(String nome, String email, String username, String senha) {
         this.nome = nome;
         this.email = email;
-        this.login = login;
+        this.username = username;
         this.senha = senha;
     }
 
@@ -56,12 +58,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSenha() {
