@@ -46,7 +46,7 @@ public class Control {
         return "login";
     }
 
-    @GetMapping("/registrarUsuario")
+    @GetMapping({"/registrarUsuario"})
     public String callRegistrarUsuarioPage(Model model){
         model.addAttribute("novoUsuario", new Usuario());
 
