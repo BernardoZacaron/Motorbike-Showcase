@@ -6,6 +6,7 @@ import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
+import bz.java.motoreasy.seguranca.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,7 +35,7 @@ public class Control {
     UsuarioRepo userRepo;
 
     @Autowired
-    PasswordEncoder pe;
+    UserService userService;
 
     //Aberto
     @GetMapping({"/", "/home"})
@@ -62,10 +63,11 @@ public class Control {
     }
     @Transactional
     @PostMapping("/saveUsuario")
-    public String saveUsuario(@ModelAttribute("novoUsuario") @Valid UsuarioDTO novoUsuario){
-        Usuario usuario = new Usuario(novoUsuario.getNome(), novoUsuario.getEmail(), novoUsuario.getUsername(), novoUsuario.getSenha());
+    public String saveUsuario(@ModelAttribute("novoUsuario") UsuarioDTO novoUsuario){
+//        Usuario usuario = new Usuario(novoUsuario.getNome(), novoUsuario.getEmail(), novoUsuario.getUsername(), pe.encode(novoUsuario.getSenha()));
+//        userRepo.save(usuario);
 
-        userRepo.save(usuario);
+        Usuario registered = userService.registerNewUserAccount(novoUsuario);
 
         return "redirect:/login";
     }
