@@ -2,6 +2,9 @@ package bz.java.motoreasy.model;
 
 import jakarta.persistence.*;
 
+import javax.management.relation.Role;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -14,6 +17,7 @@ public class Usuario {
     private String nome, email, senha;
     @OneToMany
     private List<Moto> listaDesejo;
+    private List<String> roles;
 
     public Usuario() {
     }
@@ -80,5 +84,13 @@ public class Usuario {
 
     public void setListaDesejo(List<Moto> listaDesejo) {
         this.listaDesejo = listaDesejo;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }

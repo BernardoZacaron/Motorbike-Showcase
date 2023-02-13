@@ -21,8 +21,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-//    @Autowired
-//    UserDetailsService service;
+    @Autowired
+    private MyUserDetailsService userDetailsService;
+
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+    }
 
     @Bean
     public PasswordEncoder encoder() {

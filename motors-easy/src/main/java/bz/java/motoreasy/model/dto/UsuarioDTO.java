@@ -1,6 +1,10 @@
 package bz.java.motoreasy.model.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class UsuarioDTO {
+
+    @NotNull
     private String nome, email, username, senha, senhaRepetida;
 
     public UsuarioDTO(String nome, String email, String username, String senha) {

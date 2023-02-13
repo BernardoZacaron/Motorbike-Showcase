@@ -12,9 +12,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +62,7 @@ public class Control {
     }
     @Transactional
     @PostMapping("/saveUsuario")
-    public String saveUsuario(@ModelAttribute Usuario novoUsuario){
+    public String saveUsuario(@ModelAttribute("novoUsuario") @Valid UsuarioDTO novoUsuario){
         Usuario usuario = new Usuario(novoUsuario.getNome(), novoUsuario.getEmail(), novoUsuario.getUsername(), novoUsuario.getSenha());
 
         userRepo.save(usuario);
