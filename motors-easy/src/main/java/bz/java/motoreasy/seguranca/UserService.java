@@ -33,7 +33,7 @@ public class UserService implements IUserService {
         user.setUsername(userDto.getUsername());
         user.setNome(userDto.getNome());
         user.setEmail(userDto.getEmail());
-        user.setSenha(userDto.getSenha());
+        user.setSenha(pe.encode(userDto.getSenha()));
         user.setListaDesejo(new ArrayList<Moto>());
 
         user.setRoles(Arrays.asList("ROLE_USER"));
