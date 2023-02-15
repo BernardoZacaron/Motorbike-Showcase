@@ -71,7 +71,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/estilo/**","/script/**","/img/**","/h2","/h2/**","/h2-console/**","/h2-console").permitAll()
+                        .requestMatchers("/estilo/**","/script/**","/img/**","/h2","/h2/**","/h2-console/**","/h2-console", "/database/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/cliente/**").hasRole("CLIENTE")
                         .requestMatchers("/resources/**").permitAll()
@@ -80,7 +80,7 @@ public class SecurityConfig{
                 ).
                 formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home")
+                        .defaultSuccessUrl("/index.html", true)
                         .failureUrl("/login?error=true")
                         .permitAll()
                 )
@@ -88,8 +88,4 @@ public class SecurityConfig{
 
         return http.build();
     }
-
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(service).passwordEncoder(encoder());
-//    }
 }

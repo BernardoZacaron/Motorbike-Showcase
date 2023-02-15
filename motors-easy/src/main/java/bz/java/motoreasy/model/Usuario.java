@@ -17,7 +17,7 @@ public class Usuario {
     private String nome, email, senha;
     @OneToMany
     private List<Moto> listaDesejo;
-    private List<String> roles;
+    private List<String> roles = new ArrayList<>();
 
     public Usuario() {
     }
@@ -87,6 +87,7 @@ public class Usuario {
     }
 
     public List<String> getRoles() {
+        roles.add("ROLE_CLIENTE");
         return roles;
     }
 

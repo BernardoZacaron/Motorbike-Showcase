@@ -13,10 +13,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.ws.rs.NotFoundException;
@@ -61,12 +63,9 @@ public class Control {
 
         return "registrarUsuario";
     }
-    @Transactional
+
     @PostMapping("/saveUsuario")
     public String saveUsuario(@ModelAttribute("novoUsuario") UsuarioDTO novoUsuario){
-//        Usuario usuario = new Usuario(novoUsuario.getNome(), novoUsuario.getEmail(), novoUsuario.getUsername(), pe.encode(novoUsuario.getSenha()));
-//        userRepo.save(usuario);
-
         Usuario registered = userService.registerNewUserAccount(novoUsuario);
 
         return "redirect:/login";
