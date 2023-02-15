@@ -2,12 +2,15 @@ package bz.java.motoreasy;
 
 import bz.java.motoreasy.model.Moto;
 import bz.java.motoreasy.model.Usuario;
+import bz.java.motoreasy.model.dto.UsuarioDTO;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
+import bz.java.motoreasy.seguranca.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class MotorbikeShowcaseApplication implements CommandLineRunner {
@@ -16,6 +19,12 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 
 	@Autowired
 	UsuarioRepo userRepo;
+
+	@Autowired
+	UserService service;
+
+	@Autowired
+	PasswordEncoder pe;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MotorbikeShowcaseApplication.class, args);
@@ -32,9 +41,11 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 		Moto m4 = new Moto("Dafra Citycom",300, 25400, true);
 		motoRepo.save(m4);
 
-		Usuario u1 = new Usuario("Bernardo", "bernardo@email", "ber", "senha");
+		Usuario u1 = new Usuario("Bernardo", "bernardo@email", "ber", pe.encode("senha"));
 		userRepo.save(u1);
-		Usuario u2 = new Usuario("Admilton", "admilton@email", "adm", "senha");
+		Usuario u2 = new Usuario("Admilton", "admilton@email", "adm", pe.encode("senha"));
 		userRepo.save(u2);
+		UsuarioDTO u3 = new UsuarioDTO("Usuario Terceiro", "user@user", "user3", pe.encode("senha"));
+		service.registerNewUserAccount(u3);
 	}
 }
