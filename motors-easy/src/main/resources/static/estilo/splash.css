@@ -303,6 +303,7 @@ footer p{
 /*Página gerenciar*/
 .card-moto-gerenciar{
     margin: 1vw black solid;
+    background-color: cornflowerblue;
 }
 
 .card-moto-gerenciar h3{
