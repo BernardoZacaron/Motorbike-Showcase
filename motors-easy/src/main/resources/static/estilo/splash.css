@@ -300,6 +300,15 @@ footer p{
     border-radius: 2%;
 }
 
+/*Página gerenciar*/
+.card-moto-gerenciar{
+    margin: 1vw black solid;
+}
+
+.card-moto-gerenciar h3{
+    color: blue;
+}
+
 :root{
     --azulClaro: #8bb6fc;
 }
