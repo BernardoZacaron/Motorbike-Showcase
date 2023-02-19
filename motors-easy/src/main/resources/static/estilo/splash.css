@@ -304,11 +304,33 @@ footer p{
 .card-moto-gerenciar{
     margin: 1vw black solid;
     background-color: cornflowerblue;
+    display: flex;
+    padding: 2%;
 }
 
-.card-moto-gerenciar h3{
+.card-moto-gerenciar h2{
     color: blue;
+    font-size: 3em;
 }
+
+.acoes-gerenciar{
+    display: flex;
+    justify-content: space-around;
+}
+
+.celula-conteudo-gerenciar{
+    width: 45%;
+}
+
+.celula-imagem-gerenciar{
+    width: 50%;
+}
+.celula-imagem-gerenciar img{
+    width: 100%;
+}
+
+
+
 
 :root{
     --azulClaro: #8bb6fc;
