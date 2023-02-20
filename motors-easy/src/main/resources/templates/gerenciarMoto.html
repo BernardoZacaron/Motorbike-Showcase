@@ -14,17 +14,22 @@
             <h1 class="titulo-pagina">Motos atualmente catalogadas</h1>
         </div>
         <div id="lista-gerenciar">
-            <div class="card-moto-gerenciar col-lg-10">
+            <div th:each="m: ${motos}" class="card-moto-gerenciar col-lg-10">
                 <div class="celula-conteudo-gerenciar">
-                    <h2>Kawasaki Ninja</h2>
+                    <h2 th:text='${m.modelo}'>Kawasaki Ninja</h2>
                     <div class="acoes-gerenciar">
                         <div class="btn-gerenciar-editar btn-acao-gerenciar">
-                            <a><img src="img/editar.png" alt="Editar"/></a>
-                            <p>Editar</p>
+                            <form th:action="@{/admin/editarMoto}" method="post">
+                                <input type="hidden" th:value='${m.id}' name="idMoto">
+                                <button type="submit" class="botao-removerEstilo"><img src="img/editar.png" alt="Editar"/></button>
+                                <p>Editar</p>
+                            </form>
                         </div>
                         <div class="btn-gerenciar-deletar btn-acao-gerenciar">
-                            <a><img src="img/deletar.png" alt="Excluir"/></a>
-                            <p>Excluir</p>
+                            <form th:action="@{/admin/excluirMoto}" method="post">
+                                <input type="hidden" th:value='${m.id}' name="idMoto">
+                                <button type="submit" class="botao-removerEstilo"><img src="img/deletar.png" alt="Excluir"/></button>
+                                <p>Excluir</p>
                         </div>
                     </div>
                 </div>
