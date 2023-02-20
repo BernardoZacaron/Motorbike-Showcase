@@ -49,6 +49,11 @@ main{
     position: absolute;
 }
 
+#main-gerenciar{
+    min-height: 75%;
+    position: absolute;
+}
+
 /*Cabeçalho*/
 #cabecalho h1{
     font-family: 'Raleway', sans-serif;
@@ -301,6 +306,11 @@ footer p{
 }
 
 /*Página gerenciar*/
+#lista-gerenciar{
+    display: flex;
+    justify-content: space-around;
+}
+
 .card-moto-gerenciar{
     margin: 1vw black solid;
     background-color: cornflowerblue;
@@ -311,6 +321,8 @@ footer p{
 .card-moto-gerenciar h2{
     color: blue;
     font-size: 3em;
+    text-align: center;
+    margin-bottom: 15%;
 }
 
 .acoes-gerenciar{
@@ -326,7 +338,11 @@ footer p{
     width: 50%;
 }
 .celula-imagem-gerenciar img{
-    width: 100%;
+    width: 80%;
+}
+
+.btn-acao-gerenciar p{
+    text-align: center;
 }
 
 
