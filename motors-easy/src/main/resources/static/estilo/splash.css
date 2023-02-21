@@ -347,6 +347,13 @@ footer p{
     font-weight: 700;
 }
 
+#con-botao-cadastrar img{
+    position: fixed;
+    bottom: 5;
+    margin-left: 1%;
+    width: 5%;
+}
+
 
 
 
