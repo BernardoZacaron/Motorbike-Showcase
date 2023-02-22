@@ -32,6 +32,15 @@
                                 <p>Excluir</p>
                             </form>
                         </div>
+                        <div class="btn-gerenciar-ocultar btn-acao-gerenciar">
+                            <form th:action="@{/admin/ocultarMoto}" method="post">
+                                <input type="hidden" th:value='${m.id}' name="idMoto">
+                                <button type="submit" class="botao-removerEstilo">
+                                    <img th:src="${m.anuncioAtivo ? '/img/ocultar.png' : '/img/exibir.png'}">
+                                </button>                                
+                                <p th:text="${m.anuncioAtivo} ? 'Ocultar' : 'Exibir'"></p>
+                            </form>
+                        </div>
                     </div>
                 </div>
                 <div class="celula-imagem-gerenciar">
