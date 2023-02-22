@@ -16,6 +16,16 @@
       <div id="con-registrar">
         <form th:action="@{/admin/saveMoto}" method="post" th:object="${novoMoto}">
             <div class="mb-3">
+              <label for="sltMarca" class="form-label">Modelo</label>
+              <select class="form-select" aria-label="Default select example" id="sltMarca" th:field="*{marca}">
+                <option value="Honda">Honda</option>
+                <option value="Yamaha">Yamaha</option>
+                <option value="BMW">BMW</option>
+                <option value="Kawasaki">Kawasaki</option>
+                <option value="Harley-Davidson">Harley Davidson</option>
+              </select>
+            </div>
+            <div class="mb-3">
                 <label for="txtModelo" class="form-label">Modelo</label>
                 <input type="text" class="form-control" id="txtModelo" th:field="*{modelo}">
             </div>
@@ -29,10 +39,20 @@
                   <input type="number" class="form-control" id="txtPreco" th:field="*{preco}" placeholder="R$">
               </div>
             </div>
-            <div class="mb-3 form-check">
+            <div class="row mb-3">
+              <div class="col-lg-6 col-sm-12">
+                <select class="form-select" aria-label="Default select example" id="sltTerreno" th:field="*{terreno}">
+                  <option value="Asfalto">Asfalto</option>
+                  <option value="Off-road">Off-road</option>
+                  <option value="Misto">Misto</option>
+                </select>
+              </div>
+              <div class="col-lg-6 col-sm-12">
                 <input type="checkbox" class="form-check-input" id="boolAutomatica" th:field="*{automatica}">
                 <label class="form-check-label" for="boolAutomatica">É automática</label>
+              </div>
             </div>
+            
             <div class="d-flex justify-content-center">
               <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
