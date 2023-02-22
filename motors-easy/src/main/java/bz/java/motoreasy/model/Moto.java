@@ -10,11 +10,16 @@ public class Moto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private String marca;
     private String modelo;
     private int cilindradas;
     private double preco;
     private boolean automatica;
     private boolean favorita; //provisorio
+    private boolean abs;
+    private String terreno;
+    private boolean anuncioAtivo;
+    
 
     public Moto() {
     }

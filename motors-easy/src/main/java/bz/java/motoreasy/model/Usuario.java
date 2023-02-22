@@ -18,9 +18,11 @@ public class Usuario implements UserDetails {
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    @OneToMany
-    private List<Moto> listaDesejo;
+    /*@OneToMany
+    private List<Moto> listaDesejo;*/
     private List<String> roles = new ArrayList<>();
+
+    private boolean administrador;
 
     public Usuario() {
     }
