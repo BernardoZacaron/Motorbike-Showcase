@@ -1,5 +1,6 @@
 package bz.java.motoreasy.model;
 
+import bz.java.motoreasy.model.dto.UsuarioDTO;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,19 +28,28 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nome, String email, String username, String senha, List<Moto> listaDesejo) {
+    public Usuario(Long id, String username, String nome, String email, String senha, List<String> roles, boolean administrador) {
         this.id = id;
+        this.username = username;
         this.nome = nome;
         this.email = email;
-        this.username = username;
         this.senha = senha;
-        this.listaDesejo = listaDesejo;
+        this.roles = roles;
+        this.administrador = administrador;
     }
 
-    public Usuario(String nome, String email, String username, String senha) {
+    public Usuario(UsuarioDTO dto) {
+        this.nome = dto.getNome();
+        this.email = dto.getEmail();
+        this.username = dto.getUsername();
+        this.senha = dto.getSenha();
+        this.administrador = false;
+    }
+
+    public Usuario(String username, String nome, String email, String senha) {
+        this.username = username;
         this.nome = nome;
         this.email = email;
-        this.username = username;
         this.senha = senha;
     }
 
@@ -75,14 +85,6 @@ public class Usuario implements UserDetails {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public List<Moto> getListaDesejo() {
-        return listaDesejo;
-    }
-
-    public void setListaDesejo(List<Moto> listaDesejo) {
-        this.listaDesejo = listaDesejo;
     }
 
     public List<String> getRoles() {
