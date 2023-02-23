@@ -125,5 +125,30 @@ public class Control {
         return "redirect:/home";
     }
 
+//    @GetMapping("/admin/gerenciar")
+//    public String callGerenciarPage(Model model){
+//        return "gerenciarMoto";
+//    }
 
+//    @GetMapping("/admin/editarMoto")
+//    public String callEditarMotoPage(@ModelAttribute("idMoto") long id){
+//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+//
+//        return "redirect:/";
+//    }
+
+//    @GetMapping("/admin/excluirMoto")
+//    public String excluirMoto(@ModelAttribute("idMoto") long id){
+//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+//
+//        return "redirect:/";
+//    }
+
+//    @Transactional
+//    @PostMapping("/admin/ocultarMoto")
+//    public String ocultarMoto(@ModelAttribute("idMoto") long id){
+//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+//
+//        return "redirect:/";
+//    }
 }
