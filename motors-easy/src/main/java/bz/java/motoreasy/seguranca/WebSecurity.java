@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -35,7 +36,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
                 .antMatchers("/resources/**", "/estilo/**","/script/**","/img/**","/h2","/h2/**","/h2-console/**","/h2-console", "/database/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
-                .and().logout().permitAll();
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET")).permitAll();
     }
 
     @Bean
