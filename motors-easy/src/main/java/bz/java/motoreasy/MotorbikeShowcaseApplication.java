@@ -46,6 +46,6 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 		Usuario u2 = new Usuario("Admilton", "admilton@email", "adm", pe.encode("senha"));
 		userRepo.save(u2);
 		UsuarioDTO u3 = new UsuarioDTO("Usuario Terceiro", "user@user", "user3", pe.encode("senha"));
-		service.registerNewUserAccount(u3);
+		userRepo.save(new Usuario(u3));
 	}
 }

@@ -39,6 +39,9 @@ public class Control {
     @Autowired
     UserService userService;
 
+    @Autowired
+    PasswordEncoder pe;
+
     //Aberto
     @GetMapping({"/", "/home"})
     public String callHomePage() {
@@ -66,7 +69,9 @@ public class Control {
 
     @PostMapping("/saveUsuario")
     public String saveUsuario(@ModelAttribute("novoUsuario") UsuarioDTO novoUsuario){
-        Usuario registered = userService.registerNewUserAccount(novoUsuario);
+        Usuario registrando = new Usuario(novoUsuario.getNome(), novoUsuario.getUsername(), novoUsuario.getEmail(), pe.encode(novoUsuario.getSenha()));
+
+        userRepo.save(registrando);
 
         return "redirect:/login";
     }

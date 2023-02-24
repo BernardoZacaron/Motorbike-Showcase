@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Usuario implements UserDetails {
+public class Usuario{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,21 +20,20 @@ public class Usuario implements UserDetails {
     private String username;
     private String nome, email, senha;
     /*@OneToMany
-    private List<Moto> listaDesejo;*/
-    private List<String> roles = new ArrayList<>();
+    private List<Moto> listaDesejo;
+    private List<String> roles = new ArrayList<>();*/
 
     private boolean administrador;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String username, String nome, String email, String senha, List<String> roles, boolean administrador) {
+    public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador) {
         this.id = id;
         this.username = username;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.roles = roles;
         this.administrador = administrador;
     }
 
@@ -46,7 +45,7 @@ public class Usuario implements UserDetails {
         this.administrador = false;
     }
 
-    public Usuario(String username, String nome, String email, String senha) {
+    public Usuario(String nome, String username, String email, String senha) {
         this.username = username;
         this.nome = nome;
         this.email = email;
@@ -87,26 +86,25 @@ public class Usuario implements UserDetails {
         this.senha = senha;
     }
 
-    public List<String> getRoles() {
-        roles.add("ROLE_CLIENTE");
-        return roles;
-    }
+//    public List<String> getRoles() {
+//        roles.add("ROLE_CLIENTE");
+//        return roles;
+//    }
+//
+//    public void setRoles(List<String> roles) {
+//        this.roles = roles;
+//    }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
 
 
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        ArrayList<SimpleGrantedAuthority> roles = new ArrayList<>();
+//        roles.add(new SimpleGrantedAuthority("ROLE_CLIENTE"));
+//
+//        return roles;
+//    }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        ArrayList<SimpleGrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority("ROLE_CLIENTE"));
-
-        return roles;
-    }
-
-    @Override
     public String getPassword() {
         return senha;
     }
@@ -115,27 +113,15 @@ public class Usuario implements UserDetails {
         return username;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public boolean isAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(boolean administrador) {
+        this.administrador = administrador;
     }
 }
