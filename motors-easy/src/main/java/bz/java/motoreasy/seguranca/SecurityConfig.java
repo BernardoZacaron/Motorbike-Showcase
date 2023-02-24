@@ -42,20 +42,20 @@ public class SecurityConfig{
     private MyUserDetailsService userDetailsService;
 
 
-//    @Bean
-//    public InMemoryUserDetailsManager userDetailsService() {
-//        UserDetails user1 = User.builder()
-//                .username("adm")
-//                .password(encoder().encode("123"))
-//                .roles("CLIENTE", "ADMIN")
-//                .build();
-//        UserDetails user2 = User.builder()
-//                .username("user")
-//                .password(encoder().encode("123"))
-//                .roles("CLIENTE")
-//                .build();
-//        return new InMemoryUserDetailsManager(user1, user2);
-//    }
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user1 = User.builder()
+                .username("adm")
+                .password(encoder().encode("123"))
+                .roles("CLIENTE", "ADMIN")
+                .build();
+        UserDetails user2 = User.builder()
+                .username("user")
+                .password(encoder().encode("123"))
+                .roles("CLIENTE")
+                .build();
+        return new InMemoryUserDetailsManager(user1, user2);
+    }
 
 
     @Bean
