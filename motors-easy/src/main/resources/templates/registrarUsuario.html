@@ -13,7 +13,7 @@
             <h4>Crie sua conta gratuitamente</h4>
         </div>
         <div id="box-login">
-           <form th:action="@{/saveUsuario}" th:object="${novoUsuario}" method="post" name="form-login"> <!-- onSubmit="return checkPassword(this)"-->
+           <form th:action="@{/saveUsuario}" th:object="${novoUsuario}" method="post" name="form-login" onSubmit="return checkPassword(this)">
                 <div class="form-outline mb-4">
                     <input th:field="*{nome}" type="text" id="inp-nome" class="form-control" placeholder="Nome completo" name="nome"/>
                 </div>
@@ -39,27 +39,19 @@
         </div>
     </div>
     <section th:insert="~{includes/rodape}" style="position: absolute; bottom: 0; width: 100%;">...</section>
-<!--    <script>-->
-<!--        function checkPassword(form) {-->
-<!--                password1 = form.password.value;-->
-<!--                password2 = form.passwordRepeat.value;-->
+    <script>
+        function checkPassword(form) {
+                const password1 = form.password.value;
+                const password2 = form.passwordRepeat.value;
 
-<!--                if (password1 == '')-->
-<!--                    alert ("Senha não pode estar vazia");-->
-
-<!--                else if (password2 == '')-->
-<!--                    alert ("Confirme sua senha");-->
-
-<!--                else if (password1 != password2) {-->
-<!--                    alert ("\nSenhas são diferentes")-->
-<!--                    return false;-->
-<!--                }-->
-
-<!--                else{-->
-<!--                    alert("Tudo ok")-->
-<!--                    return true;-->
-<!--                }-->
-<!--            }-->
-<!--    </script>-->
+                if (password1 != password2) {
+                  alert("Error! Password did not match.");
+                  return false;
+                } else {
+                  alert("Password Match. Congratulations!");
+                  return true;
+                }
+            }
+    </script>
 </body>
 </html>
