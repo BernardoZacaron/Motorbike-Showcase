@@ -6,6 +6,7 @@ import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
+import bz.java.motoreasy.seguranca.UserLogado;
 import bz.java.motoreasy.seguranca.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -86,13 +87,13 @@ public class Control {
     //Clientes logados
     @Transactional
     @PostMapping("/cliente/addDesejo")
-    public String saveMotoFav(@ModelAttribute("idMoto") long id){
+    public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
+        UserLogado logado = (UserLogado) authentication.getPrincipal();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        moto.toggleFavorito();
+        logado.getUsuario().adicionarFavorita(moto);
 
-        motoRepo.saveAndFlush(moto);
-
+        userRepo.saveAndFlush(logado.getUsuario());
 
         return "redirect:/catalogo";
     }

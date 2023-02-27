@@ -15,42 +15,37 @@ public class Moto {
     private int cilindradas;
     private double preco;
     private boolean automatica;
-    private boolean favorita; //provisorio
     private boolean abs;
     private String terreno;
-    private boolean anuncioAtivo;
+    private boolean anuncioAtivo = true;
     
 
     public Moto() {
     }
 
-    public Moto(long id, String modelo, int cilindradas, double preco, boolean automatica) {
+    public Moto(long id, String marca, String modelo, int cilindradas, double preco, boolean automatica, boolean abs, String terreno, boolean anuncioAtivo) {
         this.id = id;
+        this.marca = marca;
         this.modelo = modelo;
         this.cilindradas = cilindradas;
         this.preco = preco;
         this.automatica = automatica;
+        this.abs = abs;
+        this.terreno = terreno;
+        this.anuncioAtivo = anuncioAtivo;
     }
 
-    public Moto(String modelo, int cilindradas, double preco, boolean automatica) {
+    public Moto(String marca, String modelo, int cilindradas, double preco, boolean automatica, boolean abs, String terreno, boolean anuncioAtivo) {
+        this.marca = marca;
         this.modelo = modelo;
         this.cilindradas = cilindradas;
         this.preco = preco;
         this.automatica = automatica;
+        this.abs = abs;
+        this.terreno = terreno;
+        this.anuncioAtivo = anuncioAtivo;
     }
 
-    public Moto(long id, String modelo, int cilindradas, double preco, boolean automatica, boolean favorita) {
-        this.id = id;
-        this.modelo = modelo;
-        this.cilindradas = cilindradas;
-        this.preco = preco;
-        this.automatica = automatica;
-        this.favorita = favorita;
-    }
-
-    public void toggleFavorito(){
-        setFavorita(!isFavorita());
-    }
 
     public long getId() {
         return id;
@@ -92,11 +87,4 @@ public class Moto {
         this.automatica = automatica;
     }
 
-    public boolean isFavorita() {
-        return favorita;
-    }
-
-    public void setFavorita(boolean favorita) {
-        this.favorita = favorita;
-    }
 }
