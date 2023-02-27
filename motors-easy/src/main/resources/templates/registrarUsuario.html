@@ -13,7 +13,7 @@
             <h4>Crie sua conta gratuitamente</h4>
         </div>
         <div id="box-login">
-           <form th:action="@{/saveUsuario}" th:object="${novoUsuario}" method="post" name="form-login" onSubmit="return checkPassword(this)">
+           <form th:action="@{/saveUsuario}" th:object="${novoUsuario}" method="post" name="form-login">
                 <div class="form-outline mb-4">
                     <input th:field="*{nome}" type="text" id="inp-nome" class="form-control" placeholder="Nome completo" name="nome"/>
                 </div>
@@ -24,13 +24,14 @@
                     <input th:field="*{username}" type="text" id="inp-login" class="form-control" placeholder="Nome de usuário" name="username"/>
                 </div>
                 <div class="form-outline mb-4">
-                    <input th:field="*{senha}" type="password" id="inp-senha" class="form-control" placeholder="Senha" name="password"/>
+                    <input th:field="*{senha}" type="password" id="inp-senha" class="form-control" placeholder="Senha" name="password" onkeyup='check();'/>
                 </div>
                 <div class="form-outline mb-4">
-                    <input type="password" id="inp-senhaRepetir" class="form-control" placeholder="Repetir senha" name="passwordRepeat"/>
+                    <input type="password" id="inp-senhaRepetir" class="form-control" placeholder="Repetir senha" name="passwordRepeat" onkeyup='check();'/>
                 </div>
+                <span id='message'></span>
                 <div class="text-center">
-                    <button type="submit" class="btn-lg btn-primary btn-block mb-4">Cadastrar</button>
+                    <button type="submit" class="btn-lg btn-primary btn-block mb-4" id="btn-cadastrar">Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -40,18 +41,20 @@
     </div>
     <section th:insert="~{includes/rodape}" style="position: absolute; bottom: 0; width: 100%;">...</section>
     <script>
-        function checkPassword(form) {
-                const password1 = form.password.value;
-                const password2 = form.passwordRepeat.value;
+        var check = function() {
+          if (document.getElementById('inp-senha').value ==
+            document.getElementById('inp-senhaRepetir').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'matching';
 
-                if (password1 != password2) {
-                  alert("Error! Password did not match.");
-                  return false;
-                } else {
-                  alert("Password Match. Congratulations!");
-                  return true;
-                }
-            }
+            document.getElementById("btn-cadastrar").disabled = false;
+          } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'not matching';
+
+            document.getElementById("btn-cadastrar").disabled = true;
+          }
+        }
     </script>
 </body>
 </html>
