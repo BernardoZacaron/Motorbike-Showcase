@@ -19,13 +19,21 @@ public class Usuario{
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    /*@OneToMany
-    private List<Moto> listaDesejo;
-    private List<String> roles = new ArrayList<>();*/
-
+    @OneToMany(mappedBy="usuario")
+    private List<Moto> favoritas = new ArrayList<>();
     private boolean administrador;
 
     public Usuario() {
+    }
+
+    public Usuario(Long id, String username, String nome, String email, String senha, List<Moto> favoritas, boolean administrador) {
+        this.id = id;
+        this.username = username;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.favoritas = favoritas;
+        this.administrador = administrador;
     }
 
     public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador) {
@@ -52,6 +60,10 @@ public class Usuario{
         this.senha = senha;
     }
 
+    public void adicionarFavorita(Moto moto){
+        favoritas.add(moto);
+    }
+
     public Long getId() {
         return id;
     }
@@ -76,8 +88,6 @@ public class Usuario{
         this.email = email;
     }
 
-
-
     public String getSenha() {
         return senha;
     }
@@ -85,25 +95,6 @@ public class Usuario{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-//    public List<String> getRoles() {
-//        roles.add("ROLE_CLIENTE");
-//        return roles;
-//    }
-//
-//    public void setRoles(List<String> roles) {
-//        this.roles = roles;
-//    }
-
-
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        ArrayList<SimpleGrantedAuthority> roles = new ArrayList<>();
-//        roles.add(new SimpleGrantedAuthority("ROLE_CLIENTE"));
-//
-//        return roles;
-//    }
 
     public String getPassword() {
         return senha;
