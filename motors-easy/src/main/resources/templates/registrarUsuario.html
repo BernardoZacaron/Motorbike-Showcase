@@ -29,7 +29,9 @@
                 <div class="form-outline mb-4">
                     <input type="password" id="inp-senhaRepetir" class="form-control" placeholder="Repetir senha" name="passwordRepeat" onkeyup='check();'/>
                 </div>
-                <span id='message'></span>
+               <div class="alert alert-warning" id="alerta-senha" style="display: none;">
+                   <span>As senhas não estão idênticas</span>
+               </div>
                 <div class="text-center">
                     <button type="submit" class="btn-lg mb-4 botao-desabilitado" id="btn-cadastrar" disabled>Cadastrar</button>
                 </div>
@@ -39,20 +41,18 @@
             <p>Já possuo uma conta. <a th:href="@{/login}">Acessar</a></p>
         </div>
     </div>
-    <section th:insert="~{includes/rodape}" style="position: absolute; bottom: 0; width: 100%;">...</section>
+    <section th:insert="~{includes/rodape}" style="align-self: end;">...</section>
     <script>
         var check = function() {
           if (document.getElementById('inp-senha').value ==
             document.getElementById('inp-senhaRepetir').value) {
-            document.getElementById('message').style.color = 'green';
-            document.getElementById('message').innerHTML = 'matching';
+            document.getElementById('alerta-senha').style.display = 'none';
 
             document.getElementById("btn-cadastrar").disabled = false;
             document.getElementById("btn-cadastrar").classList.remove('botao-desabilitado');
             document.getElementById("btn-cadastrar").classList.add('btn-primary');
           } else {
-            document.getElementById('message').style.color = 'red';
-            document.getElementById('message').innerHTML = 'not matching';
+            document.getElementById('alerta-senha').style.display = 'block';
 
             document.getElementById("btn-cadastrar").disabled = true;
             document.getElementById("btn-cadastrar").classList.add('botao-desabilitado');
