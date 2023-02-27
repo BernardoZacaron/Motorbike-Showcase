@@ -115,4 +115,12 @@ public class Usuario{
     public void setAdministrador(boolean administrador) {
         this.administrador = administrador;
     }
+
+    public List<Moto> getFavoritas() {
+        return favoritas;
+    }
+
+    public void setFavoritas(List<Moto> favoritas) {
+        this.favoritas = favoritas;
+    }
 }

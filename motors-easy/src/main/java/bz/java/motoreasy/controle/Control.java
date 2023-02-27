@@ -89,9 +89,10 @@ public class Control {
     @PostMapping("/cliente/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         UserLogado logado = (UserLogado) authentication.getPrincipal();
+        Usuario usuario = logado.getUsuario();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        logado.getUsuario().adicionarFavorita(moto);
+        usuario.adicionarFavorita(moto);
 
         userRepo.saveAndFlush(logado.getUsuario());
 
@@ -100,21 +101,25 @@ public class Control {
 
     @Transactional
     @PostMapping("/cliente/removerDesejo")
-    public String removeMotoFav(@ModelAttribute("idMoto") long id){
+    public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
+        UserLogado logado = (UserLogado) authentication.getPrincipal();
+        Usuario usuario = logado.getUsuario();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        moto.setFavorita(false);
+        usuario.getFavoritas().remove(moto);
 
-        motoRepo.saveAndFlush(moto);
+        userRepo.saveAndFlush(usuario);
 
         return "redirect:/cliente/lista-desejo";
     }
 
     @GetMapping("/cliente/lista-desejo")
-    public String callListaDesejoPage(Model model) {
-        List<Moto> motos = motoRepo.findAll().stream().filter(Moto::isFavorita).toList();
+    public String callListaDesejoPage(Model model, Authentication authentication) {
+        UserLogado logado = (UserLogado) authentication.getPrincipal();
+        Usuario usuario = logado.getUsuario();
 
-        model.addAttribute("motosFavoritas", motos);
+
+        model.addAttribute("motosFavoritas", usuario.getFavoritas());
 
         return "listaDesejo";
     }
@@ -130,9 +135,9 @@ public class Control {
     @Transactional
     @PostMapping("/admin/saveMoto")
     public String saveMoto(@ModelAttribute MotoDTO novoMoto){
-        Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
-
-        motoRepo.save(moto);
+//        Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
+//
+//        motoRepo.save(moto);
 
         return "redirect:/home";
     }
