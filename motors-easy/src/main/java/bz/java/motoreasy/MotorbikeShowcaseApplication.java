@@ -32,13 +32,13 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Moto m1 = new Moto("Twister",200, 18000, false);
+		Moto m1 = new Moto("Honda", "Twister", 250, 22000, false, true, "Asfalto", true);
 		motoRepo.save(m1);
-		Moto m2 = new Moto("CG Titan",160, 15700, false);
+		Moto m2 = new Moto("Yamaha", "Fazer", 250, 24000, false, true, "Asfalto", true);
 		motoRepo.save(m2);
-		Moto m3 = new Moto("Honda XRE",190, 18700, false);
+		Moto m3 = new Moto("Honda", "XRE", 190, 20000, false, true, "Misto", true);
 		motoRepo.save(m3);
-		Moto m4 = new Moto("Dafra Citycom",300, 25400, true);
+		Moto m4 = new Moto("Honda", "Fan", 160, 15000, false, false, "Asfalto", true);
 		motoRepo.save(m4);
 
 		Usuario u1 = new Usuario("Bernardo", "bernardo@email", "ber", pe.encode("senha"));

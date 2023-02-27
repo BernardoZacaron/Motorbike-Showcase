@@ -1,5 +1,7 @@
 package bz.java.motoreasy.model;
 
+import bz.java.motoreasy.model.dto.MotoDTO;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,6 +46,16 @@ public class Moto {
         this.abs = abs;
         this.terreno = terreno;
         this.anuncioAtivo = anuncioAtivo;
+    }
+
+    public Moto(MotoDTO dto){
+        this.marca = dto.getMarca();
+        this.modelo = dto.getModelo();
+        this.cilindradas = dto.getCilindradas();
+        this.preco = dto.getPreco();
+        this.automatica = dto.isAutomatica();
+        this.abs = dto.isAbs();
+        this.terreno = dto.getTerreno();
     }
 
 
