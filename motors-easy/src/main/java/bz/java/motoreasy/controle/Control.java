@@ -56,7 +56,24 @@ public class Control {
     }
 
     @GetMapping("/catalogo")
-    public String callCatalogoPage(Model model) {
+    public String callCatalogoPage(Model model/*, Authentication authentication*/) {
+//        UserLogado logado = (UserLogado) authentication.getPrincipal();
+//        Usuario usuario = logado.getUsuario();
+//
+//        List<Moto> favoritadas = usuario.getFavoritas();
+//        List<MotoDTO> motos = new ArrayList<>();
+//        for (Moto m : motoRepo.findAll()) {
+//            motos.add(new MotoDTO(motoRepo.findById(m.getId()).get()));
+//        }
+//        for(MotoDTO mDTO : motos){
+//            for
+//        }
+//
+//        List<MotoDTO> motosFavoritadas = new ArrayList<>();
+//        for(MotoDTO mDTO : motos){
+//            mDTO.setFavoritada(true);
+//        }
+
         model.addAttribute("motos", motoRepo.findAll());
 
         return "catalogo";
@@ -142,30 +159,30 @@ public class Control {
         return "redirect:/home";
     }
 
-//    @GetMapping("/admin/gerenciar")
-//    public String callGerenciarPage(Model model){
-//        return "gerenciarMoto";
-//    }
+    @GetMapping("/admin/gerenciar")
+    public String callGerenciarPage(Model model){
+        return "gerenciarMoto";
+    }
 
-//    @GetMapping("/admin/editarMoto")
-//    public String callEditarMotoPage(@ModelAttribute("idMoto") long id){
-//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-//
-//        return "redirect:/";
-//    }
+    @GetMapping("/admin/editarMoto")
+    public String callEditarMotoPage(@ModelAttribute("idMoto") long id){
+        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-//    @GetMapping("/admin/excluirMoto")
-//    public String excluirMoto(@ModelAttribute("idMoto") long id){
-//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-//
-//        return "redirect:/";
-//    }
+        return "redirect:/";
+    }
 
-//    @Transactional
-//    @PostMapping("/admin/ocultarMoto")
-//    public String ocultarMoto(@ModelAttribute("idMoto") long id){
-//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-//
-//        return "redirect:/";
-//    }
+    @GetMapping("/admin/excluirMoto")
+    public String excluirMoto(@ModelAttribute("idMoto") long id){
+        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+
+        return "redirect:/";
+    }
+
+    @Transactional
+    @PostMapping("/admin/ocultarMoto")
+    public String ocultarMoto(@ModelAttribute("idMoto") long id){
+        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+
+        return "redirect:/";
+    }
 }

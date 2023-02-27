@@ -31,7 +31,7 @@
               <form th:action="@{/cliente/addDesejo}" method="post">
                   <input type="hidden" th:value='${m.id}' name="idMoto">
                   <button type="submit" class="botao-removerEstilo btn-favorito-catalogo">
-                      <img th:src="${m.favorita ? '/img/favorito.png' : '/img/favoritar.png'}">
+                      <img src="/img/favoritar.png">
                   </button>
               </form>
             </div>

@@ -99,4 +99,35 @@ public class Moto {
         this.automatica = automatica;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public boolean isAbs() {
+        return abs;
+    }
+
+    public void setAbs(boolean abs) {
+        this.abs = abs;
+    }
+
+    public String getTerreno() {
+        return terreno;
+    }
+
+    public void setTerreno(String terreno) {
+        this.terreno = terreno;
+    }
+
+    public boolean isAnuncioAtivo() {
+        return anuncioAtivo;
+    }
+
+    public void setAnuncioAtivo(boolean anuncioAtivo) {
+        this.anuncioAtivo = anuncioAtivo;
+    }
 }

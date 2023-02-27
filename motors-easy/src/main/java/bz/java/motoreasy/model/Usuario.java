@@ -19,7 +19,8 @@ public class Usuario{
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    @OneToMany(mappedBy="usuario")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Moto")
     private List<Moto> favoritas = new ArrayList<>();
     private boolean administrador;
 

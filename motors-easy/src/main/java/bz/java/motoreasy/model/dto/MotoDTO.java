@@ -1,10 +1,13 @@
 package bz.java.motoreasy.model.dto;
 
+import bz.java.motoreasy.model.Moto;
+
 public class MotoDTO {
     private String marca, modelo, terreno;
     private int cilindradas;
     private double preco;
     private boolean automatica, abs;
+    private boolean favoritada;
 
     public MotoDTO() {
     }
@@ -17,6 +20,16 @@ public class MotoDTO {
         this.preco = preco;
         this.automatica = automatica;
         this.abs = abs;
+    }
+
+    public MotoDTO(Moto moto){
+        this.marca = moto.getMarca();
+        this.modelo = moto.getModelo();
+        this.terreno = moto.getTerreno();
+        this.cilindradas = moto.getCilindradas();
+        this.preco = moto.getPreco();
+        this.automatica = moto.isAutomatica();
+        this.abs = moto.isAbs();
     }
 
     public String getModelo() {
@@ -73,5 +86,13 @@ public class MotoDTO {
 
     public void setAbs(boolean abs) {
         this.abs = abs;
+    }
+
+    public boolean isFavoritada() {
+        return favoritada;
+    }
+
+    public void setFavoritada(boolean favoritada) {
+        this.favoritada = favoritada;
     }
 }
