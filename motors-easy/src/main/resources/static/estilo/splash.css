@@ -215,6 +215,12 @@ footer p{
 	outline: inherit;
 }
 
+.botao-desabilitado{
+    border-color: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
 .btn-favorito-catalogo img{
     width: 50%;
 }
