@@ -1,14 +1,8 @@
 package bz.java.motoreasy.model;
 
 import bz.java.motoreasy.model.dto.UsuarioDTO;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import javax.management.relation.Role;
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -19,8 +13,7 @@ public class Usuario{
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "Moto")
+    @OneToMany()
     private List<Moto> favoritas = new ArrayList<>();
     private boolean administrador;
 
