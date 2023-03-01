@@ -45,7 +45,7 @@ main{
 }
 
 #main-registro{
-    height: 75%;
+    min-height: 85%;
     position: absolute;
 }
 
@@ -294,6 +294,10 @@ footer p{
     padding: 2%;
 
     background-color: aliceblue;
+}
+
+#conAutomatica{
+    padding-top: 5%;
 }
 
 
