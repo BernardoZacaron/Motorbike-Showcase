@@ -1,19 +1,24 @@
 package bz.java.motoreasy.model;
 
 import bz.java.motoreasy.model.dto.UsuarioDTO;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class Usuario{
+public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    @OneToMany()
+    @OneToMany
     private List<Moto> favoritas = new ArrayList<>();
     private boolean administrador;
 
@@ -90,14 +95,6 @@ public class Usuario{
         this.senha = senha;
     }
 
-    public String getPassword() {
-        return senha;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
     public void setUsername(String username) {
         this.username = username;
     }
@@ -117,4 +114,47 @@ public class Usuario{
     public void setFavoritas(List<Moto> favoritas) {
         this.favoritas = favoritas;
     }
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        ArrayList<SimpleGrantedAuthority> roles = new ArrayList<>();
+        roles.add(new SimpleGrantedAuthority("ROLE_CLIENTE"));
+        if (isAdministrador()){
+            roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }
+        return roles;
+    }
+
+    @Override
+    public String getPassword() {
+        return senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+
 }
