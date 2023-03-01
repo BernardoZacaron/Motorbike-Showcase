@@ -6,7 +6,6 @@ import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
-import bz.java.motoreasy.seguranca.UserLogado;
 import bz.java.motoreasy.seguranca.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -36,9 +35,12 @@ public class Control {
 
     //Aberto
     @GetMapping({"/", "/home"})
-    public String callHomePage(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String nomeUsuario = authentication.getName();
+    public String callHomePage(Model model, Authentication authentication){
+        String nomeUsuario = null;
+        if(authentication!=null) {
+            Usuario logado = (Usuario) authentication.getPrincipal();
+            nomeUsuario = logado.getNome();
+        }
 
         model.addAttribute("nomeUsuario", nomeUsuario);
         return "index";
@@ -94,13 +96,13 @@ public class Control {
     @Transactional
     @PostMapping("/cliente/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
-        UserLogado logado = (UserLogado) authentication.getPrincipal();
-        Usuario usuario = logado.getUsuario();
+        Usuario logado = (Usuario) authentication.getPrincipal();
+        //Usuario usuario = logado.getUsuario();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        usuario.adicionarFavorita(moto);
+        logado.adicionarFavorita(moto);
 
-        userRepo.saveAndFlush(logado.getUsuario());
+        userRepo.saveAndFlush(logado);
 
         return "redirect:/catalogo";
     }
@@ -108,24 +110,24 @@ public class Control {
     @Transactional
     @PostMapping("/cliente/removerDesejo")
     public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
-        UserLogado logado = (UserLogado) authentication.getPrincipal();
-        Usuario usuario = logado.getUsuario();
+        Usuario logado = (Usuario) authentication.getPrincipal();
+        //Usuario usuario = logado.getUsuario();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        usuario.getFavoritas().remove(moto);
+        logado.getFavoritas().remove(moto);
 
-        userRepo.saveAndFlush(usuario);
+        userRepo.saveAndFlush(logado);
 
         return "redirect:/cliente/lista-desejo";
     }
 
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
-        UserLogado logado = (UserLogado) authentication.getPrincipal();
-        Usuario usuario = logado.getUsuario();
+        Usuario logado = (Usuario) authentication.getPrincipal();
+        //Usuario usuario = logado.getUsuario();
 
 
-        model.addAttribute("motosFavoritas", usuario.getFavoritas());
+        model.addAttribute("motosFavoritas", logado.getFavoritas());
 
         return "listaDesejo";
     }

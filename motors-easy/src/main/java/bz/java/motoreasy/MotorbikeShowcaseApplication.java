@@ -41,11 +41,9 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 		Moto m4 = new Moto("Honda", "Fan", 160, 15000, false, false, "Asfalto", true);
 		motoRepo.save(m4);
 
-		Usuario u1 = new Usuario("Bernardo", "bernardo@email", "ber", pe.encode("senha"));
+		Usuario u1 = new Usuario("Bernardo", "ber", "bernardo@email", pe.encode("senha"), false);
 		userRepo.save(u1);
-		Usuario u2 = new Usuario("Admilton", "admilton@email", "adm", pe.encode("senha"));
+		Usuario u2 = new Usuario("Admilton", "adm", "admilton@email", pe.encode("senha"), true);
 		userRepo.save(u2);
-		UsuarioDTO u3 = new UsuarioDTO("Usuario Terceiro", "user@user", "user3", pe.encode("senha"));
-		userRepo.save(new Usuario(u3));
 	}
 }

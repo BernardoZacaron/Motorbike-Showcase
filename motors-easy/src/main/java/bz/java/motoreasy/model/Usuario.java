@@ -18,8 +18,8 @@ public class Usuario implements UserDetails {
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    @OneToMany
-    private List<Moto> favoritas = new ArrayList<>();
+    @OneToMany(mappedBy = "usuarios")
+    private List<Moto> favoritas;
     private boolean administrador;
 
     public Usuario() {
@@ -37,6 +37,14 @@ public class Usuario implements UserDetails {
 
     public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador) {
         this.id = id;
+        this.username = username;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.administrador = administrador;
+    }
+
+    public Usuario(String nome, String username, String email, String senha, boolean administrador) {
         this.username = username;
         this.nome = nome;
         this.email = email;

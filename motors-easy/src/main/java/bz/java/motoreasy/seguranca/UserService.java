@@ -37,6 +37,6 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("Usuário não encontrado");
         }
 
-        return new UserLogado(u);
+        return u;
     }
 }

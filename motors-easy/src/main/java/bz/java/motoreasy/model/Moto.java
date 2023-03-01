@@ -3,6 +3,7 @@ package bz.java.motoreasy.model;
 import bz.java.motoreasy.model.dto.MotoDTO;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,9 @@ public class Moto {
     private boolean abs;
     private String terreno;
     private boolean anuncioAtivo = true;
+
+    @OneToMany
+    private List<Usuario> usuarios;
 
 
     public Moto() {
