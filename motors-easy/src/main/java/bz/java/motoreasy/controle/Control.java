@@ -110,7 +110,7 @@ public class Control {
 
         logado.getLista().adicionarFavorita(moto);
 
-        userRepo.saveAndFlush(logado);
+        listaRepo.saveAndFlush(logado.getLista());
 
         return "redirect:/catalogo";
     }
