@@ -20,8 +20,8 @@ public class Moto {
     private String terreno;
     private boolean anuncioAtivo = true;
 
-    @OneToMany
-    private List<Usuario> usuarios;
+    @ManyToMany
+    private List<ListaFavoritos> listas = new ArrayList<>();
 
 
     public Moto() {
@@ -131,5 +131,13 @@ public class Moto {
 
     public void setAnuncioAtivo(boolean anuncioAtivo) {
         this.anuncioAtivo = anuncioAtivo;
+    }
+
+    public List<ListaFavoritos> getListas() {
+        return listas;
+    }
+
+    public void setListas(List<ListaFavoritos> listas) {
+        this.listas = listas;
     }
 }

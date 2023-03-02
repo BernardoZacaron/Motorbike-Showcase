@@ -1,9 +1,11 @@
 package bz.java.motoreasy.controle;
 
+import bz.java.motoreasy.model.ListaFavoritos;
 import bz.java.motoreasy.model.Moto;
 import bz.java.motoreasy.model.Usuario;
 import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
+import bz.java.motoreasy.repository.ListaRepo;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
 import bz.java.motoreasy.seguranca.UserService;
@@ -28,6 +30,9 @@ public class Control {
     UsuarioRepo userRepo;
 
     @Autowired
+    ListaRepo listaRepo;
+
+    @Autowired
     UserService userService;
 
     @Autowired
@@ -40,6 +45,10 @@ public class Control {
         if(authentication!=null) {
             Usuario logado = (Usuario) authentication.getPrincipal();
             nomeUsuario = logado.getNome();
+
+            if(logado.getLista()==null){
+                logado.setLista(new ListaFavoritos());
+            }
         }
 
         model.addAttribute("nomeUsuario", nomeUsuario);
@@ -97,10 +106,9 @@ public class Control {
     @PostMapping("/cliente/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
-        //Usuario usuario = logado.getUsuario();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        logado.adicionarFavorita(moto);
+        logado.getLista().adicionarFavorita(moto);
 
         userRepo.saveAndFlush(logado);
 
@@ -111,10 +119,9 @@ public class Control {
     @PostMapping("/cliente/removerDesejo")
     public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
-        //Usuario usuario = logado.getUsuario();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        logado.getFavoritas().remove(moto);
+        logado.getLista().getMotos().remove(moto);
 
         userRepo.saveAndFlush(logado);
 
@@ -124,10 +131,9 @@ public class Control {
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
-        //Usuario usuario = logado.getUsuario();
 
 
-        model.addAttribute("motosFavoritas", logado.getFavoritas());
+        model.addAttribute("motosFavoritas", logado.getLista().getMotos());
 
         return "listaDesejo";
     }

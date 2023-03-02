@@ -18,22 +18,26 @@ public class Usuario implements UserDetails {
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    @OneToMany(mappedBy = "usuarios")
-    private List<Moto> favoritas;
+    /*Criar uma classe intermediaria tipo do Zetalab
+    private List<Moto> favoritas;*/
     private boolean administrador;
+
+    @OneToOne
+    private ListaFavoritos lista;
+
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String username, String nome, String email, String senha, List<Moto> favoritas, boolean administrador) {
-        this.id = id;
-        this.username = username;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.favoritas = favoritas;
-        this.administrador = administrador;
-    }
+//    public Usuario(Long id, String username, String nome, String email, String senha, List<Moto> favoritas, boolean administrador) {
+//        this.id = id;
+//        this.username = username;
+//        this.nome = nome;
+//        this.email = email;
+//        this.senha = senha;
+//        this.favoritas = favoritas;
+//        this.administrador = administrador;
+//    }
 
     public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador) {
         this.id = id;
@@ -67,9 +71,6 @@ public class Usuario implements UserDetails {
         this.senha = senha;
     }
 
-    public void adicionarFavorita(Moto moto){
-        favoritas.add(moto);
-    }
 
     public Long getId() {
         return id;
@@ -115,13 +116,23 @@ public class Usuario implements UserDetails {
         this.administrador = administrador;
     }
 
-    public List<Moto> getFavoritas() {
-        return favoritas;
+//    public List<Moto> getFavoritas() {
+//        return favoritas;
+//    }
+//
+//    public void setFavoritas(List<Moto> favoritas) {
+//        this.favoritas = favoritas;
+//    }
+
+
+    public ListaFavoritos getLista() {
+        return lista;
     }
 
-    public void setFavoritas(List<Moto> favoritas) {
-        this.favoritas = favoritas;
+    public void setLista(ListaFavoritos lista) {
+        this.lista = lista;
     }
+
 
 
     @Override
