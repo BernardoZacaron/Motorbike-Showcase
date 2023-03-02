@@ -29,23 +29,23 @@ public class Usuario implements UserDetails {
     public Usuario() {
     }
 
-//    public Usuario(Long id, String username, String nome, String email, String senha, List<Moto> favoritas, boolean administrador) {
-//        this.id = id;
-//        this.username = username;
-//        this.nome = nome;
-//        this.email = email;
-//        this.senha = senha;
-//        this.favoritas = favoritas;
-//        this.administrador = administrador;
-//    }
-
-    public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador) {
+    public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador, ListaFavoritos lista) {
         this.id = id;
         this.username = username;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.administrador = administrador;
+        this.lista = lista;
+    }
+
+    public Usuario(String nome, String username, String email, String senha, boolean administrador, ListaFavoritos lista) {
+        this.username = username;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.administrador = administrador;
+        this.lista = lista;
     }
 
     public Usuario(String nome, String username, String email, String senha, boolean administrador) {

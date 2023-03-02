@@ -106,6 +106,9 @@ public class Control {
     @PostMapping("/cliente/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
+        if(logado.getLista()==null){
+            logado.setLista(new ListaFavoritos());
+        }
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
         logado.getLista().adicionarFavorita(moto);
@@ -119,11 +122,14 @@ public class Control {
     @PostMapping("/cliente/removerDesejo")
     public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
+        if(logado.getLista()==null){
+            logado.setLista(new ListaFavoritos());
+        }
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
         logado.getLista().getMotos().remove(moto);
 
-        userRepo.saveAndFlush(logado);
+        listaRepo.saveAndFlush(logado.getLista());
 
         return "redirect:/cliente/lista-desejo";
     }
@@ -131,7 +137,9 @@ public class Control {
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
-
+        if(logado.getLista()==null){
+            logado.setLista(new ListaFavoritos());
+        }
 
         model.addAttribute("motosFavoritas", logado.getLista().getMotos());
 

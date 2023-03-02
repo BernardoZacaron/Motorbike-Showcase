@@ -1,8 +1,10 @@
 package bz.java.motoreasy;
 
+import bz.java.motoreasy.model.ListaFavoritos;
 import bz.java.motoreasy.model.Moto;
 import bz.java.motoreasy.model.Usuario;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
+import bz.java.motoreasy.repository.ListaRepo;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
 import bz.java.motoreasy.seguranca.UserService;
@@ -19,6 +21,9 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 
 	@Autowired
 	UsuarioRepo userRepo;
+
+	@Autowired
+	ListaRepo listaRepo;
 
 	@Autowired
 	UserService service;
@@ -40,6 +45,11 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 		motoRepo.save(m3);
 		Moto m4 = new Moto("Honda", "Fan", 160, 15000, false, false, "Asfalto", true);
 		motoRepo.save(m4);
+
+//		ListaFavoritos l1 = new ListaFavoritos();
+//		listaRepo.save(l1);
+//		ListaFavoritos l2 = new ListaFavoritos();
+//		listaRepo.save(l2);
 
 		Usuario u1 = new Usuario("Bernardo", "ber", "bernardo@email", pe.encode("senha"), false);
 		userRepo.save(u1);
