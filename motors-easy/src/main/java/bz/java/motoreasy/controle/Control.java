@@ -158,9 +158,9 @@ public class Control {
     @Transactional
     @PostMapping("/admin/saveMoto")
     public String saveMoto(@ModelAttribute MotoDTO novoMoto){
-//        Moto moto = new Moto(novoMoto.getModelo(), novoMoto.getCilindradas(), novoMoto.getPreco(), novoMoto.isAutomatica());
-//
-//        motoRepo.save(moto);
+        Moto moto = new Moto(novoMoto);
+
+        motoRepo.save(moto);
 
         return "redirect:/home";
     }
