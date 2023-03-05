@@ -45,6 +45,8 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 		motoRepo.save(m3);
 		Moto m4 = new Moto("Honda", "Fan", 160, 15000, false, false, "Asfalto", true);
 		motoRepo.save(m4);
+		Moto m5 = new Moto("Teste", "Desativadah", 000, 0000, true, true, "Estrada", false);
+		motoRepo.save(m5);
 
 //		ListaFavoritos l1 = new ListaFavoritos();
 //		listaRepo.save(l1);

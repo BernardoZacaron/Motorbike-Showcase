@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.ws.rs.NotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -73,8 +75,9 @@ public class Control {
 //        for(MotoDTO mDTO : motos){
 //            mDTO.setFavoritada(true);
 //        }
+        List<Moto> motosAtivas = motoRepo.findAll().stream().filter(Moto::isAnuncioAtivo).toList();
 
-        model.addAttribute("motos", motoRepo.findAll());
+        model.addAttribute("motos", motosAtivas);
 
         return "catalogo";
     }
