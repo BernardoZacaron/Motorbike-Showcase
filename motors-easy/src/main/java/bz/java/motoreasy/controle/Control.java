@@ -60,25 +60,29 @@ public class Control {
     @GetMapping("/catalogo")
     public String callCatalogoPage(Model model, Authentication authentication) {
         List<MotoDTO> motos = new ArrayList<>();
+        List<Moto> todas = motoRepo.findAll();
+
 
         if(authentication!=null) {
             Usuario logado = (Usuario) authentication.getPrincipal();
 
             List<Moto> favoritadas = logado.getLista().getMotos();
+            List<Moto> naoFavoritas = new ArrayList<>(todas);
+            naoFavoritas.remove(favoritadas);
 
-            for (Moto m : motoRepo.findAll()) {
-                for (Moto moto : favoritadas) {
-                    if (m.getId() == moto.getId()) {
-                        motos.add(new MotoDTO(moto, true));
-                    } else {
-                        motos.add(new MotoDTO(moto, false));
-                    }
-                }
+            for (Moto m : favoritadas) {
+                motos.add(new MotoDTO(m, true));
             }
-        }else{
-            for (Moto m : motoRepo.findAll()) {
+            for (Moto m : naoFavoritas) {
                 motos.add(new MotoDTO(m, false));
             }
+            motos = motos.stream().filter(MotoDTO::isVisivel).toList();
+
+        }else{
+            for (Moto m : todas) {
+                motos.add(new MotoDTO(m, false));
+            }
+            motos = motos.stream().filter(MotoDTO::isVisivel).toList();
         }
 
         model.addAttribute("motos", motos);

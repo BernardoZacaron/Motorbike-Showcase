@@ -22,7 +22,8 @@ public class Usuario implements UserDetails {
     private List<Moto> favoritas;*/
     private boolean administrador;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "listaFavoritos_id", referencedColumnName = "id")
     private ListaFavoritos lista;
 
 

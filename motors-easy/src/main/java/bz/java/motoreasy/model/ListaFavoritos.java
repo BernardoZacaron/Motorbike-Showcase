@@ -10,7 +10,7 @@ public class ListaFavoritos {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "lista")
     Usuario pertencente;
 
     @ManyToMany

@@ -30,12 +30,12 @@
               <p>Automática: <span th:text="${m.automatica} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
               <p>Freio ABS: <span th:text="${m.abs} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
               <p>Terreno: <span th:text="${m.terreno}">Misto</span></p>
-<!--              <form th:action="@{/cliente/addDesejo}" method="post">-->
-<!--                  <input type="hidden" th:value='${m.id}' name="idMoto">-->
-<!--                  <button type="submit" class="botao-removerEstilo btn-favorito-catalogo">-->
-<!--                      <img th:src="${m.favoritada ? '/img/favorito.png' : '/img/favoritar.png'}">-->
-<!--                  </button>-->
-<!--              </form>-->
+              <form th:action="@{/cliente/addDesejo}" method="post">
+                  <input type="hidden" th:value='${m.id}' name="idMoto">
+                  <button type="submit" class="botao-removerEstilo btn-favorito-catalogo">
+                      <img th:src="${m.favoritada ? 'img/favorito.png' : 'img/favoritar.png'}">
+                  </button>
+              </form>
             </div>
         </div>
     </div>

@@ -3,16 +3,19 @@ package bz.java.motoreasy.model.dto;
 import bz.java.motoreasy.model.Moto;
 
 public class MotoDTO {
+    private long id;
     private String marca, modelo, terreno;
     private int cilindradas;
     private double preco;
     private boolean automatica, abs;
     private boolean favoritada;
+    private boolean visivel;
 
     public MotoDTO() {
     }
 
-    public MotoDTO(String marca, String modelo, int cilindradas, double preco, boolean automatica, boolean abs, String terreno) {
+    public MotoDTO(long id, String marca, String modelo, String terreno, int cilindradas, double preco, boolean automatica, boolean abs, boolean favoritada, boolean visivel) {
+        this.id = id;
         this.marca = marca;
         this.modelo = modelo;
         this.terreno = terreno;
@@ -20,9 +23,24 @@ public class MotoDTO {
         this.preco = preco;
         this.automatica = automatica;
         this.abs = abs;
+        this.favoritada = favoritada;
+        this.visivel = visivel;
+    }
+
+    public MotoDTO(String marca, String modelo, String terreno, int cilindradas, double preco, boolean automatica, boolean abs, boolean favoritada, boolean visivel) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.terreno = terreno;
+        this.cilindradas = cilindradas;
+        this.preco = preco;
+        this.automatica = automatica;
+        this.abs = abs;
+        this.favoritada = favoritada;
+        this.visivel = visivel;
     }
 
     public MotoDTO(Moto moto, boolean favoritada){
+        this.id = moto.getId();
         this.marca = moto.getMarca();
         this.modelo = moto.getModelo();
         this.terreno = moto.getTerreno();
@@ -31,6 +49,7 @@ public class MotoDTO {
         this.automatica = moto.isAutomatica();
         this.abs = moto.isAbs();
         this.favoritada = favoritada;
+        this.visivel = moto.isAnuncioAtivo();
     }
 
     public String getModelo() {
@@ -95,5 +114,21 @@ public class MotoDTO {
 
     public void setFavoritada(boolean favoritada) {
         this.favoritada = favoritada;
+    }
+
+    public boolean isVisivel() {
+        return visivel;
+    }
+
+    public void setVisivel(boolean visivel) {
+        this.visivel = visivel;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
