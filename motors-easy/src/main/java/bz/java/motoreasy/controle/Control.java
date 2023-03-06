@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.ws.rs.NotFoundException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -117,14 +118,16 @@ public class Control {
     @PostMapping("/cliente/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
-        if(logado.getLista()==null){
-            logado.setLista(new ListaFavoritos());
-        }
+
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        logado.getLista().adicionarFavorita(moto);
+        if(logado.getLista().getMotos().contains(moto)){
+            return "";
+        }else{
+            logado.getLista().adicionarFavorita(moto);
+            listaRepo.saveAndFlush(logado.getLista());
+        }
 
-        listaRepo.saveAndFlush(logado.getLista());
 
         return "redirect:/catalogo";
     }
@@ -133,9 +136,7 @@ public class Control {
     @PostMapping("/cliente/removerDesejo")
     public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
-        if(logado.getLista()==null){
-            logado.setLista(new ListaFavoritos());
-        }
+
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
         ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).get();
 
@@ -149,9 +150,6 @@ public class Control {
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
-        if(logado.getLista()==null){
-            logado.setLista(new ListaFavoritos());
-        }
 
         model.addAttribute("motosFavoritas", logado.getLista().getMotos());
 
