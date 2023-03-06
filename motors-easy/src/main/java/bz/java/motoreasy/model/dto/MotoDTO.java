@@ -22,7 +22,7 @@ public class MotoDTO {
         this.abs = abs;
     }
 
-    public MotoDTO(Moto moto){
+    public MotoDTO(Moto moto, boolean favoritada){
         this.marca = moto.getMarca();
         this.modelo = moto.getModelo();
         this.terreno = moto.getTerreno();
@@ -30,6 +30,7 @@ public class MotoDTO {
         this.preco = moto.getPreco();
         this.automatica = moto.isAutomatica();
         this.abs = moto.isAbs();
+        this.favoritada = favoritada;
     }
 
     public String getModelo() {

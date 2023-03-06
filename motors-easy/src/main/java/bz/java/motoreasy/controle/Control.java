@@ -58,26 +58,30 @@ public class Control {
     }
 
     @GetMapping("/catalogo")
-    public String callCatalogoPage(Model model/*, Authentication authentication*/) {
-//        UserLogado logado = (UserLogado) authentication.getPrincipal();
-//        Usuario usuario = logado.getUsuario();
-//
-//        List<Moto> favoritadas = usuario.getFavoritas();
-//        List<MotoDTO> motos = new ArrayList<>();
-//        for (Moto m : motoRepo.findAll()) {
-//            motos.add(new MotoDTO(motoRepo.findById(m.getId()).get()));
-//        }
-//        for(MotoDTO mDTO : motos){
-//            for
-//        }
-//
-//        List<MotoDTO> motosFavoritadas = new ArrayList<>();
-//        for(MotoDTO mDTO : motos){
-//            mDTO.setFavoritada(true);
-//        }
-        List<Moto> motosAtivas = motoRepo.findAll().stream().filter(Moto::isAnuncioAtivo).toList();
+    public String callCatalogoPage(Model model, Authentication authentication) {
+        List<MotoDTO> motos = new ArrayList<>();
 
-        model.addAttribute("motos", motosAtivas);
+        if(authentication!=null) {
+            Usuario logado = (Usuario) authentication.getPrincipal();
+
+            List<Moto> favoritadas = logado.getLista().getMotos();
+
+            for (Moto m : motoRepo.findAll()) {
+                for (Moto moto : favoritadas) {
+                    if (m.getId() == moto.getId()) {
+                        motos.add(new MotoDTO(moto, true));
+                    } else {
+                        motos.add(new MotoDTO(moto, false));
+                    }
+                }
+            }
+        }else{
+            for (Moto m : motoRepo.findAll()) {
+                motos.add(new MotoDTO(m, false));
+            }
+        }
+
+        model.addAttribute("motos", motos);
 
         return "catalogo";
     }
