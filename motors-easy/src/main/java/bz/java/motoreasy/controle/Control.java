@@ -156,7 +156,7 @@ public class Control {
 
 
     //Admin apenas
-    @GetMapping({"/admin/registrarMoto"})
+    @GetMapping("/admin/registrarMoto")
     public String callRegistroMotoPage(Model model){
         model.addAttribute("novoMoto", new Moto());
         return "registrarMoto";
@@ -197,5 +197,12 @@ public class Control {
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/admin/gerenciar")
+    public String callGerenciarPage(){
+        
+
+        return "";
     }
 }
