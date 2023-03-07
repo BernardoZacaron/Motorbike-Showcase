@@ -13,8 +13,7 @@ public class ListaFavoritos {
     @OneToOne(mappedBy = "lista")
     Usuario pertencente;
 
-    @JoinTable(name = "lista_moto")
-    @ManyToMany
+    @OneToMany
     List<Moto> motos = new ArrayList<Moto>();
 
     public ListaFavoritos() {

@@ -140,7 +140,7 @@ public class Control {
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
         ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
 
-        listaRepo.removerMoto(lista, moto);
+        listaRepo.removerMoto(lista, moto.getId());
 
         return "redirect:/cliente/lista-desejo";
     }
@@ -201,7 +201,7 @@ public class Control {
 
     @GetMapping("/admin/gerenciar")
     public String callGerenciarPage(){
-        
+
 
         return "";
     }
