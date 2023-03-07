@@ -138,11 +138,9 @@ public class Control {
         Usuario logado = (Usuario) authentication.getPrincipal();
 
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-        ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).get();
+        ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
 
-        lista.removerFavorita(moto);
-
-        listaRepo.saveAndFlush(lista);
+        listaRepo.removerMoto(lista, moto);
 
         return "redirect:/cliente/lista-desejo";
     }
