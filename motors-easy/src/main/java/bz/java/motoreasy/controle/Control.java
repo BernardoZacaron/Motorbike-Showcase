@@ -196,8 +196,8 @@ public class Control {
 
     @GetMapping("/admin/gerenciar")
     public String callGerenciarPage(Model model){
+        model.addAttribute("todasMotos", motoRepo.findAll());
 
-
-        return "redirect:/";
+        return "gerenciarMoto";
     }
 }
