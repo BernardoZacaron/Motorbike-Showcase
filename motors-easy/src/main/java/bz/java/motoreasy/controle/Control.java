@@ -172,11 +172,6 @@ public class Control {
         return "redirect:/home";
     }
 
-    @GetMapping("/admin/gerenciar")
-    public String callGerenciarPage(Model model){
-        return "gerenciarMoto";
-    }
-
     @GetMapping("/admin/editarMoto")
     public String callEditarMotoPage(@ModelAttribute("idMoto") long id){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
@@ -200,9 +195,9 @@ public class Control {
     }
 
     @GetMapping("/admin/gerenciar")
-    public String callGerenciarPage(){
+    public String callGerenciarPage(Model model){
 
 
-        return "";
+        return "redirect:/";
     }
 }
