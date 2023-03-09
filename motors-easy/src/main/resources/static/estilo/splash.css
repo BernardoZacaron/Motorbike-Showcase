@@ -311,6 +311,11 @@ footer p{
 }
 
 /*Página gerenciar*/
+#main-gerenciar{
+    min-height: 75%;
+    position: absolute;
+}
+
 #lista-gerenciar{
 
 }

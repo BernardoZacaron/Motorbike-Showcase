@@ -11,6 +11,7 @@ import bz.java.motoreasy.repository.UsuarioRepo;
 import bz.java.motoreasy.seguranca.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -64,7 +65,7 @@ public class Control {
         List<Moto> todas = motoRepo.findAll();
 
 
-        if(authentication!=null) {
+        if(authentication!=null && !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             Usuario logado = (Usuario) authentication.getPrincipal();
 
             List<Moto> favoritadas = logado.getLista().getMotos();
