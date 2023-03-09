@@ -156,6 +156,13 @@ public class Control {
 
 
     //Admin apenas
+    @GetMapping("/admin/gerenciar")
+    public String callGerenciarPage(Model model){
+        model.addAttribute("todasMotos", motoRepo.findAll());
+
+        return "gerenciarMoto";
+    }
+
     @GetMapping("/admin/registrarMoto")
     public String callRegistroMotoPage(Model model){
         model.addAttribute("novoMoto", new Moto());
@@ -179,25 +186,23 @@ public class Control {
         return "redirect:/";
     }
 
-    @GetMapping("/admin/excluirMoto")
-    public String excluirMoto(@ModelAttribute("idMoto") long id){
-        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-
-        return "redirect:/";
-    }
-
     @Transactional
     @PostMapping("/admin/ocultarMoto")
     public String ocultarMoto(@ModelAttribute("idMoto") long id){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+        moto.toggleVisibilidade();
 
-        return "redirect:/";
+        motoRepo.saveAndFlush(moto);
+
+        return "redirect:/admin/gerenciar";
     }
 
-    @GetMapping("/admin/gerenciar")
-    public String callGerenciarPage(Model model){
-        model.addAttribute("todasMotos", motoRepo.findAll());
+    @Transactional
+    @PostMapping("/admin/excluirMoto")
+    public String excluirMoto(@ModelAttribute("idMoto") long id){
+        motoRepo.deleteById(id);
 
-        return "gerenciarMoto";
+        return "redirect:/admin/gerenciar";
     }
+
 }

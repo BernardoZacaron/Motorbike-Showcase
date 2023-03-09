@@ -55,9 +55,11 @@ public class Moto {
         this.automatica = dto.isAutomatica();
         this.abs = dto.isAbs();
         this.terreno = dto.getTerreno();
-        anuncioAtivo = true;
     }
 
+    public void toggleVisibilidade(){
+        anuncioAtivo = !anuncioAtivo;
+    }
 
     public long getId() {
         return id;
