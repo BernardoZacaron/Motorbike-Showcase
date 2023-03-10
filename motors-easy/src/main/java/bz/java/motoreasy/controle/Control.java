@@ -184,7 +184,7 @@ public class Control {
     public String callEditarMotoPage(@ModelAttribute("idMoto") long id){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
-        return "redirect:/";
+        return "editarMoto";
     }
 
     @Transactional

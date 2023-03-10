@@ -19,7 +19,7 @@
                     <h2 th:text='${m.modelo}'>Kawasaki Ninja</h2>
                     <div class="acoes-gerenciar">
                         <div class="btn-gerenciar-editar btn-acao-gerenciar">
-                            <form th:action="@{/admin/editarMoto}" method="post">
+                            <form th:action="@{/admin/editarMoto}" method="get">
                                 <input type="hidden" th:value='${m.id}' name="idMoto">
                                 <button type="submit" class="botao-removerEstilo"><img src="/img/editar.png" alt="Editar"/></button>
                                 <p>Editar</p>

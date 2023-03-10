@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Novo modelo</title>
+    <title>Editar</title>
     <link rel="icon" href="img/icone.png">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="/estilo/splash.css">
@@ -11,10 +11,10 @@
     <header th:insert="~{includes/cabecalho}">...</header>
     <main id="main-registro">
       <div class="con-titulo-pagina">
-        <h1 class="titulo-pagina">Registrar moto</h1>
+        <h1 class="titulo-pagina">Editar moto</h1>
       </div>
       <div id="con-registrar">
-        <form th:action="@{/admin/saveMoto}" method="post" th:object="${novoMoto}">
+        <form th:action="@{/admin/saveMotoEditada}" method="post" th:object="${moto}">
             <div class="mb-3">
               <label for="sltMarca" class="form-label">Modelo</label>
               <select class="form-select" aria-label="Default select example" id="sltMarca" th:field="*{marca}">
@@ -55,7 +55,7 @@
             </div>
             
             <div class="d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary">Registrar</button>
+              <button type="submit" class="btn btn-primary">Salvar edições</button>
             </div>
         </form>
       </div>
