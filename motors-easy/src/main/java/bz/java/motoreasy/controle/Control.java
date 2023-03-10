@@ -181,10 +181,26 @@ public class Control {
     }
 
     @GetMapping("/admin/editarMoto")
-    public String callEditarMotoPage(@ModelAttribute("idMoto") long id){
+    public String callEditarMotoPage(@ModelAttribute("idMoto") long id, Model model){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+        model.addAttribute("moto", moto);
 
         return "editarMoto";
+    }
+    @Transactional
+    @PostMapping("/admin/editarMoto")
+    public String saveMotoEditada(@ModelAttribute Moto moto){
+        Moto motoEditada = motoRepo.getById(moto.getId());
+        motoEditada.setMarca(moto.getMarca());
+        motoEditada.setModelo(moto.getModelo());
+        motoEditada.setCilindradas(moto.getCilindradas());
+        motoEditada.setPreco(moto.getPreco());
+        motoEditada.setTerreno(moto.getTerreno());
+        motoEditada.setAutomatica(moto.isAutomatica());
+
+        motoRepo.saveAndFlush(motoEditada);
+
+        return "redirect:/admin/gerenciar";
     }
 
     @Transactional

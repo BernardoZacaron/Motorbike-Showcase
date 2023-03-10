@@ -14,9 +14,9 @@
         <h1 class="titulo-pagina">Editar moto</h1>
       </div>
       <div id="con-registrar">
-        <form th:action="@{/admin/saveMotoEditada}" method="post" th:object="${moto}">
+        <form th:action="@{/admin/editarMoto}" method="post" th:object="${moto}">
             <div class="mb-3">
-              <label for="sltMarca" class="form-label">Modelo</label>
+              <label for="sltMarca" class="form-label">Marca</label>
               <select class="form-select" aria-label="Default select example" id="sltMarca" th:field="*{marca}">
                 <option value="Honda">Honda</option>
                 <option value="Yamaha">Yamaha</option>
