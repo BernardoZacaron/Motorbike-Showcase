@@ -53,7 +53,7 @@
                     <label class="form-check-label" for="boolAutomatica" id="lblAutomatica">É automática</label>
                 </div>
             </div>
-            
+            <input type="hidden" th:value='${id}' th:field="*{id}" name="id">
             <div class="d-flex justify-content-center">
               <button type="submit" class="btn btn-primary">Salvar edições</button>
             </div>
