@@ -34,8 +34,9 @@ public class ListaFavoritos {
         motos.add(moto);
     }
 
-    public void removerFavorita(Moto moto){
+    public ListaFavoritos removerFavorita(Moto moto){
         motos.remove(moto);
+        return this;
     }
 
     public Long getId() {
