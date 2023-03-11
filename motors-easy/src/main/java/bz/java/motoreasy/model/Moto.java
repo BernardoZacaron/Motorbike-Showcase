@@ -3,6 +3,7 @@ package bz.java.motoreasy.model;
 import bz.java.motoreasy.model.dto.MotoDTO;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +20,12 @@ public class Moto {
     private boolean abs;
     private String terreno;
     private boolean anuncioAtivo = true;
-
+    private String imagemUrl;
 
     public Moto() {
     }
 
-    public Moto(long id, String marca, String modelo, int cilindradas, double preco, boolean automatica, boolean abs, String terreno, boolean anuncioAtivo) {
+    public Moto(long id, String marca, String modelo, int cilindradas, double preco, boolean automatica, boolean abs, String terreno, boolean anuncioAtivo, String imagemUrl) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
@@ -34,6 +35,19 @@ public class Moto {
         this.abs = abs;
         this.terreno = terreno;
         this.anuncioAtivo = anuncioAtivo;
+        this.imagemUrl = imagemUrl;
+    }
+
+    public Moto(String marca, String modelo, int cilindradas, double preco, boolean automatica, boolean abs, String terreno, boolean anuncioAtivo, String imagemUrl) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.cilindradas = cilindradas;
+        this.preco = preco;
+        this.automatica = automatica;
+        this.abs = abs;
+        this.terreno = terreno;
+        this.anuncioAtivo = anuncioAtivo;
+        this.imagemUrl = imagemUrl;
     }
 
     public Moto(String marca, String modelo, int cilindradas, double preco, boolean automatica, boolean abs, String terreno, boolean anuncioAtivo) {
@@ -133,4 +147,11 @@ public class Moto {
         this.anuncioAtivo = anuncioAtivo;
     }
 
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
+    }
 }
