@@ -123,14 +123,13 @@ public class Control {
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
         if(logado.getLista().getMotos().contains(moto)){
-            return "";
+            removeMotoFav(id, authentication);
         }else{
             logado.getLista().adicionarFavorita(moto);
             listaRepo.saveAndFlush(logado.getLista());
+            return "redirect:/catalogo";
         }
-
-
-        return "redirect:/catalogo";
+        return "";
     }
 
     @Transactional
@@ -141,7 +140,7 @@ public class Control {
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
         ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
 
-        listaRepo.saveAndFlush(logado.getLista().removerFavorita(motoRepo.findById(id).get()));
+        listaRepo.saveAndFlush(lista.removerFavorita(moto));
 
         return "redirect:/cliente/lista-desejo";
     }
