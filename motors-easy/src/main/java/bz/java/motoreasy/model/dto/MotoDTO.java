@@ -10,11 +10,12 @@ public class MotoDTO {
     private boolean automatica, abs;
     private boolean favoritada;
     private boolean visivel;
+    private String imagemUrl;
 
     public MotoDTO() {
     }
 
-    public MotoDTO(long id, String marca, String modelo, String terreno, int cilindradas, double preco, boolean automatica, boolean abs, boolean favoritada, boolean visivel) {
+    public MotoDTO(long id, String marca, String modelo, String terreno, int cilindradas, double preco, boolean automatica, boolean abs, boolean favoritada, boolean visivel, String imagemUrl) {
         this.id = id;
         this.marca = marca;
         this.modelo = modelo;
@@ -25,6 +26,20 @@ public class MotoDTO {
         this.abs = abs;
         this.favoritada = favoritada;
         this.visivel = visivel;
+        this.imagemUrl = imagemUrl;
+    }
+
+    public MotoDTO(String marca, String modelo, String terreno, int cilindradas, double preco, boolean automatica, boolean abs, boolean favoritada, boolean visivel, String imagemUrl) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.terreno = terreno;
+        this.cilindradas = cilindradas;
+        this.preco = preco;
+        this.automatica = automatica;
+        this.abs = abs;
+        this.favoritada = favoritada;
+        this.visivel = visivel;
+        this.imagemUrl = imagemUrl;
     }
 
     public MotoDTO(String marca, String modelo, String terreno, int cilindradas, double preco, boolean automatica, boolean abs, boolean favoritada, boolean visivel) {
@@ -50,6 +65,7 @@ public class MotoDTO {
         this.abs = moto.isAbs();
         this.favoritada = favoritada;
         this.visivel = moto.isAnuncioAtivo();
+        this.imagemUrl = moto.getImagemUrl();
     }
 
     public String getModelo() {
@@ -130,5 +146,13 @@ public class MotoDTO {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getImagemUrl() {
+        return imagemUrl;
+    }
+
+    public void setImagemUrl(String imagemUrl) {
+        this.imagemUrl = imagemUrl;
     }
 }
