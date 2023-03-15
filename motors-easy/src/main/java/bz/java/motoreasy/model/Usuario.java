@@ -18,8 +18,6 @@ public class Usuario implements UserDetails {
     @Column(unique = true)
     private String username;
     private String nome, email, senha;
-    /*Criar uma classe intermediaria tipo do Zetalab
-    private List<Moto> favoritas;*/
     private boolean administrador;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -116,15 +114,6 @@ public class Usuario implements UserDetails {
     public void setAdministrador(boolean administrador) {
         this.administrador = administrador;
     }
-
-//    public List<Moto> getFavoritas() {
-//        return favoritas;
-//    }
-//
-//    public void setFavoritas(List<Moto> favoritas) {
-//        this.favoritas = favoritas;
-//    }
-
 
     public ListaFavoritos getLista() {
         return lista;
