@@ -19,7 +19,7 @@
     </div>
     <div id="con-motos-catalogo">
         <div th:each="m: ${motos}" class="card-moto-catalogo fechado">
-            <div class="img-moto-catalogo"><img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp"></div>
+            <div class="img-moto-catalogo"><img src="${m.imagemUrl}" alt="Imagem da moto"></div>
             <div class="titulo-moto-vertical">
                 <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
             </div>
