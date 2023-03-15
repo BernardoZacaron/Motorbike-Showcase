@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ListaRepo extends JpaRepository<ListaFavoritos, Long> {
 
-    @Query("delete from ListaFavoritos lf Moto m where lf.id=?1 and lf.motos.moto_id = ?2")
+    @Query("WITH selectLista as (Select * from ListaFavoritos lf JOIN Moto m ON m.id = lf.motoId Where lf.id = ?1 AND lf.motoId = ?2) Delete from selectLista")
     void removerMoto(long listaId, long motoId);
 }
