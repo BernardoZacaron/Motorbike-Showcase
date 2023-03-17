@@ -15,7 +15,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" th:href="@{/catalogo}">Catálogo &#127949;</a></li>
-                  <li><a class="dropdown-item" th:href="@{/cliente/lista-desejo}">Lista de desejo &#10084;</a></li>
+                  <li sec:authorize="!isAuthenticated()"><a class="dropdown-item" th:href="@{/cliente/lista-desejo}">Lista de desejo &#10084;</a></li>
                   <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="dropdown-item" th:href="@{/admin/registrarMoto}">Cadastrar modelo (ADM) &#10133;</a></li>
                   <li sec:authorize="hasRole('ROLE_ADMIN')"><a class="dropdown-item" th:href="@{/admin/gerenciar}">Gerenciar coleção (ADM) &#128188;</a></li>
                   <li><hr class="dropdown-divider"></li>
