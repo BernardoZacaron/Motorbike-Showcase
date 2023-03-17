@@ -140,7 +140,7 @@ public class Control {
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
         ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
 
-        listaRepo.removerMoto(lista.getId(), moto.getId());
+        //listaRepo.removerMoto(lista.getId(), moto.getId());
 
         return "redirect:/cliente/lista-desejo";
     }
