@@ -148,7 +148,14 @@ public class Control {
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
+
+        if(logado.getLista() ==null) {
+            logado.setLista(new ListaFavoritos());
+            userRepo.saveAndFlush(logado);
+        }
+
         ListaFavoritos lista = listaRepo.getById(logado.getLista().getId());
+
 
         model.addAttribute("motosFavoritas", lista);
 
