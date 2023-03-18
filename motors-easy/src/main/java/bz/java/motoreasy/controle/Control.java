@@ -148,15 +148,15 @@ public class Control {
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
+        List<Moto> motosFavoritas = new ArrayList<>();
 
-//        if(logado.getLista() == null) {
-//            logado.setLista(new ListaFavoritos());
-//            userRepo.saveAndFlush(logado);
-//        }
+        if(logado.getLista() == null) {
+            return "redirect:/cliente/lista-desejo";
+        }else{
+            motosFavoritas = logado.getLista().getMotos();
+        }
 
-        ListaFavoritos lista = logado.getLista();
-
-        model.addAttribute("motosFavoritas", lista.getMotos());
+        model.addAttribute("motosFavoritas", motosFavoritas);
 
         return "listaDesejo";
     }
