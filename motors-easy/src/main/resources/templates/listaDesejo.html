@@ -16,7 +16,7 @@
         <div id="con-motos-lista" class="container">
               <div th:each="m: ${motosFavoritas}" class="card-moto-lista">
                   <div class="img-moto-lista">
-                    <img src="https://cdn.motor1.com/images/mgl/pkoZv/s1/4x3/kawasaki-ninja-650-abs-e-ninja-1000.webp">
+                    <img th:src="@{${m.imagemUrl}}">
                   </div>
                   <div class="conteudo-moto-lista">
                     <h3 th:text='${m.modelo}'>Kawasaki Ninja</h3>

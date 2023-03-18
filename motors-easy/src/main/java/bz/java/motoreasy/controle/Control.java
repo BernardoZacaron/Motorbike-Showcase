@@ -157,7 +157,7 @@ public class Control {
         ListaFavoritos lista = listaRepo.getById(logado.getLista().getId());
 
 
-        model.addAttribute("motosFavoritas", lista);
+        model.addAttribute("motosFavoritas", lista.getMotos());
 
         return "listaDesejo";
     }
