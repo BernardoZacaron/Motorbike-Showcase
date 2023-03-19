@@ -65,18 +65,23 @@ public class Control {
         List<Moto> todas = motoRepo.findAll();
 
 
-        if(authentication!=null && !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+        if(authentication.isAuthenticated() && !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             Usuario logado = (Usuario) authentication.getPrincipal();
+            List<Moto> favoritadas;
+            if(logado.getLista() == null)
+                favoritadas = new ArrayList<>();
+            else
+                favoritadas = logado.getLista().getMotos();
 
-            List<Moto> favoritadas = logado.getLista().getMotos();
             List<Moto> naoFavoritas = new ArrayList<>(todas);
-            naoFavoritas.remove(favoritadas);
+            naoFavoritas.removeAll(favoritadas);
 
             for (Moto m : favoritadas) {
                 motos.add(new MotoDTO(m, true));
             }
             for (Moto m : naoFavoritas) {
-                motos.add(new MotoDTO(m, false));
+                if(!motos.contains(m))
+                    motos.add(new MotoDTO(m, false));
             }
             motos = motos.stream().filter(MotoDTO::isVisivel).toList();
 
