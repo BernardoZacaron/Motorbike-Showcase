@@ -265,7 +265,8 @@ footer p{
     width: 60%;
 }
 .img-moto-lista img{
-    width: 100%;
+    width: 150px;
+    height: 110px;
 }
 
 .conteudo-moto-lista{

@@ -129,7 +129,7 @@ public class Control {
         if(logado.getLista().getMotos().contains(moto)){
             removeMotoFav(id, authentication);
         }else{
-            logado.getLista().adicionarFavorita(moto);
+            logado.getLista().adicionarFavorita(moto, logado);
             listaRepo.saveAndFlush(logado.getLista());
             return "redirect:/catalogo";
         }
@@ -145,6 +145,10 @@ public class Control {
         ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
 
         //listaRepo.removerMoto(lista.getId(), moto.getId());
+        //lista.getMotos().stream().filter(m -> m.getId() == moto.getId()).toList().remove(m);
+        lista.getMotos().removeIf(m -> m.getId() == moto.getId());
+
+        listaRepo.saveAndFlush(lista);
 
         return "redirect:/cliente/lista-desejo";
     }
