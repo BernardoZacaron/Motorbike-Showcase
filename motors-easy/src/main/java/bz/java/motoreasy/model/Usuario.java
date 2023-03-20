@@ -1,14 +1,14 @@
 package bz.java.motoreasy.model;
 
+import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Usuario implements UserDetails {
@@ -69,7 +69,6 @@ public class Usuario implements UserDetails {
         this.email = email;
         this.senha = senha;
     }
-
 
     public Long getId() {
         return id;

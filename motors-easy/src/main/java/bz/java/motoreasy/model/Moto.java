@@ -72,14 +72,6 @@ public class Moto {
         this.terreno = dto.getTerreno();
     }
 
-    public List<Moto> filtrarDuplicadas(List<Moto> listaOriginal){
-        Set<Moto> filtrada = listaOriginal.stream().collect(Collectors.toCollection(//distinct elements stored into new SET
-                        () -> new TreeSet<>(Comparator.comparing(Moto::getId)))
-                );
-
-        return filtrada.stream().toList();
-    }
-
     public void toggleVisibilidade(){
         anuncioAtivo = !anuncioAtivo;
     }

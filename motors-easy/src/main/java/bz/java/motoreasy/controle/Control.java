@@ -19,9 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.ws.rs.NotFoundException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -65,7 +64,7 @@ public class Control {
         List<Moto> todas = motoRepo.findAll();
 
 
-        if(authentication.isAuthenticated() && !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+        if(authentication!=null && !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             Usuario logado = (Usuario) authentication.getPrincipal();
             List<Moto> favoritadas;
             if(logado.getLista() == null)
@@ -74,7 +73,6 @@ public class Control {
                 favoritadas = logado.getLista().getMotos();
 
             List<Moto> naoFavoritas = new ArrayList<>(todas);
-            naoFavoritas.removeAll(favoritadas);
 
             for (Moto m : favoritadas) {
                 motos.add(new MotoDTO(m, true));
@@ -83,6 +81,7 @@ public class Control {
                 if(!motos.contains(m))
                     motos.add(new MotoDTO(m, false));
             }
+            motos = filtrarDuplicadas(motos);
             motos = motos.stream().filter(MotoDTO::isVisivel).toList();
 
         }else{
@@ -235,4 +234,12 @@ public class Control {
         return "redirect:/admin/gerenciar";
     }
 
+
+    List<MotoDTO> filtrarDuplicadas(List<MotoDTO> listaOriginal){
+        Set<MotoDTO> filtrada = listaOriginal.stream().collect(Collectors.toCollection(
+                () -> new TreeSet<>(Comparator.comparing(MotoDTO::getId)))
+        );
+
+        return filtrada.stream().toList();
+    }
 }
