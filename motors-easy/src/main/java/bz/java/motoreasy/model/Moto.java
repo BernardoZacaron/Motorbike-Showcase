@@ -4,8 +4,9 @@ import bz.java.motoreasy.model.dto.MotoDTO;
 
 import javax.persistence.*;
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Moto {
@@ -69,6 +70,14 @@ public class Moto {
         this.automatica = dto.isAutomatica();
         this.abs = dto.isAbs();
         this.terreno = dto.getTerreno();
+    }
+
+    public List<Moto> filtrarDuplicadas(List<Moto> listaOriginal){
+        Set<Moto> filtrada = listaOriginal.stream().collect(Collectors.toCollection(//distinct elements stored into new SET
+                        () -> new TreeSet<>(Comparator.comparing(Moto::getId)))
+                );
+
+        return filtrada.stream().toList();
     }
 
     public void toggleVisibilidade(){
