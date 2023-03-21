@@ -2,6 +2,7 @@ package bz.java.motoreasy.model;
 
 import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
+import bz.java.motoreasy.model.util.AdicaoLista;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,31 +21,30 @@ public class Usuario implements UserDetails {
     private String nome, email, senha;
     private boolean administrador;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "listaFavoritos_id", referencedColumnName = "id")
-    private ListaFavoritos lista;
+    @OneToMany(mappedBy = "usuario")
+    List<AdicaoLista> adicoes = new ArrayList<>();
 
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador, ListaFavoritos lista) {
+    public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador, List<AdicaoLista> adicoes) {
         this.id = id;
         this.username = username;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.administrador = administrador;
-        this.lista = lista;
+        this.adicoes = adicoes;
     }
 
-    public Usuario(String nome, String username, String email, String senha, boolean administrador, ListaFavoritos lista) {
+    public Usuario(String nome, String username, String email, String senha, boolean administrador, List<AdicaoLista> adicoes) {
         this.username = username;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.administrador = administrador;
-        this.lista = lista;
+        this.adicoes = adicoes;
     }
 
     public Usuario(String nome, String username, String email, String senha, boolean administrador) {
@@ -68,6 +68,10 @@ public class Usuario implements UserDetails {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+    }
+
+    public void novaAdicao(Moto moto, Usuario usuario){
+        adicoes.add(new AdicaoLista(usuario, moto));
     }
 
     public Long getId() {
@@ -114,15 +118,13 @@ public class Usuario implements UserDetails {
         this.administrador = administrador;
     }
 
-    public ListaFavoritos getLista() {
-        return lista;
+    public List<AdicaoLista> getAdicoes() {
+        return adicoes;
     }
 
-    public void setLista(ListaFavoritos lista) {
-        this.lista = lista;
+    public void setAdicoes(List<AdicaoLista> adicoes) {
+        this.adicoes = adicoes;
     }
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

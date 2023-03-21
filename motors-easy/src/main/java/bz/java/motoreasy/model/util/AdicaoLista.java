@@ -1,7 +1,7 @@
 package bz.java.motoreasy.model.util;
 
-import bz.java.motoreasy.model.ListaFavoritos;
 import bz.java.motoreasy.model.Moto;
+import bz.java.motoreasy.model.Usuario;
 
 import javax.persistence.*;
 
@@ -13,19 +13,22 @@ public class AdicaoLista {
     Long id;
 
     @ManyToOne
-    @Column(name = "LISTA_FAVORITOS_ID")
-    ListaFavoritos lista;
+    Usuario usuario;
 
     @ManyToOne
-    @Column(name = "MOTOS_ID")
     Moto moto;
 
     public AdicaoLista() {
     }
 
-    public AdicaoLista(Long id, ListaFavoritos lista, Moto moto) {
+    public AdicaoLista(Long id, Usuario usuario, Moto moto) {
         this.id = id;
-        this.lista = lista;
+        this.usuario = usuario;
+        this.moto = moto;
+    }
+
+    public AdicaoLista(Usuario usuario, Moto moto) {
+        this.usuario = usuario;
         this.moto = moto;
     }
 
@@ -37,12 +40,12 @@ public class AdicaoLista {
         this.id = id;
     }
 
-    public ListaFavoritos getLista() {
-        return lista;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setLista(ListaFavoritos lista) {
-        this.lista = lista;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Moto getMoto() {

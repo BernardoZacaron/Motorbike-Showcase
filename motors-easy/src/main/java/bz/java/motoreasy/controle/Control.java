@@ -1,11 +1,11 @@
 package bz.java.motoreasy.controle;
 
-import bz.java.motoreasy.model.ListaFavoritos;
 import bz.java.motoreasy.model.Moto;
 import bz.java.motoreasy.model.Usuario;
 import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
-import bz.java.motoreasy.repository.ListaRepo;
+import bz.java.motoreasy.model.util.AdicaoLista;
+import bz.java.motoreasy.repository.AdicaoRepo;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
 import bz.java.motoreasy.seguranca.UserService;
@@ -32,8 +32,11 @@ public class Control {
     @Autowired
     UsuarioRepo userRepo;
 
+//    @Autowired
+//    ListaRepo listaRepo;
+
     @Autowired
-    ListaRepo listaRepo;
+    AdicaoRepo adicaoRepo;
 
     @Autowired
     UserService userService;
@@ -49,8 +52,8 @@ public class Control {
             Usuario logado = (Usuario) authentication.getPrincipal();
             nomeUsuario = logado.getNome();
 
-            if(logado.getLista()==null){
-                logado.setLista(new ListaFavoritos());
+            if(logado.getAdicoes()==null){
+                logado.setAdicoes(new ArrayList<AdicaoLista>());
             }
         }
 
@@ -66,11 +69,13 @@ public class Control {
 
         if(authentication!=null && !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             Usuario logado = (Usuario) authentication.getPrincipal();
-            List<Moto> favoritadas;
-            if(logado.getLista() == null)
+            List<Moto> favoritadas = new ArrayList<>();
+            if(logado.getAdicoes() == null)
                 favoritadas = new ArrayList<>();
-            else
-                favoritadas = logado.getLista().getMotos();
+            else{
+                favoritadas = listaFavoritos(logado);
+            }
+
 
             List<Moto> naoFavoritas = new ArrayList<>(todas);
 
@@ -119,57 +124,56 @@ public class Control {
 
 
     //Clientes logados
-    @Transactional
-    @PostMapping("/cliente/addDesejo")
-    public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
-        Usuario logado = (Usuario) authentication.getPrincipal();
+//    @Transactional
+//    @PostMapping("/cliente/addDesejo")
+//    public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
+//        Usuario logado = (Usuario) authentication.getPrincipal();
+//
+//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+//
+//        if(listaFavoritos(logado).contains(moto)){
+//            removeMotoFav(id, authentication);
+//        }else{
+//            adicaoRepo.save(new AdicaoLista(logado, moto));
+//            return "redirect:/catalogo";
+//        }
+//        return "";
+//    }
 
-        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+//    @Transactional
+//    @PostMapping("/cliente/removerDesejo")
+//    public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
+//        Usuario logado = (Usuario) authentication.getPrincipal();
+//
+//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+//        ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
+//
+//        //listaRepo.removerMoto(lista.getId(), moto.getId());
+//        //lista.getMotos().stream().filter(m -> m.getId() == moto.getId()).toList().remove(m);
+//        lista.getMotos().removeIf(m -> m.getId() == moto.getId());
+//
+//        listaRepo.saveAndFlush(lista);
+//
+//        return "redirect:/cliente/lista-desejo";
+//    }
 
-        if(logado.getLista().getMotos().contains(moto)){
-            removeMotoFav(id, authentication);
-        }else{
-            logado.getLista().adicionarFavorita(moto, logado);
-            listaRepo.saveAndFlush(logado.getLista());
-            return "redirect:/catalogo";
-        }
-        return "";
-    }
-
-    @Transactional
-    @PostMapping("/cliente/removerDesejo")
-    public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
-        Usuario logado = (Usuario) authentication.getPrincipal();
-
-        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-        ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
-
-        //listaRepo.removerMoto(lista.getId(), moto.getId());
-        //lista.getMotos().stream().filter(m -> m.getId() == moto.getId()).toList().remove(m);
-        lista.getMotos().removeIf(m -> m.getId() == moto.getId());
-
-        listaRepo.saveAndFlush(lista);
-
-        return "redirect:/cliente/lista-desejo";
-    }
-
-    @GetMapping("/cliente/lista-desejo")
-    public String callListaDesejoPage(Model model, Authentication authentication) {
-        Usuario logado;
-        List<Moto> motosFavoritas = new ArrayList<>();
-
-        if(authentication.isAuthenticated()){
-            logado = (Usuario) authentication.getPrincipal();
-            if(logado.getLista()!=null)
-                motosFavoritas = logado.getLista().getMotos();
-        }else{
-            return "redirect:/login";
-        }
-
-        model.addAttribute("motosFavoritas", motosFavoritas);
-
-        return "listaDesejo";
-    }
+//    @GetMapping("/cliente/lista-desejo")
+//    public String callListaDesejoPage(Model model, Authentication authentication) {
+//        Usuario logado;
+//        List<Moto> motosFavoritas = new ArrayList<>();
+//
+//        if(authentication.isAuthenticated()){
+//            logado = (Usuario) authentication.getPrincipal();
+//            if(logado.getLista()!=null)
+//                motosFavoritas = logado.getLista().getMotos();
+//        }else{
+//            return "redirect:/login";
+//        }
+//
+//        model.addAttribute("motosFavoritas", motosFavoritas);
+//
+//        return "listaDesejo";
+//    }
 
 
     //Admin apenas
@@ -245,5 +249,15 @@ public class Control {
         );
 
         return filtrada.stream().toList();
+    }
+
+    List<Moto> listaFavoritos(Usuario logado){
+        List<Moto> lista = new ArrayList<>();
+
+        for (AdicaoLista ad : logado.getAdicoes()){
+            lista.add(ad.getMoto());
+        }
+
+        return lista;
     }
 }

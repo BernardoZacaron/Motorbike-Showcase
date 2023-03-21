@@ -1,6 +1,7 @@
 package bz.java.motoreasy.model;
 
 import bz.java.motoreasy.model.dto.MotoDTO;
+import bz.java.motoreasy.model.util.AdicaoLista;
 
 import javax.persistence.*;
 import java.awt.*;
@@ -23,8 +24,8 @@ public class Moto {
     private boolean anuncioAtivo = true;
     private String imagemUrl;
 
-    @ManyToMany(mappedBy = "motos")
-    List<ListaFavoritos> listas = new ArrayList<>();
+    @OneToMany(mappedBy = "moto")
+    List<AdicaoLista> adicoes = new ArrayList<>();
 
     public Moto() {
     }
