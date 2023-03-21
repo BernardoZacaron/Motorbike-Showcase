@@ -3,6 +3,7 @@ package bz.java.motoreasy.model;
 import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
 import bz.java.motoreasy.model.util.AdicaoLista;
+import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +22,7 @@ public class Usuario implements UserDetails {
     private String nome, email, senha;
     private boolean administrador;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
     List<AdicaoLista> adicoes = new ArrayList<>();
 
 
