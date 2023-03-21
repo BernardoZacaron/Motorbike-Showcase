@@ -13,7 +13,11 @@ public class ListaFavoritos {
     @OneToOne
     Usuario pertencente;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "Lista_Motos",
+            joinColumns = @JoinColumn(name = "lista_id"),
+            inverseJoinColumns = @JoinColumn(name = "moto_id"))
     List<Moto> motos = new ArrayList<Moto>();
 
     public ListaFavoritos() {

@@ -23,6 +23,9 @@ public class Moto {
     private boolean anuncioAtivo = true;
     private String imagemUrl;
 
+    @ManyToMany(mappedBy = "motos")
+    List<ListaFavoritos> listas = new ArrayList<>();
+
     public Moto() {
     }
 
