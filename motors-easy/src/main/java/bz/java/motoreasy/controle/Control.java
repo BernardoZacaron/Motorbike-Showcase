@@ -226,6 +226,13 @@ public class Control {
     }
 
     List<Moto> listaFavoritos(Usuario logado){
+        if(logado==null)
+            return null;
+        if(logado.getAdicoes()==null){
+            logado.setAdicoes(new ArrayList<AdicaoLista>());
+            userRepo.saveAndFlush(logado);
+        }
+
         return adicaoRepo.findByUsuario(logado);
     }
 }
