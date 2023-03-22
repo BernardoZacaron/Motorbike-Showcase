@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface AdicaoRepo extends JpaRepository<AdicaoLista, Long> {
 
-    @Query("DELETE FROM AdicaoLista WHERE USUARIO_ID = ?1 AND MOTO_ID = ?2")
+    @Query("DELETE FROM AdicaoLista WHERE USUARIO = ?1 AND MOTO = ?2")
     void removerMotoDaLista(long usuarioId, long motoId);
 
     List<Moto> findByUsuario(Usuario usuario);

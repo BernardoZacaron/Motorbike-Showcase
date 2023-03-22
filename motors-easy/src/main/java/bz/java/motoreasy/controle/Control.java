@@ -12,7 +12,6 @@ import bz.java.motoreasy.seguranca.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,9 +31,6 @@ public class Control {
     @Autowired
     UsuarioRepo userRepo;
 
-//    @Autowired
-//    ListaRepo listaRepo;
-
     @Autowired
     AdicaoRepo adicaoRepo;
 
@@ -44,6 +40,7 @@ public class Control {
     @Autowired
     PasswordEncoder pe;
 
+    
     //Aberto
     @GetMapping({"/", "/home"})
     public String callHomePage(Model model, Authentication authentication){
@@ -66,17 +63,9 @@ public class Control {
         List<MotoDTO> motos = new ArrayList<>();
         List<Moto> todas = motoRepo.findAll();
 
-
         if(authentication!=null && !authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             Usuario logado = (Usuario) authentication.getPrincipal();
-            List<Moto> favoritadas = new ArrayList<>();
-            if(logado.getAdicoes() == null)
-                favoritadas = new ArrayList<>();
-            else{
-                favoritadas = listaFavoritos(logado);
-            }
-
-
+            List<Moto> favoritadas = listaFavoritos(logado);
             List<Moto> naoFavoritas = new ArrayList<>(todas);
 
             for (Moto m : favoritadas) {
@@ -139,35 +128,21 @@ public class Control {
         return "redirect:/catalogo";
     }
 
-//    @Transactional
-//    @PostMapping("/cliente/removerDesejo")
-//    public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
-//        Usuario logado = (Usuario) authentication.getPrincipal();
-//
-//        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-//        ListaFavoritos lista = listaRepo.findById(logado.getLista().getId()).orElseThrow(NotFoundException::new);
-//
-//        //listaRepo.removerMoto(lista.getId(), moto.getId());
-//        //lista.getMotos().stream().filter(m -> m.getId() == moto.getId()).toList().remove(m);
-//        lista.getMotos().removeIf(m -> m.getId() == moto.getId());
-//
-//        listaRepo.saveAndFlush(lista);
-//
-//        return "redirect:/cliente/lista-desejo";
-//    }
+    @Transactional
+    @PostMapping("/cliente/removerDesejo")
+    public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
+        Usuario logado = (Usuario) authentication.getPrincipal();
+        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
+
+        adicaoRepo.removerMotoDaLista(logado.getId(), moto.getId());
+
+        return "redirect:/cliente/lista-desejo";
+    }
 
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
-        Usuario logado;
-        List<Moto> motosFavoritas = new ArrayList<>();
-
-        if(authentication.isAuthenticated()){
-            logado = (Usuario) authentication.getPrincipal();
-            if(logado.getAdicoes()!=null)
-                motosFavoritas = listaFavoritos(logado);
-        }else{
-            return "redirect:/login";
-        }
+        Usuario logado = (Usuario) authentication.getPrincipal();
+        List<Moto> motosFavoritas = adicaoRepo.findByUsuario(logado);
 
         model.addAttribute("motosFavoritas", motosFavoritas);
 
