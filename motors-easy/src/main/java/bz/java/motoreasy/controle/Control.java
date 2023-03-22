@@ -132,7 +132,7 @@ public class Control {
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
 
         if(listaFavoritos(logado).contains(moto)){
-            adicaoRepo.deleteByUsuarioAndMoto(logado, moto);
+            adicaoRepo.removerMotoDaLista(logado.getId(), moto.getId());
         }else{
             adicaoRepo.save(new AdicaoLista(logado, moto));
         }
