@@ -40,7 +40,7 @@ public class Control {
     @Autowired
     PasswordEncoder pe;
 
-    
+
     //Aberto
     @GetMapping({"/", "/home"})
     public String callHomePage(Model model, Authentication authentication){
