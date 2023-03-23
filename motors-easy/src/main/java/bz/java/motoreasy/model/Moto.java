@@ -19,7 +19,7 @@ public class Moto {
     private boolean automatica;
     private boolean abs;
     private String terreno;
-    private boolean anuncioAtivo = true;
+    private boolean anuncioAtivo;
     private String imagemUrl;
 
     @OneToMany(mappedBy = "moto")

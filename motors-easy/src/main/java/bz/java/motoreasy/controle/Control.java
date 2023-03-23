@@ -159,7 +159,7 @@ public class Control {
 
     @GetMapping("/admin/registrarMoto")
     public String callRegistroMotoPage(Model model){
-        model.addAttribute("novoMoto", new Moto());
+        model.addAttribute("novoMoto", new MotoDTO());
         return "registrarMoto";
     }
 

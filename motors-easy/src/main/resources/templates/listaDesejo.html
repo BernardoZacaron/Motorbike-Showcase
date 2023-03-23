@@ -19,7 +19,7 @@
                     <img th:src="@{${m.imagemUrl}}">
                   </div>
                   <div class="conteudo-moto-lista">
-                    <h3 th:text='${m.modelo}'>Kawasaki Ninja</h3>
+                      <h3><span th:text='${m.marca}'>Kawasaki</span> - <span th:text='${m.modelo}'>Ninja</span></h3>
                     <p><span th:text='${m.cilindradas}'>xxx</span> cilindradas</p>
                     <p>R$<span th:text='${m.preco}'>20000.0</span></p>
                     <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
