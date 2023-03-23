@@ -1,16 +1,13 @@
 package bz.java.motoreasy.model;
 
-import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
-import bz.java.motoreasy.model.util.AdicaoLista;
-import org.hibernate.annotations.Cascade;
+import bz.java.motoreasy.model.util.Adicao;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Entity
 public class Usuario implements UserDetails {
@@ -23,13 +20,13 @@ public class Usuario implements UserDetails {
     private boolean administrador;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    List<AdicaoLista> adicoes = new ArrayList<>();
+    List<Adicao> adicoes = new ArrayList<>();
 
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador, List<AdicaoLista> adicoes) {
+    public Usuario(Long id, String username, String nome, String email, String senha, boolean administrador, List<Adicao> adicoes) {
         this.id = id;
         this.username = username;
         this.nome = nome;
@@ -39,7 +36,7 @@ public class Usuario implements UserDetails {
         this.adicoes = adicoes;
     }
 
-    public Usuario(String nome, String username, String email, String senha, boolean administrador, List<AdicaoLista> adicoes) {
+    public Usuario(String nome, String username, String email, String senha, boolean administrador, List<Adicao> adicoes) {
         this.username = username;
         this.nome = nome;
         this.email = email;
@@ -72,7 +69,7 @@ public class Usuario implements UserDetails {
     }
 
     public void novaAdicao(Moto moto, Usuario usuario){
-        adicoes.add(new AdicaoLista(usuario, moto));
+        adicoes.add(new Adicao(usuario, moto));
     }
 
     public Long getId() {
@@ -119,11 +116,11 @@ public class Usuario implements UserDetails {
         this.administrador = administrador;
     }
 
-    public List<AdicaoLista> getAdicoes() {
+    public List<Adicao> getAdicoes() {
         return adicoes;
     }
 
-    public void setAdicoes(List<AdicaoLista> adicoes) {
+    public void setAdicoes(List<Adicao> adicoes) {
         this.adicoes = adicoes;
     }
 

@@ -1,13 +1,11 @@
 package bz.java.motoreasy.model;
 
 import bz.java.motoreasy.model.dto.MotoDTO;
-import bz.java.motoreasy.model.util.AdicaoLista;
+import bz.java.motoreasy.model.util.Adicao;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 public class Moto {
@@ -25,7 +23,7 @@ public class Moto {
     private String imagemUrl;
 
     @OneToMany(mappedBy = "moto")
-    List<AdicaoLista> adicoes = new ArrayList<>();
+    List<Adicao> adicoes = new ArrayList<>();
 
     public Moto() {
     }

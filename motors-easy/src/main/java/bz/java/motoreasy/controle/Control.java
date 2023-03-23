@@ -4,7 +4,7 @@ import bz.java.motoreasy.model.Moto;
 import bz.java.motoreasy.model.Usuario;
 import bz.java.motoreasy.model.dto.MotoDTO;
 import bz.java.motoreasy.model.dto.UsuarioDTO;
-import bz.java.motoreasy.model.util.AdicaoLista;
+import bz.java.motoreasy.model.util.Adicao;
 import bz.java.motoreasy.repository.AdicaoRepo;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
@@ -50,7 +50,7 @@ public class Control {
             nomeUsuario = logado.getNome();
 
             if(logado.getAdicoes()==null){
-                logado.setAdicoes(new ArrayList<AdicaoLista>());
+                logado.setAdicoes(new ArrayList<Adicao>());
             }
         }
 
@@ -122,7 +122,7 @@ public class Control {
         if(listaFavoritos(logado).contains(moto)){
             adicaoRepo.removerMotoDaLista(logado.getId(), moto.getId());
         }else{
-            adicaoRepo.save(new AdicaoLista(logado, moto));
+            adicaoRepo.save(new Adicao(logado, moto));
         }
         return "redirect:/catalogo";
     }
@@ -225,10 +225,10 @@ public class Control {
     }
 
     List<Moto> listaFavoritos(Usuario logado){
-        List<AdicaoLista> adicoes = adicaoRepo.findByUsuario(logado);
+        List<Adicao> adicoes = adicaoRepo.findByUsuario(logado);
         List<Moto> favoritas = new ArrayList<>();
 
-        for (AdicaoLista ad : adicoes) {
+        for (Adicao ad : adicoes) {
             favoritas.add(motoRepo.getById(ad.getMoto().getId()));
         }
 

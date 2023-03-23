@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "LISTA_FAVORITOS_MOTOS")
-public class AdicaoLista {
+public class Adicao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
@@ -18,16 +18,16 @@ public class AdicaoLista {
     @ManyToOne
     Moto moto;
 
-    public AdicaoLista() {
+    public Adicao() {
     }
 
-    public AdicaoLista(Long id, Usuario usuario, Moto moto) {
+    public Adicao(Long id, Usuario usuario, Moto moto) {
         this.id = id;
         this.usuario = usuario;
         this.moto = moto;
     }
 
-    public AdicaoLista(Usuario usuario, Moto moto) {
+    public Adicao(Usuario usuario, Moto moto) {
         this.usuario = usuario;
         this.moto = moto;
     }
