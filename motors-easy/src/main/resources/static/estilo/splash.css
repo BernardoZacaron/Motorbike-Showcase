@@ -258,19 +258,19 @@ footer p{
     
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .img-moto-lista{
-    width: 60%;
+    width: 45%;
 }
 .img-moto-lista img{
-    width: 150px;
-    height: 110px;
+    width: 200px;
+    height: 140px;
 }
 
 .conteudo-moto-lista{
-    width: 30%;
+    width: 45%;
 }
 
 .conteudo-moto-lista h3{
