@@ -77,7 +77,6 @@ public class Control {
             }
             motos = filtrarDuplicadas(motos);
             motos = motos.stream().filter(MotoDTO::isVisivel).toList();
-
         }else{
             for (Moto m : todas) {
                 motos.add(new MotoDTO(m, false));
@@ -142,7 +141,7 @@ public class Control {
     @GetMapping("/cliente/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
-        List<Moto> motosFavoritas = adicaoRepo.findByUsuario(logado);
+        List<Moto> motosFavoritas = listaFavoritos(logado);
 
         model.addAttribute("motosFavoritas", motosFavoritas);
 
@@ -226,13 +225,13 @@ public class Control {
     }
 
     List<Moto> listaFavoritos(Usuario logado){
-        if(logado==null)
-            return null;
-        if(logado.getAdicoes()==null){
-            logado.setAdicoes(new ArrayList<AdicaoLista>());
-            userRepo.saveAndFlush(logado);
+        List<AdicaoLista> adicoes = adicaoRepo.findByUsuario(logado);
+        List<Moto> favoritas = new ArrayList<>();
+
+        for (AdicaoLista ad : adicoes) {
+            favoritas.add(motoRepo.getById(ad.getMoto().getId()));
         }
 
-        return adicaoRepo.findByUsuario(logado);
+        return favoritas;
     }
 }
