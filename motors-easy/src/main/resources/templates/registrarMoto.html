@@ -39,7 +39,7 @@
                   <input type="number" class="form-control" id="txtPreco" th:field="*{preco}" placeholder="R$">
               </div>
             </div>
-            <div class="row inline-flex mb-3">
+            <div class="row mb-3">
                 <div class="col-lg-6 col-sm-12">
                     <label for="sltTerreno" class="form-label">Selecione o terreno</label>
                     <select class="form-select" aria-label="Default select example" id="sltTerreno" th:field="*{terreno}">
@@ -48,12 +48,12 @@
                         <option value="Misto">Misto</option>
                     </select>
                 </div>
-                <div class="">
-                    <div class="col-lg-3 col-sm-6" id="conAutomatica">
+                <div class="col-lg-6 col-sm-12 form-inline d-flex justify-content-evenly" id="conAutomatica">
+                    <div>
                         <input type="checkbox" class="form-check-input" id="boolAutomatica" th:field="*{automatica}">
                         <label class="form-check-label" for="boolAutomatica" id="lblAutomatica">É automática</label>
                     </div>
-                    <div class="col-lg-3 col-sm-6" id="conAbs">
+                    <div>
                         <input type="checkbox" class="form-check-input" id="boolAbs" th:field="*{abs}">
                         <label class="form-check-label" for="boolAbs" id="lblAbs">Tem freio ABS</label>
                     </div>
