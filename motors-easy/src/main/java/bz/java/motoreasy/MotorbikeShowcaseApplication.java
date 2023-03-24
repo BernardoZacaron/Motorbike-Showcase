@@ -20,9 +20,6 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 	@Autowired
 	UsuarioRepo userRepo;
 
-//	@Autowired
-//	ListaRepo listaRepo;
-
 	@Autowired
 	UserService service;
 
@@ -45,11 +42,9 @@ public class MotorbikeShowcaseApplication implements CommandLineRunner {
 		motoRepo.save(m4);
 		Moto m5 = new Moto("Teste", "Desativadah", 000, 0000, true, true, "Estrada", false, "https://boracolorir.com.br/wp-content/uploads/2022/02/desenhos-de-motos-para-colorir-7-1024x585.jpg");
 		motoRepo.save(m5);
+		Moto m6 = new Moto("Harley-Davidson", "Sportster", 883, 94000, true, true, "Misto", true, "https://cdn.motor1.com/images/mgl/z6xvK/s1/2021-harley-davidson-sportster-s---vivid-black-main.jpg");
+		motoRepo.save(m6);
 
-//		ListaFavoritos l1 = new ListaFavoritos();
-//		listaRepo.save(l1);
-//		ListaFavoritos l2 = new ListaFavoritos();
-//		listaRepo.save(l2);
 
 		Usuario u1 = new Usuario("Bernardo", "ber", "bernardo@email", pe.encode("senha"), false);
 		userRepo.save(u1);

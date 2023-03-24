@@ -73,6 +73,7 @@ public class Moto {
         this.abs = dto.isAbs();
         this.terreno = dto.getTerreno();
         this.imagemUrl = dto.getImagemUrl();
+        this.anuncioAtivo = dto.isVisivel();
     }
 
     public void toggleVisibilidade(){
