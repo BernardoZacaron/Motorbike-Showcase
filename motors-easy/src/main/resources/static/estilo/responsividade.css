@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Raleway:wght@600&family=Roboto+Condensed&display=swap');
+
+/*Básico*/
+p,h3{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+h1{
+    font-family: 'Poppins', sans-serif;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.decoration-none{
+    text-decoration: none;
+    color: black;
+}
+
+/*Estrutura*/
+main{
+    width: 100%;
+    background-image: url("https://live.staticflickr.com/3217/3499224708_9b089d2b83_b.jpg");
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+}
+
+#main-index{
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    position: relative;
+    overflow: hidden;
+    height: 75%;
+}
+
+#main-lista{
+    min-height: 80%;
+    position: absolute;
+}
+
+#main-catalogo{
+    min-height: 90%;
+    position: absolute;
+}
+
+#main-registro{
+    min-height: 85%;
+    position: absolute;
+}
+
+/*Cabeçalho*/
+#cabecalho h1{
+    font-family: 'Raleway', sans-serif;
+}
+
+#cabecalho a{
+    color: black;
+}
+
+#con-nav{
+    align-self: flex-end;
+}
+
+#logo{
+    float: right;
+    grid-area: logo;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-end;
+    margin-left: 50%;
+}
+#logo img{
+    width: 30%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: -5% 0 -8%;
+}
+
+#con-cabecalho{
+    background-color: red;
+    border-bottom: darkgray 3px solid;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+/*Conteudo*/
+.titulo-pagina{
+    text-rendering: optimizeLegibility;
+}
+
+.con-titulo-pagina{
+    width: 100%;
+    background-color: rgb(186, 209, 247, 0.5);
+}
+
+#box-apresentacao{
+    border: 3px darkgray solid;
+    border-radius: 2%;
+    padding: 2%;
+    margin: 1% 5% 1%;
+    background-color: rgb(66, 135, 245, 0.9);
+}
+
+/*Rodapé*/
+#con-footer{
+    align-self: end;
+}
+
+footer{
+    width: 100%;
+    border-top: darkgray 3px solid;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    height: 5%;
+
+    color: black;
+}
+
+footer p{
+    font-size: small;
+    align-self: flex-end;
+}
+/*
+#footer-registrar{
+    position: absolute;
+    bottom: 0;
+}
+
+#footer-login{
+    position: absolute;
+    bottom: 0;
+}
+*/
+/*Pagina catalogo*/
+.img-moto-catalogo img{
+    width: 500px;
+    height: 350px;
+}
+.img-moto-catalogo{
+    grid-area: imagem;
+    text-align: end;
+    margin-right: 5%;
+}
+.titulo-moto-vertical{
+    grid-area: titulo;    
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.titulo-moto-vertical h3{
+    font-size: 3em;
+    -webkit-transform: rotate(90deg);
+    vertical-align: middle;
+}
+
+.titulo-moto-interno{
+    font-size: 2em;
+}
+
+.conteudo-moto-catalogo{
+    grid-area: conteudo;
+    font-size: x-large;
+    text-align: start;
+}
+
+.card-moto-catalogo{
+    color: black;
+    border: 1px black solid;
+    border-radius: 1%;
+    background-color: cadetblue;
+    
+    padding: 2% 0 2%;
+    margin-bottom: 2%;
+    width: 90%;
+
+    
+    display: grid;
+    grid-template-columns: 60% 35% 1fr;
+    grid-template-areas: 
+    'imagem conteudo titulo';
+
+    position: relative;
+}
+
+.aberto{
+    transition: left 0.5s ease-in-out;
+    left: -5%;
+}
+.fechado{
+    transition: left 0.5s ease-in-out;
+    left: -85%;
+}
+
+.botao-removerEstilo{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.botao-desabilitado{
+    border-color: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.btn-favorito-catalogo img{
+    width: 50%;
+}
+
+#texto-catalogo{
+    position: fixed;
+    background-color: rgb(139, 182, 252, 0.8);
+    border: 2px black solid;
+    border-radius: 1%;
+    width: 70%;
+    margin: 0 15% 0;
+    padding: 2%;
+    font-size: larger;
+}
+
+#texto-catalogo img{
+    width: 5%;
+    float: left;
+}
+
+/*Pagina lista*/
+#con-motos-lista{
+    /*display: flex;
+    flex-direction: row;
+    justify-content: space-around;*/
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+.card-moto-lista{
+    border: 3px red solid;
+    background-color: var(--azulClaro);
+    width: 96%;
+    padding: 1%;
+    margin: 0 2% 2%;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.img-moto-lista{
+    width: 45%;
+}
+.img-moto-lista img{
+    width: 200px;
+    height: 140px;
+}
+
+.conteudo-moto-lista{
+    width: 45%;
+}
+
+.conteudo-moto-lista h3{
+    font-size: large;
+}
+
+.btn-favorito-lista img{
+    width: 40%;
+}
+
+/*Pagina registro moto*/
+#con-registrar{
+    width: 60%;
+    margin: 1% 20% 0;
+    border: 2px gray solid;
+    border-radius: 3%;
+    padding: 2%;
+
+    background-color: aliceblue;
+}
+
+#conAutomatica{
+    padding-top: 5%;
+}
+
+
+/*Página login*/
+#body-login{
+    background-color: burlywood;
+    padding-top: 2%;
+}
+
+#box-login{
+    width: 50%;
+    margin: 2% 25% 0;
+    padding: 2%;
+    border: 2px gray solid;
+    border-radius: 2%;
+}
+
+/*Página gerenciar*/
+#main-gerenciar{
+    min-height: 75%;
+    position: absolute;
+}
+
+#lista-gerenciar{
+
+}
+
+.card-moto-gerenciar{
+    margin: 3px darkgray solid;
+    background-color: cornflowerblue;
+    display: flex;
+    padding: 2%;
+    width: 90%;
+    margin: 1% 5% 1%;
+}
+
+.card-moto-gerenciar h2{
+    color: blue;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 15%;
+}
+
+.acoes-gerenciar{
+    display: flex;
+    justify-content: space-around;
+}
+
+.celula-conteudo-gerenciar{
+    width: 45%;
+}
+
+.celula-imagem-gerenciar{
+    width: 50%;
+}
+.celula-imagem-gerenciar img{
+    width: 80%;
+}
+
+.btn-acao-gerenciar p{
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+
+
+
+
+:root{
+    --azulClaro: #8bb6fc;
+}
