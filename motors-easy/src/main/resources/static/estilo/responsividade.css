@@ -34,9 +34,6 @@ main{
 }
 
 /*Cabeçalho*/
-#cabecalho h1{
-    font-family: 'Raleway', sans-serif;
-}
 
 #cabecalho a{
     color: black;
@@ -72,10 +69,6 @@ main{
 }
 
 /*Conteudo*/
-.titulo-pagina{
-    text-rendering: optimizeLegibility;
-}
-
 .con-titulo-pagina{
     width: 100%;
     background-color: rgb(186, 209, 247, 0.5);
