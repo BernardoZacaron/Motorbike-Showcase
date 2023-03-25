@@ -109,17 +109,8 @@ footer p{
     font-size: small;
     align-self: flex-end;
 }
-/*
-#footer-registrar{
-    position: absolute;
-    bottom: 0;
-}
 
-#footer-login{
-    position: absolute;
-    bottom: 0;
-}
-*/
+
 /*Pagina catalogo*/
 .img-moto-catalogo img{
     width: 500px;
@@ -184,22 +175,6 @@ footer p{
     left: -85%;
 }
 
-.botao-removerEstilo{
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
-
-.botao-desabilitado{
-    border-color: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
-}
-
 .btn-favorito-catalogo img{
     width: 50%;
 }
@@ -222,10 +197,6 @@ footer p{
 
 /*Pagina lista*/
 #con-motos-lista{
-    /*display: flex;
-    flex-direction: row;
-    justify-content: space-around;*/
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: stretch;
