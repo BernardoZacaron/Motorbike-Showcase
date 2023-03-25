@@ -141,7 +141,6 @@ footer p{
 }
 
 .card-moto-catalogo{
-    color: black;
     border: 1px black solid;
     border-radius: 1%;
     background-color: cadetblue;
@@ -228,6 +227,7 @@ footer p{
 .btn-favorito-lista img{
     width: 40%;
 }
+
 
 /*Pagina registro moto*/
 #con-registrar{
