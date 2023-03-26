@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Raleway:wght@600&family=Roboto+Condensed&display=swap');
 
-/*Básico*/
+/*Básico e essencial*/
 p,h3{
     font-family: 'Roboto Condensed', sans-serif;
 }
 h1{
     font-family: 'Poppins', sans-serif;
+}
+
+.titulo-pagina{
+    text-rendering: optimizeLegibility;
 }
 
 .underline{
@@ -17,12 +21,114 @@ h1{
     color: black;
 }
 
-/*Estrutura*/
+.botao-removerEstilo{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.botao-desabilitado{
+    border-color: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
 main{
-    width: 100%;
     background-image: url("https://live.staticflickr.com/3217/3499224708_9b089d2b83_b.jpg");
     background-repeat: repeat-y;
     background-size: 100% auto;
+}
+
+#cabecalho h1{
+    font-family: 'Raleway', sans-serif;
+}
+
+#cabecalho a{
+    color: black;
+}
+
+#con-cabecalho{
+    background-color: red;
+    border-bottom: darkgray 3px solid;
+}
+
+.con-titulo-pagina{
+    background-color: rgb(186, 209, 247, 0.5);
+}
+
+#box-apresentacao{
+    border: 3px darkgray solid;
+    border-radius: 2%;
+    background-color: rgb(66, 135, 245, 0.9);
+}
+
+footer{
+    border-top: darkgray 3px solid;
+    background-color: red;
+    color: black;
+}
+
+footer p{
+    font-size: small;
+}
+
+.card-moto-catalogo{
+    color: black;
+    border: 1px black solid;
+    border-radius: 1%;
+    background-color: cadetblue;
+}
+
+#texto-catalogo{
+    background-color: rgb(139, 182, 252, 0.8);
+    border: 2px black solid;
+    border-radius: 1%;
+}
+
+.card-moto-lista{
+    border: 3px red solid;
+    background-color: var(--azulClaro);
+}
+
+#con-registrar{
+    border: 2px gray solid;
+    border-radius: 3%;
+    background-color: aliceblue;
+}
+
+#body-login{
+    background-color: burlywood;
+}
+
+#box-login{
+    border: 2px gray solid;
+}
+
+.card-moto-gerenciar{
+    margin: 3px darkgray solid;
+    background-color: cornflowerblue;
+}
+
+.card-moto-gerenciar h2{
+    color: blue;
+}
+
+:root{
+    --azulClaro: #8bb6fc;
+}
+
+
+
+
+@media (min-width: 900px) {
+
+/*Estrutura*/
+main{
+    width: 100%;
 }
 
 #main-index{
@@ -50,14 +156,6 @@ main{
 }
 
 /*Cabeçalho*/
-#cabecalho h1{
-    font-family: 'Raleway', sans-serif;
-}
-
-#cabecalho a{
-    color: black;
-}
-
 #con-nav{
     align-self: flex-end;
 }
@@ -79,8 +177,6 @@ main{
 }
 
 #con-cabecalho{
-    background-color: red;
-    border-bottom: darkgray 3px solid;
     height: 20%;
     display: flex;
     flex-direction: row;
@@ -88,21 +184,13 @@ main{
 }
 
 /*Conteudo*/
-.titulo-pagina{
-    text-rendering: optimizeLegibility;
-}
-
 .con-titulo-pagina{
     width: 100%;
-    background-color: rgb(186, 209, 247, 0.5);
 }
 
 #box-apresentacao{
-    border: 3px darkgray solid;
-    border-radius: 2%;
     padding: 2%;
     margin: 1% 5% 1%;
-    background-color: rgb(66, 135, 245, 0.9);
 }
 
 /*Rodapé*/
@@ -112,30 +200,15 @@ main{
 
 footer{
     width: 100%;
-    border-top: darkgray 3px solid;
-    background-color: red;
     display: flex;
     flex-direction: column;
     height: 5%;
-
-    color: black;
 }
 
 footer p{
-    font-size: small;
     align-self: flex-end;
 }
-/*
-#footer-registrar{
-    position: absolute;
-    bottom: 0;
-}
 
-#footer-login{
-    position: absolute;
-    bottom: 0;
-}
-*/
 /*Pagina catalogo*/
 .img-moto-catalogo img{
     width: 500px;
@@ -173,11 +246,6 @@ footer p{
 }
 
 .card-moto-catalogo{
-    color: black;
-    border: 1px black solid;
-    border-radius: 1%;
-    background-color: cadetblue;
-    
     padding: 2% 0 2%;
     margin-bottom: 2%;
     width: 90%;
@@ -200,31 +268,12 @@ footer p{
     left: -85%;
 }
 
-.botao-removerEstilo{
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
-
-.botao-desabilitado{
-    border-color: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
-}
-
 .btn-favorito-catalogo img{
     width: 50%;
 }
 
 #texto-catalogo{
     position: fixed;
-    background-color: rgb(139, 182, 252, 0.8);
-    border: 2px black solid;
-    border-radius: 1%;
     width: 70%;
     margin: 0 15% 0;
     padding: 2%;
@@ -238,10 +287,6 @@ footer p{
 
 /*Pagina lista*/
 #con-motos-lista{
-    /*display: flex;
-    flex-direction: row;
-    justify-content: space-around;*/
-
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: stretch;
@@ -250,8 +295,6 @@ footer p{
 }
 
 .card-moto-lista{
-    border: 3px red solid;
-    background-color: var(--azulClaro);
     width: 96%;
     padding: 1%;
     margin: 0 2% 2%;
@@ -285,11 +328,7 @@ footer p{
 #con-registrar{
     width: 60%;
     margin: 1% 20% 0;
-    border: 2px gray solid;
-    border-radius: 3%;
     padding: 2%;
-
-    background-color: aliceblue;
 }
 
 #conAutomatica{
@@ -299,7 +338,6 @@ footer p{
 
 /*Página login*/
 #body-login{
-    background-color: burlywood;
     padding-top: 2%;
 }
 
@@ -307,7 +345,6 @@ footer p{
     width: 50%;
     margin: 2% 25% 0;
     padding: 2%;
-    border: 2px gray solid;
     border-radius: 2%;
 }
 
@@ -317,13 +354,7 @@ footer p{
     position: absolute;
 }
 
-#lista-gerenciar{
-
-}
-
-.card-moto-gerenciar{
-    margin: 3px darkgray solid;
-    background-color: cornflowerblue;
+.card-moto-gerenciar{ 
     display: flex;
     padding: 2%;
     width: 90%;
@@ -331,7 +362,6 @@ footer p{
 }
 
 .card-moto-gerenciar h2{
-    color: blue;
     font-size: 3em;
     text-align: center;
     margin-bottom: 15%;
@@ -360,9 +390,4 @@ footer p{
 }
 
 
-
-
-
-:root{
-    --azulClaro: #8bb6fc;
 }
