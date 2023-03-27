@@ -67,19 +67,15 @@ main{
 #box-apresentacao{
     width: 94%;
     padding: 2%;
-    margin: 1% 3% 1%;
+    margin: 1% 3% 0;
     background-color: rgb(66, 135, 245, 0.9);
 }
 
-#body-index{
-    max-width: 100%;
+#con-main{
+    height: 95%;
 }
 
 /*Rodapé*/
-#con-footer{
-    align-self: end;
-}
-
 footer{
     width: 100%;
     border-top: darkgray 3px solid;
@@ -89,6 +85,7 @@ footer{
     height: 5%;
 
     color: black;
+    align-self: end;
 }
 
 footer p{
