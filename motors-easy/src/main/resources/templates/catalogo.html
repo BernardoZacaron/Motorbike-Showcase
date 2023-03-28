@@ -1,46 +1,44 @@
 <html>
 <head>
-    <meta charset="UTF-8">
+    <<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Catálogo</title>
     <link rel="icon" href="img/icone.png">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="estilo/splash.css">
 	<link rel="stylesheet" href="estilo/responsividade.css">
 </head>
-<body>
-    <div id="page-container">
-    <header th:insert="~{includes/cabecalho}">...</header>
+<body id="body-catalogo">
+<header th:insert="~{includes/cabecalho}">...</header>
     <main id="main-catalogo">
-    <div class="con-titulo-pagina">
-      <h1 class="titulo-pagina">Catálogo com os modelos disponíveis</h1>  
-    </div>
-    <div id="texto-catalogo">
-      <p>&#8594; <span class="underline">Conheça nossos melhores modelos expandindo os cards laterais.</span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-    </div>
-    <div id="con-motos-catalogo">
-        <div th:each="m: ${motos}" class="card-moto-catalogo fechado">
-            <div class="img-moto-catalogo"><img th:src="@{${m.imagemUrl}}" alt="Imagem da moto"></div>
-            <div class="titulo-moto-vertical">
-                <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
-            </div>
-            <div class="conteudo-moto-catalogo">
-              <h3 class="titulo-moto-interno" th:text='${m.modelo}'>Placeholder</h3>
-              <p><span th:text='${m.cilindradas}'>500</span> cilindradas</p>
-              <p>R$<span th:text='${m.preco}'>20000,00</span></p>
-              <p>Automática: <span th:text="${m.automatica} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
-              <p>Freio ABS: <span th:text="${m.abs} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
-              <p>Terreno: <span th:text="${m.terreno}">Misto</span></p>
-              <form th:action="@{/cliente/addDesejo}" method="post">
-                  <input type="hidden" th:value='${m.id}' name="idMoto">
-                  <button type="submit" class="botao-removerEstilo btn-favorito-catalogo">
-                      <img th:src="${m.favoritada ? 'img/favorito.png' : 'img/favoritar.png'}">
-                  </button>
-              </form>
+        <div class="con-titulo-pagina">
+            <h1 class="titulo-pagina">Catálogo com os modelos disponíveis</h1>
+        </div>
+        <div id="texto-catalogo">
+            <p>&#8594; <span class="underline">Conheça nossos melhores modelos expandindo os cards laterais.</span> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+        </div>
+        <div id="con-motos-catalogo">
+            <div th:each="m: ${motos}" class="card-moto-catalogo fechado">
+                <div class="img-moto-catalogo"><img th:src="@{${m.imagemUrl}}" alt="Imagem da moto"></div>
+                <div class="titulo-moto-vertical">
+                    <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
+                </div>
+                <div class="conteudo-moto-catalogo">
+                    <h3 class="titulo-moto-interno" th:text='${m.modelo}'>Placeholder</h3>
+                    <p><span th:text='${m.cilindradas}'>500</span> cilindradas</p>
+                    <p>R$<span th:text='${m.preco}'>20000,00</span></p>
+                    <p>Automática: <span th:text="${m.automatica} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
+                    <p>Freio ABS: <span th:text="${m.abs} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
+                    <p>Terreno: <span th:text="${m.terreno}">Misto</span></p>
+                    <form th:action="@{/cliente/addDesejo}" method="post">
+                        <input type="hidden" th:value='${m.id}' name="idMoto">
+                        <button type="submit" class="botao-removerEstilo btn-favorito-catalogo">
+                            <img th:src="${m.favoritada ? 'img/favorito.png' : 'img/favoritar.png'}">
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     </main>
-    </div>
     <section th:insert="~{includes/rodape}">...</section>
 </body>
 </html>
