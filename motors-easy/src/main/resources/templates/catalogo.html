@@ -1,6 +1,6 @@
 <html>
 <head>
-    <<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Catálogo</title>
     <link rel="icon" href="img/icone.png">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -18,7 +18,29 @@
         </div>
         <div id="con-motos-catalogo">
             <div th:each="m: ${motos}" class="card-moto-catalogo fechado">
-                <div class="img-moto-catalogo"><img th:src="@{${m.imagemUrl}}" alt="Imagem da moto"></div>
+                <div class="img-moto-catalogo"><!--<img th:src="@{${m.imagemUrl}}" alt="Imagem da moto">-->
+                    <img src="https://cdn.britannica.com/16/126516-050-2D2DB8AC/Triumph-Rocket-III-motorcycle-2005.jpg"></div>
+                <div class="titulo-moto-vertical">
+                    <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
+                </div>
+                <div class="conteudo-moto-catalogo">
+                    <h3 class="titulo-moto-interno" th:text='${m.modelo}'>Placeholder</h3>
+                    <p><span th:text='${m.cilindradas}'>500</span> cilindradas</p>
+                    <p>R$<span th:text='${m.preco}'>20000,00</span></p>
+                    <p>Automática: <span th:text="${m.automatica} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
+                    <p>Freio ABS: <span th:text="${m.abs} ? '&#9989;' : '&#10060;'">&#10060;</span></p>
+                    <p>Terreno: <span th:text="${m.terreno}">Misto</span></p>
+                    <form th:action="@{/cliente/addDesejo}" method="post">
+                        <input type="hidden" th:value='${m.id}' name="idMoto">
+                        <button type="submit" class="botao-removerEstilo btn-favorito-catalogo">
+                            <img th:src="${m.favoritada ? 'img/favorito.png' : 'img/favoritar.png'}">
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div th:each="m: ${motos}" class="card-moto-catalogo fechado">
+                <div class="img-moto-catalogo"><!--<img th:src="@{${m.imagemUrl}}" alt="Imagem da moto">-->
+                    <img src="https://cdn.britannica.com/16/126516-050-2D2DB8AC/Triumph-Rocket-III-motorcycle-2005.jpg"></div>
                 <div class="titulo-moto-vertical">
                     <h3 th:text='${m.modelo}'>Kawasaki ninja</h3>
                 </div>

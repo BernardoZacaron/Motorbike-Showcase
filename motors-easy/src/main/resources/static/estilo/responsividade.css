@@ -66,6 +66,10 @@ main{
     background-color: rgb(186, 209, 247, 0.5);
 }
 
+.titulo-pagina{
+    font-size: 1.2em;
+}
+
 #box-apresentacao{
     width: 94%;
     padding: 2%;
@@ -89,24 +93,47 @@ footer p{
 
 
 /*Pagina catalogo*/
-#con-motos-catalogo{
-    display: flex;
+#main-catalogo{
+    min-height: 90%;
 }
 
+#con-motos-catalogo{
+    display: grid;
+    width: 100%;
+}
+
+.img-moto-catalogo{
+    width: 70%;
+    height: 25%;
+    margin: 0 15% 2%;
+
+    grid-area: "imagem";
+}
 .img-moto-catalogo img{
-    width: 500px;
-    height: 350px;
+    width: 100%
 }
 
 .conteudo-moto-catalogo{
     grid-area: conteudo;
-    font-size: x-large;
-    text-align: start;
+    text-align: center;
 }
 
 .card-moto-catalogo{
     width: 90%;
     margin: 1% 5% 1%;
+    line-height: 0.5rem;
+
+    display: grid;
+    grid-template-areas: 
+    "conteudo"
+    "imagem";
+}
+.card-moto-catalogo h3{
+    font-size: larger;
+    font-weight: bolder;
+}
+.card-moto-catalogo p{
+    font-size: medium;
 }
 
 .btn-favorito-catalogo img{
@@ -121,6 +148,11 @@ footer p{
     width: 5%;
     float: left;
 }
+
+.titulo-moto-vertical{
+    display: none;
+}
+
 
 /*Pagina lista*/
 #con-motos-lista{
