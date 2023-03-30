@@ -109,7 +109,7 @@ footer p{
 }
 
 .card-moto-gerenciar{
-    margin: 3px darkgray solid;
+    border: 3px darkgray solid;
     background-color: cornflowerblue;
 }
 
