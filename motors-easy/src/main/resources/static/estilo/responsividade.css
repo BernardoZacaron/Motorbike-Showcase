@@ -233,12 +233,11 @@ footer p{
 }
 
 .card-moto-gerenciar{
-    margin: 3px darkgray solid;
-    background-color: cornflowerblue;
-    display: flex;
-    padding: 2%;
-    width: 90%;
-    margin: 1% 5% 1%;
+    display: grid;
+    grid-template-areas: 
+    "titulo"
+    "imagem"
+    "acoes";
 }
 
 .card-moto-gerenciar h2{
@@ -251,6 +250,11 @@ footer p{
 .acoes-gerenciar{
     display: flex;
     justify-content: space-around;
+    grid-area: "acoes";
+}
+
+.titulo-gerenciar{
+    grid-area: "titulo";
 }
 
 .celula-conteudo-gerenciar{
@@ -258,10 +262,9 @@ footer p{
 }
 
 .celula-imagem-gerenciar{
-    width: 50%;
+    grid-area: "imagem";
 }
 .celula-imagem-gerenciar img{
-    width: 80%;
 }
 
 .btn-acao-gerenciar p{
