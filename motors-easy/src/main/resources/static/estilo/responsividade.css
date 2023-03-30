@@ -203,8 +203,6 @@ footer p{
     border: 2px gray solid;
     border-radius: 3%;
     padding: 2%;
-
-    background-color: aliceblue;
 }
 
 #conAutomatica{
@@ -214,7 +212,6 @@ footer p{
 
 /*Página login*/
 #body-login{
-    background-color: burlywood;
     padding-top: 2%;
 }
 
@@ -241,7 +238,6 @@ footer p{
 }
 
 .card-moto-gerenciar h2{
-    color: blue;
     font-size: 3em;
     text-align: center;
     margin-bottom: 15%;
