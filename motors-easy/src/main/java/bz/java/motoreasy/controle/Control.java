@@ -8,7 +8,6 @@ import bz.java.motoreasy.model.util.Adicao;
 import bz.java.motoreasy.repository.AdicaoRepo;
 import bz.java.motoreasy.repository.MotoRepo;
 import bz.java.motoreasy.repository.UsuarioRepo;
-import bz.java.motoreasy.seguranca.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,9 +32,6 @@ public class Control {
 
     @Autowired
     AdicaoRepo adicaoRepo;
-
-    @Autowired
-    UserService userService;
 
     @Autowired
     PasswordEncoder pe;
