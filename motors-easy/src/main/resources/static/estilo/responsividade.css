@@ -235,6 +235,8 @@ footer p{
     "titulo"
     "imagem"
     "acoes";
+    justify-items: stretch;
+    align-items: stretch;
 }
 
 .card-moto-gerenciar h2{
