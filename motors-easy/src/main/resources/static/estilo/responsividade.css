@@ -236,6 +236,10 @@ footer p{
     "acoes";
     justify-items: stretch;
     align-items: stretch;
+
+    padding: 1%;
+    width: 90%;
+    margin: 1% 5% 1%;
 }
 
 .card-moto-gerenciar h2{
