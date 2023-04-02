@@ -3,12 +3,12 @@ Java Web fullstack application for users to consult motorbikes info and making a
 
 Default users:<br />
 -Costumer<br />
-  login: user<br />
-  password: 123<br />
+  login: ber<br />
+  password: senha<br />
   
  -Admin<br />
   login: adm<br />
-  password: 123<br />
+  password: senha<br />
   
 
   English follows
