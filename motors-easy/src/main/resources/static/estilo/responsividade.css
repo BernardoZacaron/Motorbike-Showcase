@@ -225,8 +225,7 @@ footer p{
 
 /*Página gerenciar*/
 #main-gerenciar{
-    min-height: 75%;
-    position: absolute;
+    min-height: 80%;
 }
 
 .card-moto-gerenciar{
@@ -263,12 +262,12 @@ footer p{
     grid-area: "imagem";
 }
 .celula-imagem-gerenciar img{
+    width: 60%;
 }
 
 .btn-acao-gerenciar p{
     text-align: center;
     letter-spacing: 3px;
-    font-weight: 700;
 }
 
 }
