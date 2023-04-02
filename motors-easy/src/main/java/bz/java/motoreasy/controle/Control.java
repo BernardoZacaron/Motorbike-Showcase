@@ -106,6 +106,7 @@ public class Control {
         return "redirect:/login";
     }
 
+    //Realizar transferencias para os respectivos controllers
 
     //Clientes logados
     @Transactional
