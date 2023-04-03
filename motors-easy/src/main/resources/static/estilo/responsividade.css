@@ -101,6 +101,7 @@ footer p{
     display: grid;
     width: 100%;
     height: fit-content;
+    padding-bottom: 10%;
 }
 
 .img-moto-catalogo{
