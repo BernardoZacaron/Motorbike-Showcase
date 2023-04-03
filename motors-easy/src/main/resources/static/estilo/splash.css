@@ -147,7 +147,6 @@ main{
 
 #main-catalogo{
     min-height: 90%;
-    position: absolute;
 }
 
 #main-registro{
@@ -283,6 +282,10 @@ footer p{
 #texto-catalogo img{
     width: 5%;
     float: left;
+}
+
+#con-motos-catalogo{
+    padding-bottom: 5%;
 }
 
 /*Pagina lista*/
