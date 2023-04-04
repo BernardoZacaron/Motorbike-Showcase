@@ -17,7 +17,7 @@
       <div id="con-registrar">
         <form th:action="@{/admin/saveMoto}" method="post" th:object="${novoMoto}">
             <div class="mb-3">
-              <label for="sltMarca" class="form-label">Marca</label>
+              <label for="sltMarca" class="form-label">Marca</label> 
               <select class="form-select" aria-label="Default select example" id="sltMarca" th:field="*{marca}">
                 <option value="Honda">Honda</option>
                 <option value="Yamaha">Yamaha</option>

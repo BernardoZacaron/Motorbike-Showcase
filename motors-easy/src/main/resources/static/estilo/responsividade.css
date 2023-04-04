@@ -195,6 +195,11 @@ footer p{
 
 
 /*Pagina registro moto*/
+#main-registro{
+    height: fit-content;
+    width: 100%;
+}
+
 #con-registrar{
     width: 96%;
     margin: 2% 2% 0;
