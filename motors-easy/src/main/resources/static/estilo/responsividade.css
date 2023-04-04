@@ -21,10 +21,6 @@ main{
     position: relative;
 }
 
-#main-registro{
-    position: absolute;
-}
-
 
 /*Cabeçalho*/
 #cabecalho a{
@@ -112,7 +108,7 @@ footer p{
     grid-area: "imagem";
 }
 .img-moto-catalogo img{
-    width: 100%
+    width: 100%;
 }
 
 .conteudo-moto-catalogo{
@@ -200,10 +196,9 @@ footer p{
 
 /*Pagina registro moto*/
 #con-registrar{
-    width: 60%;
-    margin: 1% 20% 0;
-    border: 2px gray solid;
-    border-radius: 3%;
+    width: 96%;
+    margin: 2% 2% 0;
+
     padding: 2%;
 }
 
