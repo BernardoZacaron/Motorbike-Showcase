@@ -53,6 +53,9 @@ main{
     height: 12%;
     display: flex;
     flex-direction: row;
+
+    z-index: 100;
+    position: absolute;
 }
 
 
@@ -91,13 +94,13 @@ footer p{
 /*Pagina catalogo*/
 #main-catalogo{
     min-height: 90%;
+
 }
 
 #con-motos-catalogo{
     display: grid;
     width: 100%;
     height: fit-content;
-    padding-bottom: 10%;
 }
 
 .img-moto-catalogo{
