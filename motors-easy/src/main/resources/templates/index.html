@@ -11,7 +11,6 @@
 <header th:insert="~{includes/cabecalho}">...</header>
     <main id="main-index">
       <div id="con-main">
-
         <div id="box-apresentacao">
           <h1 class="titulo-pagina" sec:authorize="!isAuthenticated()">Bem-vindo!</h1>
           <h1 class="titulo-pagina" sec:authorize="isAuthenticated()">Bem-vindo, <span th:text='${nomeUsuario}'></span>!</h1>
