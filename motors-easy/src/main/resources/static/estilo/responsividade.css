@@ -23,6 +23,10 @@ main{
 
 
 /*Cabeçalho*/
+header{
+    position: relative;
+}
+
 #cabecalho a{
     color: black;
 }
@@ -98,7 +102,7 @@ footer p{
     display: grid;
     width: 100%;
     height: fit-content;
-    margin-top: 20%;
+    margin-top: 10%;
     margin-bottom: 40%;
 }
 
