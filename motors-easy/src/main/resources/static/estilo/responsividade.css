@@ -81,6 +81,7 @@ header{
     height: 90%;
 }
 
+
 /*Rodapé*/
 footer{
     display: none;
@@ -230,6 +231,7 @@ footer p{
     border: 2px gray solid;
     border-radius: 2%;
 }
+
 
 /*Página gerenciar*/
 #main-gerenciar{
