@@ -94,13 +94,15 @@ footer p{
 /*Pagina catalogo*/
 #main-catalogo{
     min-height: 90%;
-
+    position: relative;
 }
 
 #con-motos-catalogo{
     display: grid;
     width: 100%;
     height: fit-content;
+    margin-top: 20%;
+    margin-bottom: 40%;
 }
 
 .img-moto-catalogo{
