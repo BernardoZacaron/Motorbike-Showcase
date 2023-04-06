@@ -15,7 +15,8 @@ main{
 }
 
 #main-lista{
-    position: relative;
+    position: absolute;
+    height: 90%;
 }
 
 #main-catalogo{
@@ -41,17 +42,17 @@ header{
 #logo{
     margin-top: -2%;
     max-width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+    display: grid;
+    align-self: end;
 }
 #logo img{
     width: 50%;
     margin-bottom: -10%;
 }
 #logo h1{
-    font-size: x-large;
+    font-size: medium;
     display: inline-block;
+    white-space: nowrap;
 }
 
 #con-cabecalho{
