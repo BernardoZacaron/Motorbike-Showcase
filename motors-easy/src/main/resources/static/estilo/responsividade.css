@@ -15,10 +15,7 @@ main{
 }
 
 #main-lista{
-
-}
-#main-lista h1{
-    color: red;
+    position: relative;
 }
 
 #main-catalogo{
