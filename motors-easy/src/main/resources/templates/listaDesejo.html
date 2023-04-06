@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Lista de desejos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Motorbikes Easy ®</title>
     <link rel="icon" href="img/icone.png">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="/estilo/splash.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilo/splash.css">
     <link rel="stylesheet" href="estilo/responsividade.css">
 </head>
 <body>
@@ -21,15 +20,15 @@
                   </div>
                   <div class="conteudo-moto-lista">
                       <h3><span th:text='${m.marca}'>Kawasaki</span> - <span th:text='${m.modelo}'>Ninja</span></h3>
-                    <p><span th:text='${m.cilindradas}'>xxx</span> cilindradas</p>
-                    <p>R$<span th:text='${m.preco}'>20000.0</span></p>
-                    <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
-                    <form th:action="@{/cliente/removerDesejo}" method="post">
-                        <input type="hidden" th:value='${m.id}' name="idMoto">
-                        <button type="submit" class="btn-favorito-lista botao-removerEstilo">
-                            <img src="/img/remover.png">
-                        </button>
-                    </form>
+                      <p><span th:text='${m.cilindradas}'>xxx</span> cilindradas</p>
+                      <p>R$<span th:text='${m.preco}'>20000.0</span></p>
+                      <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
+                      <form th:action="@{/cliente/removerDesejo}" method="post">
+                          <input type="hidden" th:value='${m.id}' name="idMoto">
+                          <button type="submit" class="btn-favorito-lista botao-removerEstilo">
+                              <img src="/img/remover.png">
+                          </button>
+                      </form>
                   </div>
               </div>
         </div>

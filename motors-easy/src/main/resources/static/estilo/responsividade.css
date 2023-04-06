@@ -15,7 +15,10 @@ main{
 }
 
 #main-lista{
-    position: absolute;
+
+}
+#main-lista h1{
+    color: red;
 }
 
 #main-catalogo{
@@ -163,15 +166,13 @@ footer p{
 /*Pagina lista*/
 #con-motos-lista{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     justify-items: stretch;
     align-items: stretch;
     width: 100%;
 }
 
 .card-moto-lista{
-    border: 3px red solid;
-    background-color: var(--azulClaro);
     width: 96%;
     padding: 1%;
     margin: 0 2% 2%;
