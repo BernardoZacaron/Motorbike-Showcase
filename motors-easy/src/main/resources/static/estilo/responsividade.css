@@ -40,10 +40,13 @@ header{
 }
 
 #logo{
-    margin-top: -2%;
+    margin-top: -5%;
+
     max-width: 50%;
     display: grid;
     align-self: end;
+    position: absolute;
+    right: 1;
 }
 #logo img{
     width: 50%;
