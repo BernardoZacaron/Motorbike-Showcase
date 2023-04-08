@@ -142,12 +142,12 @@ main{
 
 #main-lista{
     min-height: 80%;
-    position: absolute;
+    position: relative;
+    overflow: hidden;
 }
 
 #main-catalogo{
     min-height: 90%;
-
     position: relative;
     overflow: hidden;
 }
