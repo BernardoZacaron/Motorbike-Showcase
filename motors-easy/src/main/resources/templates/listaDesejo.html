@@ -14,23 +14,26 @@
             <h1 class="titulo-pagina">Itens favoritados</h1>
         </div>
         <div id="con-motos-lista" class="container">
-              <div th:each="m: ${motosFavoritas}" class="card-moto-lista">
-                  <div class="img-moto-lista">
+            <div id="msgListaVazia" th:if="${motosFavoritas.isEmpty()}">
+                <h4>TESTETESTETESTETESTETESTETESTETESTETESTE</h4>
+            </div>
+            <div th:each="m: ${motosFavoritas}" class="card-moto-lista">
+                <div class="img-moto-lista">
                     <img th:src="@{${m.imagemUrl}}">
-                  </div>
-                  <div class="conteudo-moto-lista">
-                      <h3><span th:text='${m.marca}'>Kawasaki</span> - <span th:text='${m.modelo}'>Ninja</span></h3>
-                      <p><span th:text='${m.cilindradas}'>xxx</span> cilindradas</p>
-                      <p>R$<span th:text='${m.preco}'>20000.0</span></p>
-                      <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
-                      <form th:action="@{/cliente/removerDesejo}" method="post">
-                          <input type="hidden" th:value='${m.id}' name="idMoto">
-                          <button type="submit" class="btn-favorito-lista botao-removerEstilo">
-                              <img src="/img/remover.png">
-                          </button>
-                      </form>
-                  </div>
-              </div>
+                </div>
+                <div class="conteudo-moto-lista">
+                    <h3><span th:text='${m.marca}'>Kawasaki</span> - <span th:text='${m.modelo}'>Ninja</span></h3>
+                    <p><span th:text='${m.cilindradas}'>xxx</span> cilindradas</p>
+                    <p>R$<span th:text='${m.preco}'>20000.0</span></p>
+                    <p th:text="${m.automatica} ? 'É automática' : 'NÃO é automática'"></p>
+                    <form th:action="@{/cliente/removerDesejo}" method="post">
+                        <input type="hidden" th:value='${m.id}' name="idMoto">
+                        <button type="submit" class="btn-favorito-lista botao-removerEstilo">
+                            <img src="/img/remover.png">
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
     <section th:insert="~{includes/rodape}">...</section>
