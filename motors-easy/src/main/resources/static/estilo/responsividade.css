@@ -201,6 +201,16 @@ footer p{
     width: 40%;
 }
 
+#msgListaVazia{
+    width: 90%;
+    margin: 2% 5% 0;
+    height: fit-content;
+}
+#msgListaVazia h4{
+    text-align: center;
+    color: white;
+}
+
 
 /*Pagina registro moto*/
 #main-registro{

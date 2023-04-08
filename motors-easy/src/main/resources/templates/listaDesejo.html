@@ -13,10 +13,10 @@
         <div class="con-titulo-pagina">
             <h1 class="titulo-pagina">Itens favoritados</h1>
         </div>
+        <div id="msgListaVazia" th:if="${motosFavoritas.isEmpty()}">
+            <h4>Sua lista de favoritas está vazia! Adicione motos a partir do catálogo.</h4>
+        </div>
         <div id="con-motos-lista" class="container">
-            <div id="msgListaVazia" th:if="${motosFavoritas.isEmpty()}">
-                <h4>Sua lista de favoritas está vazia! Adicione motos a partir do catálogo.</h4>
-            </div>
             <div th:each="m: ${motosFavoritas}" class="card-moto-lista">
                 <div class="img-moto-lista">
                     <img th:src="@{${m.imagemUrl}}">

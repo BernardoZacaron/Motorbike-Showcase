@@ -94,6 +94,11 @@ footer p{
     background-color: var(--azulClaro);
 }
 
+#msgListaVazia{
+    border: 2px gray solid;
+    background-color: rgb(62, 85, 122, 0.6);
+}
+
 #con-registrar{
     border: 2px gray solid;
     border-radius: 3%;
@@ -328,6 +333,16 @@ footer p{
 .btn-favorito-lista img{
     width: 40%;
 }
+
+#msgListaVazia{
+    width: 60%;
+    margin: 2% 20% 0;
+}
+#msgListaVazia h4{
+    text-align: center;
+    color: white;
+}
+
 
 /*Pagina registro moto*/
 #con-registrar{
