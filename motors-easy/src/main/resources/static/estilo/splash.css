@@ -147,6 +147,9 @@ main{
 
 #main-catalogo{
     min-height: 90%;
+
+    position: relative;
+    overflow: hidden;
 }
 
 #main-registro{
