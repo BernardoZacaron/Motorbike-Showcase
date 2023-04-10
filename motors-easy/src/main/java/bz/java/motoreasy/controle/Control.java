@@ -109,6 +109,7 @@ public class Control {
     //Realizar transferencias para os respectivos controllers
 
     //Clientes logados
+    /*
     @Transactional
     @PostMapping("/cliente/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
@@ -212,7 +213,7 @@ public class Control {
         return "redirect:/admin/gerenciar";
     }
 
-
+*/
     List<MotoDTO> filtrarDuplicadas(List<MotoDTO> listaOriginal){
         Set<MotoDTO> filtrada = listaOriginal.stream().collect(Collectors.toCollection(
                 () -> new TreeSet<>(Comparator.comparing(MotoDTO::getId)))

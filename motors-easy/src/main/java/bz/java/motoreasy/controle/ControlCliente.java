@@ -35,7 +35,7 @@ public class ControlCliente {
     AdicaoRepo adicaoRepo;
 
     @Transactional
-    @PostMapping("/cliente/addDesejo")
+    @PostMapping("/addDesejo")
     public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
 
@@ -50,7 +50,7 @@ public class ControlCliente {
     }
 
     @Transactional
-    @PostMapping("/cliente/removerDesejo")
+    @PostMapping("/removerDesejo")
     public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
         Usuario logado = (Usuario) authentication.getPrincipal();
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
@@ -60,7 +60,7 @@ public class ControlCliente {
         return "redirect:/cliente/lista-desejo";
     }
 
-    @GetMapping("/cliente/lista-desejo")
+    @GetMapping("/lista-desejo")
     public String callListaDesejoPage(Model model, Authentication authentication) {
         Usuario logado = (Usuario) authentication.getPrincipal();
         List<Moto> motosFavoritas = listaFavoritos(logado);
@@ -69,6 +69,7 @@ public class ControlCliente {
 
         return "listaDesejo";
     }
+
 
     List<MotoDTO> filtrarDuplicadas(List<MotoDTO> listaOriginal){
         Set<MotoDTO> filtrada = listaOriginal.stream().collect(Collectors.toCollection(
