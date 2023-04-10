@@ -2,9 +2,7 @@ package bz.java.motoreasy.controle;
 
 import bz.java.motoreasy.model.Moto;
 import bz.java.motoreasy.model.dto.MotoDTO;
-import bz.java.motoreasy.repository.AdicaoRepo;
 import bz.java.motoreasy.repository.MotoRepo;
-import bz.java.motoreasy.repository.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,27 +20,21 @@ public class ControlAdministracao {
     @Autowired
     MotoRepo motoRepo;
 
-    @Autowired
-    UsuarioRepo userRepo;
-
-    @Autowired
-    AdicaoRepo adicaoRepo;
-
-    @GetMapping("/admin/gerenciar")
+    @GetMapping("/gerenciar")
     public String callGerenciarPage(Model model){
         model.addAttribute("todasMotos", motoRepo.findAll());
 
         return "gerenciarMoto";
     }
 
-    @GetMapping("/admin/registrarMoto")
+    @GetMapping("/registrarMoto")
     public String callRegistroMotoPage(Model model){
         model.addAttribute("novoMoto", new MotoDTO());
         return "registrarMoto";
     }
 
     @Transactional
-    @PostMapping("/admin/saveMoto")
+    @PostMapping("/saveMoto")
     public String saveMoto(@ModelAttribute MotoDTO novoMoto){
         Moto moto = new Moto(novoMoto);
 
@@ -51,7 +43,7 @@ public class ControlAdministracao {
         return "redirect:/home";
     }
 
-    @GetMapping("/admin/editarMoto")
+    @GetMapping("/editarMoto")
     public String callEditarMotoPage(@ModelAttribute("idMoto") long id, Model model){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
         model.addAttribute("moto", moto);
@@ -59,7 +51,7 @@ public class ControlAdministracao {
         return "editarMoto";
     }
     @Transactional
-    @PostMapping("/admin/editarMoto")
+    @PostMapping("/editarMoto")
     public String saveMotoEditada(@ModelAttribute Moto moto){
         Moto motoEditada = motoRepo.getById(moto.getId());
         motoEditada.setMarca(moto.getMarca());
@@ -75,7 +67,7 @@ public class ControlAdministracao {
     }
 
     @Transactional
-    @PostMapping("/admin/ocultarMoto")
+    @PostMapping("/ocultarMoto")
     public String ocultarMoto(@ModelAttribute("idMoto") long id){
         Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
         moto.toggleVisibilidade();
@@ -86,7 +78,7 @@ public class ControlAdministracao {
     }
 
     @Transactional
-    @PostMapping("/admin/excluirMoto")
+    @PostMapping("/excluirMoto")
     public String excluirMoto(@ModelAttribute("idMoto") long id){
         motoRepo.deleteById(id);
 
