@@ -13,10 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import javax.ws.rs.NotFoundException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -37,7 +35,6 @@ public class Control {
     PasswordEncoder pe;
 
 
-    //Aberto
     @GetMapping({"/", "/home"})
     public String callHomePage(Model model, Authentication authentication){
         String nomeUsuario = null;
@@ -106,114 +103,7 @@ public class Control {
         return "redirect:/login";
     }
 
-    //Realizar transferencias para os respectivos controllers
 
-    //Clientes logados
-    /*
-    @Transactional
-    @PostMapping("/cliente/addDesejo")
-    public String saveMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
-        Usuario logado = (Usuario) authentication.getPrincipal();
-
-        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-
-        if(listaFavoritos(logado).contains(moto)){
-            adicaoRepo.removerMotoDaLista(logado.getId(), moto.getId());
-        }else{
-            adicaoRepo.save(new Adicao(logado, moto));
-        }
-        return "redirect:/catalogo";
-    }
-
-    @Transactional
-    @PostMapping("/cliente/removerDesejo")
-    public String removeMotoFav(@ModelAttribute("idMoto") long id, Authentication authentication){
-        Usuario logado = (Usuario) authentication.getPrincipal();
-        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-
-        adicaoRepo.removerMotoDaLista(logado.getId(), moto.getId());
-
-        return "redirect:/cliente/lista-desejo";
-    }
-
-    @GetMapping("/cliente/lista-desejo")
-    public String callListaDesejoPage(Model model, Authentication authentication) {
-        Usuario logado = (Usuario) authentication.getPrincipal();
-        List<Moto> motosFavoritas = listaFavoritos(logado);
-
-        model.addAttribute("motosFavoritas", motosFavoritas);
-
-        return "listaDesejo";
-    }
-
-
-    //Admin apenas
-    @GetMapping("/admin/gerenciar")
-    public String callGerenciarPage(Model model){
-        model.addAttribute("todasMotos", motoRepo.findAll());
-
-        return "gerenciarMoto";
-    }
-
-    @GetMapping("/admin/registrarMoto")
-    public String callRegistroMotoPage(Model model){
-        model.addAttribute("novoMoto", new MotoDTO());
-        return "registrarMoto";
-    }
-
-    @Transactional
-    @PostMapping("/admin/saveMoto")
-    public String saveMoto(@ModelAttribute MotoDTO novoMoto){
-        Moto moto = new Moto(novoMoto);
-
-        motoRepo.save(moto);
-
-        return "redirect:/home";
-    }
-
-    @GetMapping("/admin/editarMoto")
-    public String callEditarMotoPage(@ModelAttribute("idMoto") long id, Model model){
-        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-        model.addAttribute("moto", moto);
-
-        return "editarMoto";
-    }
-    @Transactional
-    @PostMapping("/admin/editarMoto")
-    public String saveMotoEditada(@ModelAttribute Moto moto){
-        Moto motoEditada = motoRepo.getById(moto.getId());
-        motoEditada.setMarca(moto.getMarca());
-        motoEditada.setModelo(moto.getModelo());
-        motoEditada.setCilindradas(moto.getCilindradas());
-        motoEditada.setPreco(moto.getPreco());
-        motoEditada.setTerreno(moto.getTerreno());
-        motoEditada.setAutomatica(moto.isAutomatica());
-
-        motoRepo.saveAndFlush(motoEditada);
-
-        return "redirect:/admin/gerenciar";
-    }
-
-    @Transactional
-    @PostMapping("/admin/ocultarMoto")
-    public String ocultarMoto(@ModelAttribute("idMoto") long id){
-        Moto moto = motoRepo.findById(id).orElseThrow(NotFoundException::new);
-        moto.toggleVisibilidade();
-
-        motoRepo.saveAndFlush(moto);
-
-        return "redirect:/admin/gerenciar";
-    }
-
-    @Transactional
-    @PostMapping("/admin/excluirMoto")
-    public String excluirMoto(@ModelAttribute("idMoto") long id){
-        motoRepo.deleteById(id);
-
-        return "redirect:/admin/gerenciar";
-    }
-
-*/
     List<MotoDTO> filtrarDuplicadas(List<MotoDTO> listaOriginal){
         Set<MotoDTO> filtrada = listaOriginal.stream().collect(Collectors.toCollection(
                 () -> new TreeSet<>(Comparator.comparing(MotoDTO::getId)))
