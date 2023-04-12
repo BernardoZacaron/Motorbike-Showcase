@@ -14,14 +14,13 @@ Default users:<br />
   English follows
   
   PT-BR<br />
-  A aplicação contém um catologo de motos que o usuário comum pode consultar suas informações e adiciona-las à sua lista de desejos. O usuário administrador pode gerenciar 
-  as motos existentes no sistema. O frontend usa elementos do HTML, CSS e JavaScript para montar as páginas webs (até o momento apenas compatível com desktop, mas tenho 
-  planos para tornar a aplicação responsiva).
-  O sistema utiliza o Spring Security para autenticação/registro de usuários e controlar as permissões de acesso.
+  A aplicação contém um catologo de motos que o usuário comum pode consultar suas informações e adiciona-las à sua lista de desejos. O usuário administrador pode gerenciar as motos existentes no sistema.<br /> 
+  O frontend usa elementos do HTML, CSS e JavaScript para montar as páginas web (design responsivo para telas de smartphone).<br />
+  O sistema utiliza o Spring Security para autenticação/registro de usuários e controlar as permissões de acesso.<br />
 
 
 
   English<br />
-  This application contains a collection of motorbikes that the costumers can consult their respective info and add them to their personal wishlist. The admininistrator
-  has permission to manage the bikes. The webpages are put together with HTML, CSS and JavaScript that soon will be responsive for mobile screens.
+  This application contains a collection of motorbikes that the costumers can consult their respective info and add them to their personal wishlist. The admininistrator has permission to manage the bikes.<br /> 
+  The webpages are put together with HTML, CSS and JavaScript and are responsive for smartphone screens.<br />
   The application uses the framework Spring Security for user authentication/registration and control of users ROLES and permissions of access.
