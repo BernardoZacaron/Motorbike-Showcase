@@ -20,6 +20,7 @@ public class Moto {
     private boolean abs;
     private String terreno;
     private boolean anuncioAtivo;
+    @Column(length = 820, nullable = true) //URLs podem ser longas
     private String imagemUrl;
 
     @OneToMany(mappedBy = "moto")
