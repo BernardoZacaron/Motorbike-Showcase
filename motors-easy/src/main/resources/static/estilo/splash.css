@@ -70,6 +70,7 @@ footer{
     border-top: darkgray 3px solid;
     background-color: red;
     color: black;
+    align-self: end;
 }
 
 footer p{
@@ -201,15 +202,12 @@ main{
 }
 
 /*Rodapé*/
-#con-footer{
-    align-self: end;
-}
-
 footer{
     width: 100%;
     display: flex;
     flex-direction: column;
     height: 5%;
+    align-self: end;
 }
 
 footer p{
@@ -359,6 +357,12 @@ footer p{
 /*Página login*/
 #body-login{
     padding-top: 2%;
+    display: grid;
+}
+
+#body-login footer{
+    position: fixed;
+    bottom: 0;
 }
 
 #box-login{
