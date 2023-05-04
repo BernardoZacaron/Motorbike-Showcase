@@ -17,21 +17,21 @@
             <div class="celula-conteudo-gerenciar">
                 <div class="titulo-gerenciar"><h2 th:text='${m.modelo}'>Kawasaki Ninja</h2></div>
                 <div class="acoes-gerenciar">
-                    <div class="btn-gerenciar-editar btn-acao-gerenciar">
+                    <div id="btn-gerenciar-editar" class="btn-acao-gerenciar">
                         <form th:action="@{/admin/editarMoto}" method="get">
                             <input type="hidden" th:value='${m.id}' name="idMoto">
                             <button type="submit" class="botao-removerEstilo"><img src="/img/editar.png" alt="Editar"/></button>
                             <p>Editar</p>
                         </form>
                     </div>
-                    <div class="btn-gerenciar-deletar btn-acao-gerenciar">
+                    <div id="btn-gerenciar-deletar" class="btn-acao-gerenciar">
                         <form th:action="@{/admin/excluirMoto}" method="post">
                             <input type="hidden" th:value='${m.id}' name="idMoto">
                             <button type="submit" class="botao-removerEstilo"><img src="/img/deletar.png" alt="Excluir"/></button>
                             <p>Excluir</p>
                         </form>
                     </div>
-                    <div class="btn-gerenciar-ocultar btn-acao-gerenciar">
+                    <div id="btn-gerenciar-ocultar" class="btn-acao-gerenciar">
                         <form th:action="@{/admin/ocultarMoto}" method="post">
                             <input type="hidden" th:value='${m.id}' name="idMoto">
                             <button type="submit" class="botao-removerEstilo">

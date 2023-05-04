@@ -275,11 +275,14 @@ footer p{
 }
 .btn-acao-gerenciar p{
     text-align: center;
-    letter-spacing: 3px;
+    font-size: small;
+}
+.btn-acao-gerenciar button{
+    height: 50px;
 }
 
 #btn-gerenciar-deletar{
-    margin: 0 2vw 0;
+    margin-left: 3vh; margin-right: 3vh;
 }
 
 .titulo-gerenciar{
