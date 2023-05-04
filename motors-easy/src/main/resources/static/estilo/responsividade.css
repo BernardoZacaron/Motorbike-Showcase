@@ -249,12 +249,11 @@ footer p{
     "imagem"
     "acoes";
     justify-items: center;
-    align-items: center;
+    align-items: stretch;
 
     padding: 1%;
     width: 90%;
     margin: 1% 5% 1%;
-    align-content: center;
 }
 
 .card-moto-gerenciar h2{
@@ -267,6 +266,20 @@ footer p{
     display: flex;
     justify-content: space-between;
     grid-area: "acoes";
+}
+.btn-acao-gerenciar{
+    width: 30%;
+}
+.btn-acao-gerenciar img{
+    width: 100%;
+}
+.btn-acao-gerenciar p{
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+#btn-gerenciar-deletar{
+    margin: 0 2vw 0;
 }
 
 .titulo-gerenciar{
@@ -285,11 +298,6 @@ footer p{
 }
 .celula-imagem-gerenciar img{
     width: 60%;
-}
-
-.btn-acao-gerenciar p{
-    text-align: center;
-    letter-spacing: 3px;
 }
 
 }
