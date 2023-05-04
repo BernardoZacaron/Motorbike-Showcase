@@ -249,7 +249,7 @@ footer p{
     "imagem"
     "acoes";
     justify-items: stretch;
-    align-items: stretch;
+    align-items: center;
 
     padding: 1%;
     width: 90%;
